@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>QuokkaGround | 풀스택 모바일 앱 개발 전문 프리랜서</title>
+  <meta name="description"
+    content="QuokkaGround(쿼카그라운드) 대표 장태관 — Flutter 기반 iOS/Android 앱, Node.js·Java 백엔드, 어드민 웹까지 아우르는 9년 경력 풀스택 프리랜서입니다." />
+  <meta name="keywords"
+    content="Flutter 개발, 모바일 앱 개발, iOS 앱, Android 앱, 풀스택 개발자, 프리랜서 개발자, 쿼카그라운드, QuokkaGround, 장태관, Node.js, 앱 외주" />
+  <meta name="author" content="장태관 — QuokkaGround" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://quokkaground.github.io/" />
+  <meta property="og:title" content="QuokkaGround | 풀스택 모바일 앱 개발 전문 프리랜서" />
+  <meta property="og:description" content="Flutter · Node.js · Java — 기획부터 출시까지 책임지는 풀스택 프리랜서 스튜디오" />
+  <meta property="og:image" content="https://quokkaground.github.io/og-image.png" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="QuokkaGround | 풀스택 모바일 앱 개발 전문 프리랜서" />
+  <meta name="twitter:description" content="Flutter · Node.js · Java — 기획부터 출시까지 책임지는 풀스택 프리랜서 스튜디오" />
+  <meta name="twitter:image" content="https://quokkaground.github.io/og-image.png" />
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"QuokkaGround","alternateName":"쿼카그라운드","url":"https://quokkaground.github.io/","description":"Flutter iOS/Android 앱, Node.js·Java 백엔드, 어드민 웹 개발 풀스택 프리랜서 스튜디오","areaServed":"KR","serviceType":["모바일 앱 개발","Flutter 개발","iOS/Android 앱 개발","백엔드 개발","어드민 웹 개발"],"founder":{"@type":"Person","name":"장태관","jobTitle":"풀스택 개발자"}}</script>
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"장태관","alternateName":"Tom","jobTitle":"풀스택 모바일 앱 개발자","worksFor":{"@type":"Organization","name":"QuokkaGround"},"knowsAbout":["Flutter","iOS","Android","Node.js","Java","PostgreSQL","AWS"],"url":"https://quokkaground.github.io/"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --bg: #05050d;
+      --bg2: #0b0b16;
+      --bg3: #12121e;
+      --bg4: #1a1a28;
+      --lime: #b8ff57;
+      --lime2: #d4ff8c;
+      --white: #f0f0f6;
+      --muted: #9898b0;
+      --muted2: #717190;
+      --border: rgba(184, 255, 87, .1);
+      --border2: rgba(255, 255, 255, .05);
+      --r: 16px;
+      --fh: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+      --fm: 'Space Mono', monospace;
+      --fb: 'Noto Sans KR', sans-serif;
+      --c-mob: #57b8ff;
+      --c-back: #b8ff57;
+      --c-infra: #ffb857;
+      --c-tool: #bd57ff;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--fb);
+      line-height: 1.65;
+      overflow-x: hidden
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(184, 255, 87, .06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 64px;
+      background: rgba(5, 5, 13, .85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s
+    }
+
+    nav.sc {
+      padding: 12px 64px
+    }
+
+    .nl {
+      font-family: var(--fh);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -.02em
+    }
+
+    .nd {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      animation: pb 2.2s ease-in-out infinite
+    }
+
+    @keyframes pb {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(184, 255, 87, .7)
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px rgba(184, 255, 87, 0)
+      }
+    }
+
+    .nls {
+      display: flex;
+      gap: 32px;
+      list-style: none
+    }
+
+    .nls a {
+      font-family: var(--fm);
+      font-size: .82rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .04em;
+      transition: color .2s
+    }
+
+    .nls a:hover {
+      color: var(--lime)
+    }
+
+    .nc {
+      font-family: var(--fm);
+      font-size: .85rem;
+      padding: 9px 22px;
+      border-radius: 8px;
+      border: 1px solid var(--lime);
+      color: var(--lime);
+      text-decoration: none;
+      transition: background .2s, color .2s
+    }
+
+    .nc:hover {
+      background: var(--lime);
+      color: var(--bg)
+    }
+
+    .hb {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px
+    }
+
+    .hb span {
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px
+    }
+
+    .mm {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 13, .97);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px
+    }
+
+    .mm.open {
+      display: flex
+    }
+
+    .mm a {
+      font-family: var(--fh);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none
+    }
+
+    .mm a:hover {
+      color: var(--lime)
+    }
+
+    .mmc {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer
+    }
+
+    /* HERO */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 60px 80px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .halo {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184, 255, 87, .08) 0%, transparent 65%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      pointer-events: none;
+      animation: halo 8s ease-in-out infinite alternate
+    }
+
+    @keyframes halo {
+      from {
+        transform: translate(-50%, -55%) scale(1)
+      }
+
+      to {
+        transform: translate(-50%, -45%) scale(1.15)
+      }
+    }
+
+    .hero-img-outer {
+      position: relative;
+      width: clamp(220px, 26vw, 340px);
+      margin: 0 auto 36px;
+      opacity: 0;
+      animation: popIn .8s .1s cubic-bezier(.34, 1.56, .64, 1) forwards
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(.7)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    .hero-img-ring {
+      position: absolute;
+      inset: -10px;
+      border-radius: 24px;
+      border: 1.5px solid rgba(184, 255, 87, .25);
+      animation: ringPulse 3s ease-in-out infinite
+    }
+
+    .hero-img-ring2 {
+      position: absolute;
+      inset: -22px;
+      border-radius: 28px;
+      border: 1px dashed rgba(184, 255, 87, .12);
+      animation: ringPulse 4s ease-in-out infinite reverse
+    }
+
+    @keyframes ringPulse {
+
+      0%,
+      100% {
+        opacity: .6;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.03)
+      }
+    }
+
+    .hero-img-outer img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      border: 2px solid rgba(184, 255, 87, .2);
+      filter: brightness(.97)
+    }
+
+    .hero-eye {
+      font-family: var(--fm);
+      font-size: .8rem;
+      letter-spacing: .2em;
+      color: var(--lime);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fu .6s .4s forwards
+    }
+
+    h1 {
+      font-family: var(--fh);
+      font-size: clamp(3rem, 5.8vw, 6.2rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -.04em;
+      max-width: 780px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fu .7s .55s forwards
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--lime)
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #b0b0c4;
+      line-height: 1.9;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      animation: fu .7s .7s forwards
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fu .7s .85s forwards
+    }
+
+    .bp {
+      background: var(--lime);
+      color: var(--bg);
+      font-family: var(--fm);
+      font-size: .92rem;
+      font-weight: 700;
+      padding: 15px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      display: inline-block
+    }
+
+    .bp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(184, 255, 87, .35)
+    }
+
+    .bg {
+      border: 1px solid var(--border2);
+      background: rgba(255, 255, 255, .04);
+      color: #a8a8be;
+      font-family: var(--fm);
+      font-size: .92rem;
+      padding: 15px 36px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+      display: inline-block
+    }
+
+    .bg:hover {
+      border-color: rgba(255, 255, 255, .3);
+      color: var(--white)
+    }
+
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      width: 100%;
+      max-width: 700px;
+      justify-content: center;
+      opacity: 0;
+      animation: fu .7s 1s forwards
+    }
+
+    .hs {
+      flex: 1;
+      text-align: center;
+      padding: 0 24px;
+      border-right: 1px solid var(--border)
+    }
+
+    .hs:last-child {
+      border-right: none
+    }
+
+    .hs-n {
+      font-family: var(--fh);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white)
+    }
+
+    .hs-n span {
+      color: var(--lime)
+    }
+
+    .hs-l {
+      font-family: var(--fm);
+      font-size: .76rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      margin-top: 4px
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 64px
+    }
+
+    .sl {
+      font-family: var(--fm);
+      font-size: .78rem;
+      letter-spacing: .22em;
+      color: var(--lime);
+      margin-bottom: 14px;
+      text-transform: uppercase
+    }
+
+    h2 {
+      font-family: var(--fh);
+      font-size: clamp(2.1rem, 3.2vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.05;
+      margin-bottom: 12px
+    }
+
+    .ss {
+      color: #a0a0b8;
+      font-size: 1.02rem;
+      max-width: 480px;
+      line-height: 1.85;
+      margin-bottom: 56px
+    }
+
+    .tc {
+      text-align: center
+    }
+
+    .tc .ss {
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    /* STACK */
+    #stack {
+      background: var(--bg2)
+    }
+
+    .stack-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto
+    }
+
+    .sc-tag {
+      font-family: var(--fm);
+      font-size: .88rem;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all .25s ease;
+      cursor: default;
+      background: rgba(255, 255, 255, 0.02)
+    }
+
+    .sc-tag.t-mob {
+      border-color: rgba(87, 184, 255, 0.25);
+      color: rgba(87, 184, 255, 0.8)
+    }
+
+    .sc-tag.t-mob:hover {
+      border-color: var(--c-mob);
+      color: var(--c-mob);
+      background: rgba(87, 184, 255, 0.1);
+      box-shadow: 0 0 12px rgba(87, 184, 255, 0.2);
+      transform: translateY(-2px)
+    }
+
+    .sc-tag.t-back {
+      border-color: rgba(184, 255, 87, 0.25);
+      color: rgba(184, 255, 87, 0.8)
+    }
+
+    .sc-tag.t-back:hover {
+      border-color: var(--c-back);
+      color: var(--c-back);
+      background: rgba(184, 255, 87, 0.1);
+      box-shadow: 0 0 12px rgba(184, 255, 87, 0.2);
+      transform: translateY(-2px)
+    }
+
+    .sc-tag.t-infra {
+      border-color: rgba(255, 184, 87, 0.25);
+      color: rgba(255, 184, 87, 0.8)
+    }
+
+    .sc-tag.t-infra:hover {
+      border-color: var(--c-infra);
+      color: var(--c-infra);
+      background: rgba(255, 184, 87, 0.1);
+      box-shadow: 0 0 12px rgba(255, 184, 87, 0.2);
+      transform: translateY(-2px)
+    }
+
+    .sc-tag.t-tool {
+      border-color: rgba(189, 87, 255, 0.25);
+      color: rgba(189, 87, 255, 0.8)
+    }
+
+    .sc-tag.t-tool:hover {
+      border-color: var(--c-tool);
+      color: var(--c-tool);
+      background: rgba(189, 87, 255, 0.1);
+      box-shadow: 0 0 12px rgba(189, 87, 255, 0.2);
+      transform: translateY(-2px)
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--bg)
+    }
+
+    .about-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center
+    }
+
+    .about-text p {
+      color: #a8a8be;
+      line-height: 1.9;
+      font-size: 1.02rem;
+      margin-bottom: 14px
+    }
+
+    .about-text p strong {
+      color: var(--white)
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px
+    }
+
+    .ab {
+      font-family: var(--fm);
+      font-size: .8rem;
+      padding: 9px 18px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: border-color .2s, color .2s
+    }
+
+    .ab:hover {
+      border-color: var(--lime);
+      color: var(--lime)
+    }
+
+    .about-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 32px
+    }
+
+    .acr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border2)
+    }
+
+    .acr:last-child {
+      border-bottom: none
+    }
+
+    .al {
+      font-family: var(--fm);
+      font-size: .82rem;
+      color: var(--muted)
+    }
+
+    .av {
+      font-size: .95rem;
+      color: var(--white);
+      font-weight: 500
+    }
+
+    .av.bl {
+      color: var(--lime)
+    }
+
+    /* PORTFOLIO */
+    #portfolio {
+      background: var(--bg2)
+    }
+
+    .pg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px
+    }
+
+    .pc {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s, border-color .3s
+    }
+
+    .pc:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+      border-color: rgba(184, 255, 87, .25)
+    }
+
+    .pt {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      overflow: hidden
+    }
+
+    .pt img {
+      width: auto;
+      height: 70%;
+      object-fit: contain;
+      border-radius: 16px
+    }
+
+    .pt-vine {
+      background: linear-gradient(135deg, #1a0a2e, #3d1a6b)
+    }
+
+    .pt-isaac {
+      background: linear-gradient(135deg, #0d2818, #1a5c30)
+    }
+
+    .pt-jieum {
+      background: linear-gradient(135deg, #1a1a0a, #4a3c00)
+    }
+
+    .pt-smart {
+      background: linear-gradient(135deg, #0a1a2a, #1a3a5c)
+    }
+
+    .pt-water {
+      background: linear-gradient(135deg, #0a2a2a, #1a5c5c)
+    }
+
+    .pt-every {
+      background: linear-gradient(135deg, #0a0a1a, #1a1a4a)
+    }
+
+    .pt-jieum2 {
+      background: linear-gradient(135deg, #1a0d00, #4a2800)
+    }
+
+    .pt-photo {
+      background: linear-gradient(135deg, #111, #2a2a2a)
+    }
+
+    .pb-inner {
+      padding: 24px
+    }
+
+    .pn {
+      font-family: var(--fh);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px
+    }
+
+    .pd {
+      font-size: .9rem;
+      color: #a0a0b8;
+      line-height: 1.75;
+      margin-bottom: 14px
+    }
+
+    .ptags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .ptag {
+      font-family: var(--fm);
+      font-size: .76rem;
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02)
+    }
+
+    .ptag.t-mob {
+      border-color: rgba(87, 184, 255, 0.25);
+      color: rgba(87, 184, 255, 0.85);
+      background: rgba(87, 184, 255, 0.05)
+    }
+
+    .ptag.t-back {
+      border-color: rgba(184, 255, 87, 0.25);
+      color: rgba(184, 255, 87, 0.85);
+      background: rgba(184, 255, 87, 0.05)
+    }
+
+    .ptag.t-infra {
+      border-color: rgba(255, 184, 87, 0.25);
+      color: rgba(255, 184, 87, 0.85);
+      background: rgba(255, 184, 87, 0.05)
+    }
+
+    .ptag.t-tool {
+      border-color: rgba(189, 87, 255, 0.25);
+      color: rgba(189, 87, 255, 0.85);
+      background: rgba(189, 87, 255, 0.05)
+    }
+
+    /* METRICS */
+    #metrics {
+      background: var(--bg);
+      padding: 80px 64px
+    }
+
+    .met-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px
+    }
+
+    .met {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      text-align: center;
+      transition: border-color .25s, background .25s
+    }
+
+    .met:first-child {
+      border-radius: var(--r) 0 0 var(--r)
+    }
+
+    .met:last-child {
+      border-radius: 0 var(--r) var(--r) 0
+    }
+
+    .met:hover {
+      border-color: rgba(184, 255, 87, .3);
+      background: var(--bg4)
+    }
+
+    .mn {
+      font-family: var(--fh);
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--white)
+    }
+
+    .mn span {
+      color: var(--lime)
+    }
+
+    .ml {
+      font-family: var(--fm);
+      font-size: .78rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      margin-top: 8px
+    }
+
+    .md {
+      font-size: .88rem;
+      color: var(--muted2);
+      margin-top: 6px
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background: var(--bg2)
+    }
+
+    .tg {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px
+    }
+
+    .tc-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      transition: border-color .25s;
+      position: relative
+    }
+
+    .tc-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      color: rgba(184, 255, 87, .1);
+      line-height: 1
+    }
+
+    .tc-card:hover {
+      border-color: rgba(184, 255, 87, .2)
+    }
+
+    .ts {
+      color: var(--lime);
+      font-size: .88rem;
+      margin-bottom: 14px;
+      letter-spacing: 2px
+    }
+
+    .tt {
+      font-size: .96rem;
+      color: #b0b0c4;
+      line-height: 1.85;
+      margin-bottom: 20px;
+      font-style: italic
+    }
+
+    .ta {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .tav {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem
+    }
+
+    .tn {
+      font-size: .93rem;
+      font-weight: 600;
+      color: var(--white)
+    }
+
+    .tr {
+      font-family: var(--fm);
+      font-size: .78rem;
+      color: var(--muted)
+    }
+
+    /* CTA */
+    #cta {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 64px;
+      text-align: center
+    }
+
+    #cta h2 {
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+      max-width: 600px;
+      margin: 0 auto 16px
+    }
+
+    #cta p {
+      color: #a8a8be;
+      margin-bottom: 40px;
+      font-size: 1.05rem
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg2)
+    }
+
+    .cg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start
+    }
+
+    .ci h2 {
+      margin-bottom: 16px
+    }
+
+    .cp {
+      color: #a8a8be;
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 36px
+    }
+
+    .crow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border2);
+      color: var(--muted);
+      font-size: .95rem;
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .crow:hover {
+      color: var(--lime)
+    }
+
+    .ci-icon {
+      width: 18px;
+      flex-shrink: 0
+    }
+
+    .cf {
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .fg {
+      display: flex;
+      flex-direction: column;
+      gap: 7px
+    }
+
+    .fl {
+      font-family: var(--fm);
+      font-size: .78rem;
+      color: var(--muted);
+      letter-spacing: .08em
+    }
+
+    .fi,
+    .fta {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 14px 18px;
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: .95rem;
+      outline: none;
+      transition: border-color .2s;
+      resize: none
+    }
+
+    .fi:focus,
+    .fta:focus {
+      border-color: var(--lime)
+    }
+
+    .fta {
+      height: 300px
+    }
+
+    .fr2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    .fsub {
+      background: var(--lime);
+      color: var(--bg);
+      font-family: var(--fm);
+      font-size: .95rem;
+      font-weight: 700;
+      padding: 15px;
+      border-radius: 9px;
+      border: none;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s
+    }
+
+    .fsub:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(184, 255, 87, .35)
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 64px 32px
+    }
+
+    .ft {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 20px
+    }
+
+    .fb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fh);
+      font-weight: 800;
+      font-size: 1.2rem
+    }
+
+    .fn {
+      display: flex;
+      gap: 28px;
+      list-style: none
+    }
+
+    .fn a {
+      font-family: var(--fm);
+      font-size: .82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .fn a:hover {
+      color: var(--lime)
+    }
+
+    .biz {
+      font-family: var(--fm);
+      font-size: .78rem;
+      color: var(--muted2);
+      line-height: 2
+    }
+
+    .biz strong {
+      color: var(--muted)
+    }
+
+    .biz a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .biz a:hover {
+      color: var(--lime)
+    }
+
+    .fc {
+      font-family: var(--fm);
+      font-size: .78rem;
+      color: var(--muted2);
+      margin-top: 14px
+    }
+
+    .fc span {
+      color: var(--lime)
+    }
+
+    /* FORM STATES */
+    .form-msg {
+      font-family: var(--fm);
+      font-size: .85rem;
+      margin-top: 8px;
+      text-align: center;
+      min-height: 1.4em
+    }
+
+    .form-msg.success {
+      color: var(--lime)
+    }
+
+    .form-msg.error {
+      color: #ff6b6b
+    }
+
+    .fsub:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important
+    }
+
+    @keyframes dots {
+      0% {
+        content: ''
+      }
+
+      33% {
+        content: '.'
+      }
+
+      66% {
+        content: '..'
+      }
+
+      100% {
+        content: '...'
+      }
+    }
+
+    .fsub.loading::after {
+      content: '';
+      animation: dots 1.2s steps(4, end) infinite
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s, transform .7s
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1100px) {
+      .about-cols {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .pg {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .met-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px
+      }
+
+      .met:first-child {
+        border-radius: var(--r) 0 0 0
+      }
+
+      .met:last-child {
+        border-radius: 0 0 var(--r) 0
+      }
+
+      .met:nth-child(2) {
+        border-radius: 0 var(--r) 0 0
+      }
+
+      .met:nth-child(3) {
+        border-radius: 0 0 0 var(--r)
+      }
+
+      .cg {
+        grid-template-columns: 1fr;
+        gap: 48px
+      }
+
+      nav {
+        padding: 16px 32px
+      }
+
+      nav.sc {
+        padding: 12px 32px
+      }
+
+      section,
+      #metrics,
+      #cta {
+        padding: 80px 40px
+      }
+
+      footer {
+        padding: 36px 40px 28px
+      }
+    }
+
+    @media(max-width:760px) {
+      nav {
+        padding: 14px 20px
+      }
+
+      .nls,
+      .nc {
+        display: none
+      }
+
+      .hb {
+        display: flex
+      }
+
+      header {
+        padding: 110px 20px 60px
+      }
+
+      section,
+      #metrics,
+      #cta {
+        padding: 60px 20px
+      }
+
+      h1 {
+        font-size: 2.8rem
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 0;
+        padding-top: 28px;
+        margin-top: 48px
+      }
+
+      .hs {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 14px 0
+      }
+
+      .hs:last-child {
+        border-bottom: none
+      }
+
+      .pg {
+        grid-template-columns: 1fr
+      }
+
+      .tg {
+        grid-template-columns: 1fr
+      }
+
+      .met-row {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .met {
+        border-radius: 0 !important
+      }
+
+      .fr2 {
+        grid-template-columns: 1fr
+      }
+
+      footer {
+        padding: 28px 20px 20px
+      }
+
+      .ft {
+        flex-direction: column;
+        gap: 16px
+      }
+
+      .fn {
+        flex-wrap: wrap;
+        gap: 16px
+      }
+    }
+
+    @media(max-width:480px) {
+      .met-row {
+        grid-template-columns: 1fr
+      }
+
+      .met:first-child {
+        border-radius: var(--r) var(--r) 0 0
+      }
+
+      .met:last-child {
+        border-radius: 0 0 var(--r) var(--r)
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+    <button class="mmc" id="mmc" aria-label="메뉴 닫기">✕</button>
+    <a href="#stack" onclick="cM()">기술 스택</a>
+    <a href="#about" onclick="cM()">자기소개</a>
+    <a href="#portfolio" onclick="cM()">포트폴리오</a>
+    <a href="#metrics" onclick="cM()">실적</a>
+    <a href="#testimonials" onclick="cM()">후기</a>
+    <a href="#contact" onclick="cM()" style="color:var(--lime)">문의하기 →</a>
+  </div>
+
+  <nav id="nav" role="navigation" aria-label="주요 메뉴">
+    <a href="#" class="nl" aria-label="QuokkaGround 홈"><span class="nd" aria-hidden="true"></span>QuokkaGround</a>
+    <ul class="nls">
+      <li><a href="#stack">기술 스택</a></li>
+      <li><a href="#about">자기소개</a></li>
+      <li><a href="#portfolio">포트폴리오</a></li>
+      <li><a href="#metrics">실적</a></li>
+      <li><a href="#testimonials">후기</a></li>
+    </ul>
+    <a href="#contact" class="nc">문의하기</a>
+    <button class="hb" id="hb" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+
+  <header id="hero" role="banner">
+    <div class="halo" aria-hidden="true"></div>
+    <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
+      <div class="hero-img-ring" aria-hidden="true"></div>
+      <div class="hero-img-ring2" aria-hidden="true"></div>
+      <img src="quokka_neon2.jpg" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
+        style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
+    </div>
+    <p class="hero-eye">FULLSTACK FREELANCE DEVELOPER</p>
+    <h1>기획부터 출시까지<br /><em>혼자서 끝냅니다</em></h1>
+    <p class="hero-sub">안녕하세요, <strong style="color:var(--white)">장태관</strong>입니다. Flutter · Node.js · Java —
+      iOS·Android 앱, 백엔드, 어드민 웹까지 전부 혼자 커버하는 9년 경력 풀스택 프리랜서입니다.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="bp" aria-label="포트폴리오 보기">포트폴리오 보기</a>
+      <a href="#contact" class="bg" aria-label="프로젝트 문의">프로젝트 문의 →</a>
+    </div>
+    <div class="hero-stats" aria-label="주요 실적 수치">
+      <div class="hs">
+        <div class="hs-n">9<span>+</span></div>
+        <div class="hs-l">YEARS EXP.</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">20<span>+</span></div>
+        <div class="hs-l">PROJECTS</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">iOS <span>&amp;</span> AOS</div>
+        <div class="hs-l">DUAL PLATFORM</div>
+      </div>
+      <div class="hs">
+        <div class="hs-n">100<span>%</span></div>
+        <div class="hs-l">DELIVERY</div>
+      </div>
+    </div>
+  </header>
+
+  <section id="stack" aria-labelledby="stack-h">
+    <div class="tc">
+      <p class="sl reveal">기술 스택</p>
+      <h2 id="stack-h" class="reveal">프로젝트에 맞는<br />최적의 조합을 씁니다</h2>
+      <p class="ss reveal">모바일부터 인프라까지 — 한 사람이 전체 스택을 커버합니다.</p>
+    </div>
+    <div class="stack-cloud reveal" aria-label="사용 가능 기술 목록">
+      <span class="sc-tag t-mob">Flutter</span>
+      <span class="sc-tag t-mob">Dart</span>
+      <span class="sc-tag t-mob">Swift (iOS)</span>
+      <span class="sc-tag t-mob">Kotlin (Android)</span>
+      <span class="sc-tag t-mob">React</span>
+      <span class="sc-tag t-mob">Next.js</span>
+      <span class="sc-tag t-mob">GetX</span>
+      <span class="sc-tag t-mob">Riverpod</span>
+      <span class="sc-tag t-mob">Dio/Retrofit</span>
+
+      <span class="sc-tag t-back">Node.js</span>
+      <span class="sc-tag t-back">Express</span>
+      <span class="sc-tag t-back">NestJS</span>
+      <span class="sc-tag t-back">Java</span>
+      <span class="sc-tag t-back">Spring Boot</span>
+      <span class="sc-tag t-back">TypeScript</span>
+      <span class="sc-tag t-back">JWT</span>
+      <span class="sc-tag t-back">WebSocket</span>
+
+      <span class="sc-tag t-infra">PostgreSQL</span>
+      <span class="sc-tag t-infra">PostGIS</span>
+      <span class="sc-tag t-infra">MySQL</span>
+      <span class="sc-tag t-infra">AWS EC2</span>
+      <span class="sc-tag t-infra">Aurora Serverless</span>
+      <span class="sc-tag t-infra">S3</span>
+      <span class="sc-tag t-infra">CloudFront</span>
+      <span class="sc-tag t-infra">Firebase</span>
+
+      <span class="sc-tag t-tool">Figma</span>
+      <span class="sc-tag t-tool">GitHub</span>
+      <span class="sc-tag t-tool">Notion</span>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="about-cols">
+      <div class="about-text">
+        <p class="sl reveal">자기소개</p>
+        <h2 id="about-h" class="reveal">한 사람이<br />전부 책임집니다</h2>
+        <p class="reveal">저는 <strong>QuokkaGround(쿼카그라운드)</strong> 대표 <strong>장태관</strong>입니다. 2016년부터 풀스택 개발자로 활동하며 20개
+          이상의 서비스를 기획·개발·출시한 경험을 보유하고 있습니다.</p>
+        <p class="reveal">Flutter 기반 iOS·Android 크로스플랫폼 앱을 주력으로, Node.js / Spring Boot 백엔드, React·Next.js 어드민 웹, AWS
+          인프라까지 <strong>한 사람이 전체 스택을 커버</strong>합니다. 커뮤니케이션 비용 없이 빠른 의사결정이 가능합니다.</p>
+        <p class="reveal">Wishket 등 국내 주요 플랫폼에서 스타트업·개인사업자·중소기업 클라이언트와 함께 서비스를 만들어왔습니다.</p>
+        <div class="about-badges reveal">
+          <span class="ab">📍 경기도 평택시</span><span class="ab">🗓️ 원격 가능</span><span class="ab">💼 개인사업자</span><span
+            class="ab">🏆 정부지원 수상</span>
+        </div>
+      </div>
+      <div class="about-card reveal" aria-label="주요 이력 카드">
+        <div class="acr"><span class="al">주력 플랫폼</span><span class="av bl">Flutter (iOS + Android)</span></div>
+        <div class="acr"><span class="al">백엔드</span><span class="av">Node.js · Java · Spring Boot</span></div>
+        <div class="acr"><span class="al">인프라</span><span class="av">AWS (EC2 · RDS · S3 · CF)</span></div>
+        <div class="acr"><span class="al">경력</span><span class="av bl">9년 이상</span></div>
+        <div class="acr"><span class="al">완료 프로젝트</span><span class="av">20건 이상</span></div>
+        <div class="acr"><span class="al">활동 플랫폼</span><span class="av">Wishket</span></div>
+        <div class="acr"><span class="al">협업 방식</span><span class="av bl">원격 기본 · 대면 협의 가능</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" aria-labelledby="port-h">
+    <div class="tc">
+      <p class="sl reveal">포트폴리오</p>
+      <h2 id="port-h" class="reveal">직접 만든 서비스들</h2>
+      <p class="ss reveal">아이디어 단계부터 스토어 출시까지 함께한 프로젝트들입니다.</p>
+    </div>
+    <div class="pg">
+      <article class="pc reveal" aria-label="IsacFood 샐러드 예약 앱">
+        <div class="pt pt-isaac"><img src="isacfood.png" alt="IsacFood 앱 아이콘" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">IsacFood — 샐러드 예약 앱</h3>
+          <p class="pd">Flutter 기반 샐러드 예약·식사 평가 앱 신규 개발. 예약 생성·수정·취소 플로우, 상태 관리, 별점/리뷰 시스템, 푸시 알림 연동까지 전담 구현.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span>
+            <span class="ptag t-mob">Dart</span>
+            <span class="ptag t-back">REST API</span>
+            <span class="ptag t-infra">Push 알림</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pc reveal" aria-label="지음/바인 운영 고도화">
+        <div class="pt pt-vine"><img src="vine.png" alt="바인 앱 아이콘" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">지음 · 바인 — 데이팅 플랫폼 고도화</h3>
+          <p class="pd">운영 중 데이팅 앱의 매칭·결제·가입 프로세스 전면 개선. 자동 환불 로직 설계, iOS/Android 클라이언트 수정, React 관리자 웹 기능 개선.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Swift</span>
+            <span class="ptag t-mob">Kotlin</span>
+            <span class="ptag t-back">Node.js</span>
+            <span class="ptag t-mob">React</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pc reveal" aria-label="WaterFarmers 수생태 교육 앱">
+        <div class="pt pt-water"><img src="waterfarmers.png" alt="WaterFarmers 앱 아이콘" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">WaterFarmers — 수생태 교육 앱</h3>
+          <p class="pd">새우 양식장 기반 생태 체험 교육용 앱. QR 스탬프 게임·미션 학습·게임화 시스템·물 색상 그라디언트 슬라이더 등 인터랙티브 UI 전담 구현.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span>
+            <span class="ptag t-back">소셜로그인</span>
+            <span class="ptag t-tool">QR 스캔</span>
+            <span class="ptag t-infra">스토어 배포</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pc reveal" aria-label="Everyreels 숏폼 스트리밍 플랫폼">
+        <div class="pt pt-every"><img src="everyreels.png" alt="Everyreels 앱 아이콘" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">Everyreels — 숏폼 스트리밍</h3>
+          <p class="pd">30% 완성 상태로 긴급 투입. 동영상 재생 파이프라인 아키텍처 전면 개선, 플레이어 컨트롤러·상태 동기화 구현으로 일정 내 출시 완료.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span>
+            <span class="ptag t-tool">미디어 처리</span>
+            <span class="ptag t-mob">비동기 상태관리</span>
+            <span class="ptag t-tool">Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pc reveal" aria-label="지음 소개팅 앱 풀스택">
+        <div class="pt pt-jieum"><img src="jieum.png" alt="지음 앱 아이콘" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">지음(Jieum) — 법률 기반 소개팅</h3>
+          <p class="pd">변호사가 만든 안전한 소개팅 앱. iOS(Swift)·Android(Kotlin) 신규 개발 + Node.js REST API + React 관리자 웹 풀스택 구축.
+            본인인증·매칭·운영 시스템 전담.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Swift</span>
+            <span class="ptag t-mob">Kotlin</span>
+            <span class="ptag t-back">Node.js</span>
+            <span class="ptag t-mob">React</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pc reveal" aria-label="스마트 성경 찬송 iOS 앱">
+        <div class="pt pt-smart"><img src="smartbible.png" alt="스마트 성경 찬송 앱 아이콘" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">스마트 성경 찬송 — iOS</h3>
+          <p class="pd">StoreKit 기반 구독 결제 설계, Firebase Storage 음원 다운로드·로컬 캐싱·재생 파이프라인 구축. 선다운로드 구조로 곡 전환 지연 최소화.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Swift</span>
+            <span class="ptag t-tool">StoreKit</span>
+            <span class="ptag t-infra">Firebase</span>
+            <span class="ptag t-mob">AVFoundation</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="metrics" aria-labelledby="met-h">
+    <div class="tc" style="margin-bottom:48px">
+      <p class="sl reveal">실적 수치</p>
+      <h2 id="met-h" class="reveal">숫자로 증명합니다</h2>
+    </div>
+    <div class="met-row">
+      <div class="met reveal">
+        <div class="mn">9<span>+</span></div>
+        <div class="ml">YEARS EXP.</div>
+        <div class="md">2016년부터 활동 중</div>
+      </div>
+      <div class="met reveal">
+        <div class="mn">20<span>+</span></div>
+        <div class="ml">PROJECTS</div>
+        <div class="md">기획부터 출시까지</div>
+      </div>
+      <div class="met reveal">
+        <div class="mn">10<span>+</span></div>
+        <div class="ml">APPS LIVE</div>
+        <div class="md">App Store · Play Store</div>
+      </div>
+      <div class="met reveal">
+        <div class="mn">3<span>천만</span></div>
+        <div class="ml">GOV. AWARD</div>
+        <div class="md">창업 지원 수상 이력</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" aria-labelledby="test-h">
+    <div class="tc">
+      <p class="sl reveal">클라이언트 후기</p>
+      <h2 id="test-h" class="reveal">함께한 분들의 이야기</h2>
+      <p class="ss reveal">실제 프로젝트를 진행한 클라이언트분들의 피드백입니다.</p>
+    </div>
+    <div class="tg">
+      <div class="tc-card reveal">
+        <div class="ts" aria-label="별점 5점">★★★★★</div>
+        <p class="tt">운영 중인 프로젝트의 API 유지보수를 맡겨드렸는데, 정해진 일정을 정확히 지켜주셨습니다. 질의응답이 빠르고, 중간중간 진행 상황도 자세히 공유해주셔서 안심하고 맡길 수
+          있었습니다.</p>
+        <div class="ta">
+          <div class="tav">🏢</div>
+          <div>
+            <div class="tn">API 유지보수 클라이언트</div>
+            <div class="tr">운영 중 서비스 유지보수</div>
+          </div>
+        </div>
+      </div>
+      <div class="tc-card reveal">
+        <div class="ts" aria-label="별점 5점">★★★★★</div>
+        <p class="tt">역할과 책임에 대한 이해도가 높고, 요구사항을 정확히 파악해 개발에 충실히 반영해주셨습니다. 기존 코드 수정이라는 까다로운 작업을 꾸준한 집중력과 책임감으로 안정적으로
+          마무리해주셨고, Flutter 기반 동영상 재생 기능에 대한 높은 전문성이 인상적이었습니다.</p>
+        <div class="ta">
+          <div class="tav">💼</div>
+          <div>
+            <div class="tn">Flutter 앱 서비스 운영사</div>
+            <div class="tr">Flutter 앱 고도화</div>
+          </div>
+        </div>
+      </div>
+      <div class="tc-card reveal">
+        <div class="ts" aria-label="별점 5점">★★★★★</div>
+        <p class="tt">조용하고 차분한 성격이면서도 끝까지 책임감 있게 임해주셨습니다. 매일 데일리 미팅에 빠짐없이 참여하며 상황을 명확히 공유해주셔서 협업이 원활했습니다. 작은 디테일의 버그까지
+          끝까지 수정·개선하려는 태도가 인상적이었습니다.</p>
+        <div class="ta">
+          <div class="tav">🚀</div>
+          <div>
+            <div class="tn">숏폼 스트리밍 프로젝트</div>
+            <div class="tr">Flutter · 동영상 재생</div>
+          </div>
+        </div>
+      </div>
+      <div class="tc-card reveal">
+        <div class="ts" aria-label="별점 5점">★★★★★</div>
+        <p class="tt">아키텍처와 디자인 패턴 협의 시 구상한 내용을 이해하기 쉽게 설명해주셨고, 어려운 작업도 빠르게 진행할 수 있었습니다. 팀 리딩을 맡아 작은 부분도 놓치지 않고 완성도를
+          높여주셨습니다. 이 분의 강점은 성실함 — 항상 약속한 날짜까지 책임감 있게 마무리해주셨습니다.</p>
+        <div class="ta">
+          <div class="tav">⚡</div>
+          <div>
+            <div class="tn">솔루션 개발사</div>
+            <div class="tr">앱 · SDK 아키텍처 설계</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" aria-labelledby="cta-h">
+    <p class="sl reveal" style="text-align:center">지금 시작하기</p>
+    <h2 id="cta-h" class="reveal">프로젝트가 있으신가요?<br /><em style="font-style:normal;color:var(--lime)">함께 만들어봐요.</em></h2>
+    <p class="reveal">아이디어 단계도, 예산이 미정이어도 괜찮습니다. 먼저 편하게 이야기해요.</p>
+    <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#contact" class="bp" aria-label="문의 섹션으로 이동">문의하기 →</a>
+      <a href="mailto:contact@quokkaground.com" class="bg" aria-label="이메일로 바로 문의">이메일 바로가기</a>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <div class="cg">
+      <div class="ci">
+        <p class="sl reveal">연락처</p>
+        <h2 id="contact-h" class="reveal">프로젝트를<br />시작해볼까요?</h2>
+        <p class="cp reveal">아이디어 단계도 괜찮습니다. 예산·일정이 정해지지 않아도 괜찮습니다. 편하게 먼저 이야기 나눠요.</p>
+        <a href="mailto:contact@quokkaground.com" class="crow reveal"><span class="ci-icon"
+            aria-hidden="true">✉️</span>contact@quokkaground.com</a>
+        <span class="crow reveal"><span class="ci-icon" aria-hidden="true">📍</span>경기도 평택시 · 원격 가능</span>
+        <span class="crow reveal"><span class="ci-icon" aria-hidden="true">⚡</span>영업일 기준 24시간 이내 답변</span>
+      </div>
+      <form class="cf reveal" id="contactForm" aria-label="프로젝트 문의 양식">
+        <div class="fr2">
+          <div class="fg"><label class="fl" for="nm">이름 / 회사명</label><input class="fi" id="nm" name="name" type="text"
+              placeholder="홍길동 / (주)예시" required /></div>
+          <div class="fg"><label class="fl" for="em">이메일 *</label><input class="fi" id="em" name="email" type="email"
+              placeholder="hello@example.com" required /></div>
+        </div>
+        <div class="fg"><label class="fl" for="msg">프로젝트 소개 *</label><textarea class="fta" id="msg" name="message"
+            placeholder="어떤 앱/서비스를 만들고 싶으신가요? 규모, 일정, 예산 등 알고 계신 범위를 자유롭게 적어주세요." required></textarea></div>
+        <button type="submit" class="fsub" id="submitBtn">메시지 보내기 →</button>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="ft">
+      <div class="fb"><span style="width:8px;height:8px;border-radius:50%;background:var(--lime);display:inline-block"
+          aria-hidden="true"></span>QuokkaGround</div>
+      <ul class="fn">
+        <li><a href="#about">자기소개</a></li>
+        <li><a href="#stack">기술 스택</a></li>
+        <li><a href="#portfolio">포트폴리오</a></li>
+        <li><a href="#contact">문의</a></li>
+      </ul>
+    </div>
+    <div class="biz" aria-label="사업자 정보">
+      <strong>쿼카그라운드</strong> &nbsp;|&nbsp; 대표 장태관 &nbsp;|&nbsp;
+      사업자등록번호: <strong>656-04-03166</strong> &nbsp;|&nbsp;
+      이메일: <a href="mailto:contact@quokkaground.com">contact@quokkaground.com</a><br />
+      경기도 평택시 고덕면 효덕새싹길 55
+    </div>
+    <p class="fc">© 2026 <span>QuokkaGround</span>. All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* ── Make Webhook URL — 가입 후 교체 ── */
+    const MAKE_WEBHOOK_URL = 'YOUR_MAKE_WEBHOOK_URL';
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 40));
+    const hb = document.getElementById('hb'), mm = document.getElementById('mm'), mmc = document.getElementById('mmc');
+    hb.addEventListener('click', () => { mm.classList.add('open'); hb.setAttribute('aria-expanded', 'true') });
+    mmc.addEventListener('click', cM);
+    function cM() { mm.classList.remove('open'); hb.setAttribute('aria-expanded', 'false') }
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) } }), { threshold: .1, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => {
+      const p = el.parentElement, sibs = [...p.children].filter(c => c.classList.contains('reveal')), idx = sibs.indexOf(el);
+      if (sibs.length > 1 && idx > 0) el.style.transitionDelay = `${idx * 0.09}s`;
+      io.observe(el);
+    });
+
+    /* ── 폼 제출 → Make Webhook ── */
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = '전송 중';
+      btn.classList.add('loading');
+      msg.textContent = '';
+      msg.className = 'form-msg';
+
+      const data = {
+        name: document.getElementById('nm').value,
+        email: document.getElementById('em').value,
+        message: document.getElementById('msg').value,
+        submitted_at: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
+      };
+
+      try {
+        const res = await fetch(MAKE_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error(res.status);
+        msg.textContent = '✓ 문의가 전송되었습니다. 빠르게 답변드리겠습니다!';
+        msg.className = 'form-msg success';
+        form.reset();
+      } catch (err) {
+        msg.textContent = '전송에 실패했습니다. 이메일로 직접 문의해주세요.';
+        msg.className = 'form-msg error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '메시지 보내기 →';
+        btn.classList.remove('loading');
+      }
+    });
+  </script>
+</body>
+
+</html>
