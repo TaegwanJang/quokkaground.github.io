@@ -12,16 +12,22 @@
   <meta name="author" content="장태관 — QuokkaGround" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://quokkaground.com/" />
+  <meta name="theme-color" content="#4a9e00" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://quokkaground.com/" />
+  <meta property="og:site_name" content="QuokkaGround" />
   <meta property="og:title" content="QuokkaGround | 모바일 앱·웹·백엔드 풀스택 개발팀" />
   <meta property="og:description" content="Flutter 앱, 관리자 웹, Node.js·Java 백엔드까지 대표 개발자가 직접 설계·구현하는 풀스택 개발팀" />
   <meta property="og:image" content="https://quokkaground.com/og-image.jpg" />
+  <meta property="og:image:width" content="1066" />
+  <meta property="og:image:height" content="799" />
+  <meta property="og:image:alt" content="QuokkaGround — 모바일 앱·웹·백엔드 풀스택 개발팀" />
   <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="QuokkaGround | 모바일 앱·웹·백엔드 풀스택 개발팀" />
   <meta name="twitter:description" content="Flutter 앱, 관리자 웹, Node.js·Java 백엔드까지 대표 개발자가 직접 설계·구현하는 풀스택 개발팀" />
   <meta name="twitter:image" content="https://quokkaground.com/og-image.jpg" />
+  <meta name="twitter:image:alt" content="QuokkaGround — 모바일 앱·웹·백엔드 풀스택 개발팀" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -97,6 +103,7 @@
       --bg-subtle: #fafafa;
       --bg-panel: #f6f7f7;
       --bg-panel-2: #f0f1f2;
+      --bg-sage: #f1f5ec;
 
       /* ink ramp */
       --ink: #14161a;
@@ -158,15 +165,13 @@
       text-rendering: optimizeLegibility
     }
 
-    /* atmosphere: fine dot-grid + soft accent bloom at top */
+    /* atmosphere: fine dot-grid over the sage hero band (Wise-calm, no gradients) */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% -8%, var(--acc-glow) 0%, transparent 62%),
-        radial-gradient(circle at 1px 1px, rgba(17, 18, 20, .028) 1px, transparent 0);
-      background-size: 100% 100%, 26px 26px;
+      background: radial-gradient(circle at 1px 1px, rgba(17, 18, 20, .035) 1px, transparent 0);
+      background-size: 26px 26px;
       pointer-events: none;
       z-index: 0;
       mask-image: linear-gradient(to bottom, #000 0%, transparent 720px)
@@ -346,7 +351,7 @@
     .mm a {
       font-family: var(--fh);
       font-size: 1.9rem;
-      font-weight: 800;
+      font-weight: 700;
       color: var(--ink);
       text-decoration: none;
       letter-spacing: -.03em
@@ -367,7 +372,7 @@
       cursor: pointer
     }
 
-    /* HERO */
+    /* HERO — flat sage band (Wise): brand green lives in the canvas, calmly */
     header {
       min-height: 100vh;
       display: flex;
@@ -377,31 +382,13 @@
       text-align: center;
       padding: 150px 60px 90px;
       position: relative;
-      overflow: hidden
+      overflow: hidden;
+      background: var(--bg-sage);
+      border-bottom: 1px solid var(--line-2)
     }
 
     .halo {
-      position: absolute;
-      width: 620px;
-      height: 620px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--acc-glow) 0%, transparent 66%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      pointer-events: none;
-      filter: blur(4px);
-      animation: halo 9s ease-in-out infinite alternate
-    }
-
-    @keyframes halo {
-      from {
-        transform: translate(-50%, -55%) scale(1)
-      }
-
-      to {
-        transform: translate(-50%, -46%) scale(1.14)
-      }
+      display: none
     }
 
     .hero-img-outer {
@@ -436,7 +423,7 @@
       position: absolute;
       inset: -22px;
       border-radius: 28px;
-      border: 1px dashed rgba(74, 158, 0, .12);
+      border: 1px dashed rgba(17, 18, 20, .1);
       animation: ringPulse 4.6s ease-in-out infinite reverse
     }
 
@@ -493,7 +480,7 @@
     h1 {
       font-family: var(--fh);
       font-size: clamp(3rem, 5.8vw, 6rem);
-      font-weight: 800;
+      font-weight: 700;
       line-height: 1.02;
       letter-spacing: -.045em;
       max-width: 800px;
@@ -616,7 +603,7 @@
     }
 
     .hs-n span {
-      color: var(--acc-text)
+      color: var(--ink-3)
     }
 
     .hs-l {
@@ -666,7 +653,7 @@
     h2 {
       font-family: var(--fh);
       font-size: clamp(2.1rem, 3.2vw, 2.9rem);
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: -.04em;
       line-height: 1.06;
       margin-bottom: 14px
@@ -987,23 +974,28 @@
     }
 
     .pt-isaac {
-      background: linear-gradient(135deg, #dcf0e4, #b8e0c8)
+      /* near-white mint: the icon's white square melts into the header */
+      background: linear-gradient(135deg, #fbfdfb, #e4f3e9)
     }
 
     .pt-jieum {
-      background: linear-gradient(135deg, #f0eed8, #e0d8a8)
+      /* warm stone grey echoing the black ink-brush icon */
+      background: linear-gradient(135deg, #efeeec, #d6d4cf)
     }
 
     .pt-smart {
-      background: linear-gradient(135deg, #dce8f5, #b8d0e8)
+      /* warm cream→tan matching the opaque brown artwork of smartbible.png */
+      background: linear-gradient(135deg, #f2e8d8, #d8bc94)
     }
 
     .pt-water {
-      background: linear-gradient(135deg, #dcf0f0, #b8e0e0)
+      /* near-white aqua for the white-background illustration */
+      background: linear-gradient(135deg, #fbfdfd, #e2f1f1)
     }
 
     .pt-every {
-      background: linear-gradient(135deg, #e0e0f5, #c0c0e8)
+      /* soft pink echoing the brand's pink “e” on black */
+      background: linear-gradient(135deg, #fdf0f7, #f4cfe4)
     }
 
     .pb-inner {
@@ -1207,22 +1199,25 @@
       color: var(--ink-3)
     }
 
-    /* CTA */
+    /* CTA — enclosed rounded banner card (Cal.com/Linear cta-banner) */
     #cta {
-      background: var(--bg);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 100px 64px;
+      background: var(--bg-sage);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      width: min(1200px, calc(100% - 48px));
+      margin: 96px auto;
+      padding: 88px 64px;
       text-align: center;
       position: relative;
-      overflow: hidden
+      overflow: hidden;
+      box-shadow: var(--sh-sm)
     }
 
     #cta::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 50% 80% at 50% 120%, var(--acc-glow) 0%, transparent 60%);
+      background: radial-gradient(ellipse 50% 80% at 50% 130%, var(--acc-glow) 0%, transparent 60%);
       pointer-events: none
     }
 
@@ -1711,6 +1706,7 @@
       <div class="hero-img-ring" aria-hidden="true"></div>
       <div class="hero-img-ring2" aria-hidden="true"></div>
       <img src="quokka_neon.jpg" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
+        width="1102" height="734" fetchpriority="high" decoding="async"
         style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
     </div>
     <p class="hero-eye"><i aria-hidden="true"></i>FULLSTACK DEV STUDIO</p>
@@ -1810,7 +1806,7 @@
     <div class="pf-marquee reveal" role="group" aria-label="포트폴리오 자동 스크롤 — 마우스를 올리면 멈춥니다">
     <div class="pf-track" id="pfTrack">
       <article class="pc" aria-label="IsacFood 샐러드 예약 앱">
-        <div class="pt pt-isaac"><img src="isacfood.png" alt="IsacFood 앱 아이콘" /></div>
+        <div class="pt pt-isaac"><img src="isacfood.png" alt="IsacFood 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">IsacFood — 샐러드 예약 앱</h3>
           <p class="pd">Flutter 기반 샐러드 예약·식사 평가 앱 신규 개발. 예약 생성·수정·취소 플로우, 상태 관리, 별점/리뷰 시스템, 푸시 알림 연동까지 전담 구현.</p>
@@ -1821,7 +1817,7 @@
         </div>
       </article>
       <article class="pc" aria-label="바인 운영 고도화">
-        <div class="pt pt-vine"><img src="vine.png" alt="바인 앱 아이콘" /></div>
+        <div class="pt pt-vine"><img src="vine.png" alt="바인 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">바인 — 데이팅 플랫폼 고도화</h3>
           <p class="pd">운영 중 데이팅 앱의 매칭·결제·가입 프로세스 전면 개선. 자동 환불 로직 설계, iOS/Android 클라이언트 수정, React 관리자 웹 기능 개선.</p>
@@ -1832,7 +1828,7 @@
         </div>
       </article>
       <article class="pc" aria-label="WaterFarmers 수생태 교육 앱">
-        <div class="pt pt-water"><img src="waterfarmers.png" alt="WaterFarmers 앱 아이콘" /></div>
+        <div class="pt pt-water"><img src="waterfarmers.png" alt="WaterFarmers 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">WaterFarmers — 수생태 교육 앱</h3>
           <p class="pd">새우 양식장 기반 생태 체험 교육용 앱. QR 스탬프 게임·미션 학습·게임화 시스템·물 색상 그라디언트 슬라이더 등 인터랙티브 UI 전담 구현.</p>
@@ -1843,7 +1839,7 @@
         </div>
       </article>
       <article class="pc" aria-label="Everyreels 숏폼 스트리밍 플랫폼">
-        <div class="pt pt-every"><img src="everyreels.png" alt="Everyreels 앱 아이콘" /></div>
+        <div class="pt pt-every"><img src="everyreels.png" alt="Everyreels 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Everyreels — 숏폼 스트리밍</h3>
           <p class="pd">30% 완성 상태로 긴급 투입. 동영상 재생 파이프라인 아키텍처 전면 개선, 플레이어 컨트롤러·상태 동기화 구현으로 일정 내 출시 완료.</p>
@@ -1854,7 +1850,7 @@
         </div>
       </article>
       <article class="pc" aria-label="지음 소개팅 앱 풀스택">
-        <div class="pt pt-jieum"><img src="jieum.png" alt="지음 앱 아이콘" /></div>
+        <div class="pt pt-jieum"><img src="jieum.png" alt="지음 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">지음(Jieum) — 법률 기반 소개팅</h3>
           <p class="pd">변호사가 만든 안전한 소개팅 앱. iOS(Swift)·Android(Kotlin) 신규 개발 + Node.js REST API + React 관리자 웹 풀스택 구축.
@@ -1865,10 +1861,10 @@
           </div>
         </div>
       </article>
-      <article class="pc" aria-label="스마트 성경 찬송 iOS 앱">
-        <div class="pt pt-smart"><img src="smartbible.png" alt="스마트 성경 찬송 앱 아이콘" /></div>
+      <article class="pc" aria-label="스마트 성경 찬송 구독형 음원 앱">
+        <div class="pt pt-smart"><img src="smartbible.png" alt="스마트 성경 찬송 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
-          <h3 class="pn">스마트 성경 찬송 — iOS</h3>
+          <h3 class="pn">스마트 성경 찬송 — 구독형 음원 앱</h3>
           <p class="pd">StoreKit 기반 구독 결제 설계, Firebase Storage 음원 다운로드·로컬 캐싱·재생 파이프라인 구축. 선다운로드 구조로 곡 전환 지연 최소화.</p>
           <div class="ptags">
             <span class="ptag t-mob">Swift</span><span class="ptag t-tool">StoreKit</span>
