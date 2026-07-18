@@ -982,6 +982,132 @@
       background: var(--acc-wash)
     }
 
+    .pc[data-slug] {
+      cursor: pointer
+    }
+
+    .pc[data-slug] .pb-inner::after {
+      content: '상세 보기 →';
+      display: inline-block;
+      margin-top: 14px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--acc-text);
+      opacity: .75;
+      transition: opacity .2s
+    }
+
+    .pc[data-slug]:hover .pb-inner::after {
+      opacity: 1
+    }
+
+    /* project detail modal */
+    .pm {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      background: rgba(17, 18, 20, .55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px)
+    }
+
+    .pm.open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px
+    }
+
+    .pm-panel {
+      background: var(--bg);
+      border-radius: var(--r-lg);
+      max-width: 860px;
+      width: 100%;
+      max-height: calc(100vh - 48px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--sh-lg)
+    }
+
+    .pm-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .pm-title {
+      font-family: var(--fh);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -.01em
+    }
+
+    .pm-close {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink-2);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s
+    }
+
+    .pm-close:hover {
+      border-color: var(--acc-line);
+      color: var(--acc-text)
+    }
+
+    .pm-body {
+      overflow-y: auto;
+      padding: 22px;
+      display: grid;
+      gap: 16px
+    }
+
+    .pm-body img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--line-2);
+      display: block
+    }
+
+    .pm-foot {
+      padding: 14px 22px;
+      border-top: 1px solid var(--line);
+      text-align: center
+    }
+
+    .pm-foot a {
+      color: var(--acc-text);
+      font-weight: 500;
+      font-size: .9rem;
+      text-decoration: none
+    }
+
+    .pm-foot a:hover {
+      text-decoration: underline
+    }
+
+    @media(max-width:760px) {
+      .pm.open {
+        padding: 0
+      }
+
+      .pm-panel {
+        max-height: 100vh;
+        border-radius: 0
+      }
+    }
+
     .pc {
       background: var(--bg);
       border: 1px solid var(--line);
@@ -1789,6 +1915,17 @@
 
 <body>
 
+  <div class="pm" id="pm" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="pm-panel">
+      <div class="pm-head">
+        <div class="pm-title" id="pmTitle"></div>
+        <button type="button" class="pm-close" id="pmClose" aria-label="상세 보기 닫기">✕</button>
+      </div>
+      <div class="pm-body" id="pmBody"></div>
+      <div class="pm-foot"><a href="#contact" id="pmCta">이런 프로젝트가 필요하신가요? 문의하기 →</a></div>
+    </div>
+  </div>
+
   <div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
     <button class="mmc" id="mmc" aria-label="메뉴 닫기">✕</button>
     <a href="#stack" onclick="cM()">기술 스택</a>
@@ -1919,7 +2056,7 @@
       <button type="button" class="pf-btn" data-filter="maint" aria-pressed="false">유지보수·전환<span class="cnt">4</span></button>
     </div>
     <div class="pf-grid collapsed reveal" id="pfGrid">
-      <article class="pc" data-feat data-cat="full" aria-label="지음 소개팅 앱 풀스택 구축">
+      <article class="pc" data-feat data-cat="full" data-slug="jieum" data-slides="2" role="button" tabindex="0" aria-label="지음 소개팅 앱 풀스택 구축">
         <div class="pt"><img src="pf/jieum.webp" alt="지음 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">지음 — 법률 기반 소개팅 풀스택</h3>
@@ -1930,7 +2067,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="sdk" aria-label="Sauce Live·Clip 커머스 SDK">
+      <article class="pc" data-feat data-cat="sdk" data-slug="saucesdk" data-slides="1" role="button" tabindex="0" aria-label="Sauce Live·Clip 커머스 SDK">
         <div class="pt"><img src="pf/saucesdk.webp" alt="Sauce Live·Clip SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Sauce Live·Clip — 커머스 SDK</h3>
@@ -1941,7 +2078,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="sdk" aria-label="Stipop 스티커 Flutter SDK">
+      <article class="pc" data-feat data-cat="sdk" data-slug="stipop" data-slides="2" role="button" tabindex="0" aria-label="Stipop 스티커 Flutter SDK">
         <div class="pt"><img src="pf/stipop.webp" alt="Stipop Flutter SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Stipop — 스티커 Flutter SDK</h3>
@@ -1952,7 +2089,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="app" aria-label="이멤버 이랜드 통합 멤버십 앱">
+      <article class="pc" data-feat data-cat="app" data-slug="emember" data-slides="2" role="button" tabindex="0" aria-label="이멤버 이랜드 통합 멤버십 앱">
         <div class="pt"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">이멤버 — 이랜드 통합 멤버십</h3>
@@ -1963,7 +2100,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="app" aria-label="Everyreels 숏드라마 스트리밍">
+      <article class="pc" data-feat data-cat="app" data-slug="everyreels" data-slides="2" role="button" tabindex="0" aria-label="Everyreels 숏드라마 스트리밍">
         <div class="pt"><img src="pf/everyreels.webp" alt="Everyreels 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Everyreels — 숏드라마 스트리밍</h3>
@@ -1974,7 +2111,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="app" aria-label="MomsCode 임신성 당뇨 관리 앱">
+      <article class="pc" data-feat data-cat="app" data-slug="momscode" data-slides="1" role="button" tabindex="0" aria-label="MomsCode 임신성 당뇨 관리 앱">
         <div class="pt"><img src="pf/momscode.webp" alt="MomsCode 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">MomsCode — 헬스케어 (캐나다 출시)</h3>
@@ -1985,7 +2122,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="maint" aria-label="SauceStudio Native to Flutter 전환">
+      <article class="pc" data-feat data-cat="maint" data-slug="saucestudio" data-slides="2" role="button" tabindex="0" aria-label="SauceStudio Native to Flutter 전환">
         <div class="pt"><img src="pf/saucestudio.webp" alt="SauceStudio 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">SauceStudio — Native→Flutter 전환</h3>
@@ -1996,7 +2133,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="full" aria-label="여운 사주명리 AI 소개팅 풀스택">
+      <article class="pc" data-feat data-cat="full" data-slug="yeoun" data-slides="3" role="button" tabindex="0" aria-label="여운 사주명리 AI 소개팅 풀스택">
         <div class="pt"><img src="pf/yeoun.webp" alt="여운 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">여운 — 사주명리 AI 소개팅</h3>
@@ -2007,7 +2144,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="IsacFood 구내식당 예약 앱">
+      <article class="pc" data-cat="app" data-slug="isacfood" data-slides="2" role="button" tabindex="0" aria-label="IsacFood 구내식당 예약 앱">
         <div class="pt"><img src="pf/isacfood.webp" alt="IsacFood 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">IsacFood — 구내식당 예약·평가</h3>
@@ -2018,7 +2155,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="WaterFarmers 생태체험 교육 앱">
+      <article class="pc" data-cat="app" data-slug="waterfarmers" data-slides="3" role="button" tabindex="0" aria-label="WaterFarmers 생태체험 교육 앱">
         <div class="pt"><img src="pf/waterfarmers.webp" alt="WaterFarmers 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">WaterFarmers — 생태체험 교육 앱</h3>
@@ -2029,7 +2166,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="full" aria-label="바인 크리스천 데이팅 앱">
+      <article class="pc" data-cat="full" data-slug="vine" data-slides="2" role="button" tabindex="0" aria-label="바인 크리스천 데이팅 앱">
         <div class="pt"><img src="pf/vine.webp" alt="바인 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">바인 — 크리스천 데이팅</h3>
@@ -2040,7 +2177,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="SauceClip 숏폼 영상 편집앱">
+      <article class="pc" data-cat="app" data-slug="sauceclip" data-slides="2" role="button" tabindex="0" aria-label="SauceClip 숏폼 영상 편집앱">
         <div class="pt"><img src="pf/sauceclip.webp" alt="SauceClip 영상 편집앱 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">SauceClip — 숏폼 영상 편집앱</h3>
@@ -2051,7 +2188,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="랭디 1:1 매칭 교육 앱">
+      <article class="pc" data-cat="app" data-slug="langdy" data-slides="2" role="button" tabindex="0" aria-label="랭디 1:1 매칭 교육 앱">
         <div class="pt"><img src="pf/langdy.webp" alt="랭디 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">랭디 — 1:1 매칭 교육 앱</h3>
@@ -2062,7 +2199,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="Cabinet 위치기반 소셜 지도 앱">
+      <article class="pc" data-cat="app" data-slug="cabinet" data-slides="5" role="button" tabindex="0" aria-label="Cabinet 위치기반 소셜 지도 앱">
         <div class="pt"><img src="pf/cabinet.webp" alt="Cabinet 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Cabinet — 소셜 지도 앱</h3>
@@ -2073,7 +2210,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="마이너스플러스 체성분 관리 앱">
+      <article class="pc" data-cat="app" data-slug="minusplus" data-slides="1" role="button" tabindex="0" aria-label="마이너스플러스 체성분 관리 앱">
         <div class="pt"><img src="pf/minusplus.webp" alt="마이너스플러스 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">마이너스플러스 — 체성분 관리</h3>
@@ -2084,7 +2221,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="maint" aria-label="스마트 성경과찬송가 인앱결제·음원 고도화">
+      <article class="pc" data-cat="maint" data-slug="smartbible" data-slides="3" role="button" tabindex="0" aria-label="스마트 성경과찬송가 인앱결제·음원 고도화">
         <div class="pt"><img src="pf/smartbible.webp" alt="스마트 성경과찬송가 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">스마트 성경과찬송가 — 음원 구독</h3>
@@ -2095,7 +2232,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="maint" aria-label="포토몬 Target SDK 정책 대응">
+      <article class="pc" data-cat="maint" data-slug="photomon" data-slides="2" role="button" tabindex="0" aria-label="포토몬 Target SDK 정책 대응">
         <div class="pt"><img src="pf/photomon.webp" alt="포토몬 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">포토몬 — Target SDK 정책 대응</h3>
@@ -2106,7 +2243,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="maint" aria-label="마이헬스노트 iOS 유지보수">
+      <article class="pc" data-cat="maint" data-slug="myhealthnote" data-slides="1" role="button" tabindex="0" aria-label="마이헬스노트 iOS 유지보수">
         <div class="pt"><img src="pf/myhealthnote.webp" alt="마이헬스노트 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">마이헬스노트 — 당뇨 관리 iOS</h3>
@@ -2367,6 +2504,66 @@
       pfRender();
       if (!pfExpanded) document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
     });
+
+    /* 프로젝트 상세 모달 (해시 딥링크 #p=slug 지원) */
+    const pm = document.getElementById('pm');
+    const pmTitle = document.getElementById('pmTitle');
+    const pmBody = document.getElementById('pmBody');
+    const pmClose = document.getElementById('pmClose');
+    let pmLastFocus = null;
+
+    function pmOpen(card) {
+      const slug = card.dataset.slug;
+      const total = parseInt(card.dataset.slides, 10) || 0;
+      pmTitle.textContent = card.querySelector('.pn').textContent;
+      pmBody.innerHTML = '';
+      for (let i = 1; i <= total; i++) {
+        const img = document.createElement('img');
+        img.src = 'pf/d/' + slug + '-' + String(i).padStart(2, '0') + '.webp';
+        img.alt = pmTitle.textContent + ' 상세 이미지 ' + i + '/' + total;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        pmBody.appendChild(img);
+      }
+      pmLastFocus = document.activeElement;
+      pm.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      pmBody.scrollTop = 0;
+      pmClose.focus();
+      if (location.hash !== '#p=' + slug) history.pushState(null, '', '#p=' + slug);
+    }
+
+    function pmHide() {
+      pm.classList.remove('open');
+      document.body.style.overflow = '';
+      if (location.hash.indexOf('#p=') === 0) history.pushState(null, '', location.pathname);
+      if (pmLastFocus) pmLastFocus.focus();
+    }
+
+    pfGrid.querySelectorAll('.pc[data-slug]').forEach((card) => {
+      card.addEventListener('click', () => pmOpen(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pmOpen(card); }
+      });
+    });
+
+    pmClose.addEventListener('click', pmHide);
+    pm.addEventListener('click', (e) => { if (e.target === pm) pmHide(); });
+    document.getElementById('pmCta').addEventListener('click', pmHide);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && pm.classList.contains('open')) pmHide();
+    });
+    window.addEventListener('popstate', () => {
+      if (location.hash.indexOf('#p=') !== 0 && pm.classList.contains('open')) pmHide();
+    });
+
+    if (location.hash.indexOf('#p=') === 0) {
+      const target = pfGrid.querySelector('.pc[data-slug="' + location.hash.slice(3) + '"]');
+      if (target) {
+        if (!target.hasAttribute('data-feat')) { pfExpanded = true; pfRender(); }
+        pmOpen(target);
+      }
+    }
 
     /* 폼 제출 → Make Webhook */
     const form = document.getElementById('contactForm');

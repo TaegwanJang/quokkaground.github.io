@@ -69,6 +69,7 @@ components:
   section-head: "Mono eyebrow label (.sl) → display h2 → one-line sub (.ss); centered in most sections."
   portfolio-card: "White panel, square 480×480 webp cover full-bleed on top (object-fit cover, 1.03 scale on hover), 20px padded body: bold title, 2-line desc, mono tech tags in signal colours."
   portfolio-filter: "Pill chips above grid; active chip = solid accent with white text + aria-pressed; counts in mono."
+  project-modal: "Card click opens a centered dialog (860px max, full-screen on mobile): title bar + circular close, vertically scrolled 1080px detail slides (loaded on demand from pf/d/), contact CTA footer. Deep-linkable via #p=<slug>; Esc/backdrop close, body scroll locked."
   process-step: "5-up grid of subtle panels — mono accent step number (01…05), bold title, small desc; hover = accent wash. Communicates the AI plan→approve→build→verify→review pipeline; collapses to 1-col on mobile."
   metric-tile: "4-up bordered grid row; huge display number with accent-tinted unit span, mono label, small desc. Numbers must be factual (apps live, SDKs shipped, avg. launch window, award) — never borrowed prestige."
   terminal-card: "About-side profile card styled as a terminal window — dots bar, mono `// key` labels, right-aligned values."
