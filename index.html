@@ -954,6 +954,34 @@
       display: none
     }
 
+    .pf-grid.collapsed .pc:not([data-feat]) {
+      display: none
+    }
+
+    .pf-more-wrap {
+      text-align: center;
+      margin-top: 32px
+    }
+
+    .pf-more {
+      font-family: var(--fb);
+      font-size: .92rem;
+      font-weight: 500;
+      padding: 12px 26px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: var(--bg);
+      color: var(--ink);
+      cursor: pointer;
+      transition: border-color .2s, color .2s, background .2s
+    }
+
+    .pf-more:hover {
+      border-color: var(--acc-line);
+      color: var(--acc-text);
+      background: var(--acc-wash)
+    }
+
     .pc {
       background: var(--bg);
       border: 1px solid var(--line);
@@ -1890,8 +1918,8 @@
       <button type="button" class="pf-btn" data-filter="full" aria-pressed="false">풀스택<span class="cnt">3</span></button>
       <button type="button" class="pf-btn" data-filter="maint" aria-pressed="false">유지보수·전환<span class="cnt">4</span></button>
     </div>
-    <div class="pf-grid reveal" id="pfGrid">
-      <article class="pc" data-cat="full" aria-label="지음 소개팅 앱 풀스택 구축">
+    <div class="pf-grid collapsed reveal" id="pfGrid">
+      <article class="pc" data-feat data-cat="full" aria-label="지음 소개팅 앱 풀스택 구축">
         <div class="pt"><img src="pf/jieum.webp" alt="지음 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">지음 — 법률 기반 소개팅 풀스택</h3>
@@ -1902,7 +1930,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="sdk" aria-label="Sauce Live·Clip 커머스 SDK">
+      <article class="pc" data-feat data-cat="sdk" aria-label="Sauce Live·Clip 커머스 SDK">
         <div class="pt"><img src="pf/saucesdk.webp" alt="Sauce Live·Clip SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Sauce Live·Clip — 커머스 SDK</h3>
@@ -1913,7 +1941,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="sdk" aria-label="Stipop 스티커 Flutter SDK">
+      <article class="pc" data-feat data-cat="sdk" aria-label="Stipop 스티커 Flutter SDK">
         <div class="pt"><img src="pf/stipop.webp" alt="Stipop Flutter SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Stipop — 스티커 Flutter SDK</h3>
@@ -1924,7 +1952,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="이멤버 이랜드 통합 멤버십 앱">
+      <article class="pc" data-feat data-cat="app" aria-label="이멤버 이랜드 통합 멤버십 앱">
         <div class="pt"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">이멤버 — 이랜드 통합 멤버십</h3>
@@ -1935,7 +1963,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="Everyreels 숏드라마 스트리밍">
+      <article class="pc" data-feat data-cat="app" aria-label="Everyreels 숏드라마 스트리밍">
         <div class="pt"><img src="pf/everyreels.webp" alt="Everyreels 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">Everyreels — 숏드라마 스트리밍</h3>
@@ -1946,7 +1974,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" aria-label="MomsCode 임신성 당뇨 관리 앱">
+      <article class="pc" data-feat data-cat="app" aria-label="MomsCode 임신성 당뇨 관리 앱">
         <div class="pt"><img src="pf/momscode.webp" alt="MomsCode 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">MomsCode — 헬스케어 (캐나다 출시)</h3>
@@ -1957,7 +1985,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="maint" aria-label="SauceStudio Native to Flutter 전환">
+      <article class="pc" data-feat data-cat="maint" aria-label="SauceStudio Native to Flutter 전환">
         <div class="pt"><img src="pf/saucestudio.webp" alt="SauceStudio 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">SauceStudio — Native→Flutter 전환</h3>
@@ -1968,7 +1996,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="full" aria-label="여운 사주명리 AI 소개팅 풀스택">
+      <article class="pc" data-feat data-cat="full" aria-label="여운 사주명리 AI 소개팅 풀스택">
         <div class="pt"><img src="pf/yeoun.webp" alt="여운 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn">여운 — 사주명리 AI 소개팅</h3>
@@ -2089,6 +2117,9 @@
           </div>
         </div>
       </article>
+    </div>
+    <div class="pf-more-wrap">
+      <button type="button" class="pf-more" id="pfMore" aria-expanded="false">전체 18개 프로젝트 보기 ↓</button>
     </div>
   </section>
 
@@ -2308,16 +2339,34 @@
       io.observe(el);
     });
 
-    /* 포트폴리오 카테고리 필터 */
+    /* 포트폴리오 카테고리 필터 + 더보기 접기 */
     const pfGrid = document.getElementById('pfGrid');
     const pfBtns = document.querySelectorAll('.pf-btn');
-    pfBtns.forEach((btn) => btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      pfBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    const pfMore = document.getElementById('pfMore');
+    let pfFilter = 'all';
+    let pfExpanded = false;
+
+    function pfRender() {
+      pfGrid.classList.toggle('collapsed', pfFilter === 'all' && !pfExpanded);
       pfGrid.querySelectorAll('.pc').forEach((card) => {
-        card.classList.toggle('hide', filter !== 'all' && card.dataset.cat !== filter);
+        card.classList.toggle('hide', pfFilter !== 'all' && card.dataset.cat !== pfFilter);
       });
+      pfMore.hidden = pfFilter !== 'all';
+      pfMore.textContent = pfExpanded ? '대표 프로젝트만 보기 ↑' : '전체 18개 프로젝트 보기 ↓';
+      pfMore.setAttribute('aria-expanded', String(pfExpanded));
+    }
+
+    pfBtns.forEach((btn) => btn.addEventListener('click', () => {
+      pfFilter = btn.dataset.filter;
+      pfBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      pfRender();
     }));
+
+    pfMore.addEventListener('click', () => {
+      pfExpanded = !pfExpanded;
+      pfRender();
+      if (!pfExpanded) document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    });
 
     /* 폼 제출 → Make Webhook */
     const form = document.getElementById('contactForm');
