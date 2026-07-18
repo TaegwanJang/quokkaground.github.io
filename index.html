@@ -911,6 +911,19 @@
       max-width: 720px
     }
 
+    .pf-lab {
+      font-family: var(--fm);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--ink-3);
+      align-self: center;
+      margin-right: 2px
+    }
+
+    .pf-filter--dom {
+      margin-top: -24px
+    }
+
     .pf-btn {
       font-family: var(--fb);
       font-size: .86rem;
@@ -2077,15 +2090,24 @@
       <h2 id="port-h" class="reveal">직접 만든 서비스들</h2>
       <p class="ss reveal">신규 앱 개발부터 SDK 공개 배포, 풀스택 구축, 운영 중 서비스의 전환·정책 대응까지 — 실제로 완료·출시한 프로젝트들입니다.</p>
     </div>
-    <div class="pf-filter reveal" role="group" aria-label="포트폴리오 카테고리 필터">
+    <div class="pf-filter reveal" role="group" aria-label="포트폴리오 작업 유형 필터">
+      <span class="pf-lab">유형</span>
       <button type="button" class="pf-btn" data-filter="all" aria-pressed="true">전체<span class="cnt">18</span></button>
       <button type="button" class="pf-btn" data-filter="app" aria-pressed="false">앱 개발<span class="cnt">9</span></button>
       <button type="button" class="pf-btn" data-filter="sdk" aria-pressed="false">SDK·플러그인<span class="cnt">2</span></button>
       <button type="button" class="pf-btn" data-filter="full" aria-pressed="false">풀스택<span class="cnt">3</span></button>
       <button type="button" class="pf-btn" data-filter="maint" aria-pressed="false">유지보수·전환<span class="cnt">4</span></button>
     </div>
+    <div class="pf-filter pf-filter--dom reveal" role="group" aria-label="포트폴리오 서비스 분야 필터">
+      <span class="pf-lab">분야</span>
+      <button type="button" class="pf-btn" data-dom-filter="health" aria-pressed="false">헬스케어<span class="cnt">3</span></button>
+      <button type="button" class="pf-btn" data-dom-filter="dating" aria-pressed="false">데이팅·매칭<span class="cnt">3</span></button>
+      <button type="button" class="pf-btn" data-dom-filter="commerce" aria-pressed="false">커머스·멤버십<span class="cnt">3</span></button>
+      <button type="button" class="pf-btn" data-dom-filter="media" aria-pressed="false">미디어·콘텐츠<span class="cnt">4</span></button>
+      <button type="button" class="pf-btn" data-dom-filter="edu" aria-pressed="false">교육<span class="cnt">2</span></button>
+    </div>
     <div class="pf-grid collapsed reveal" id="pfGrid">
-      <article class="pc" data-feat data-cat="app" data-slug="emember" data-slides="2" role="button" tabindex="0" aria-label="이멤버 이랜드 통합 멤버십 앱">
+      <article class="pc" data-feat data-cat="app" data-slug="emember" data-dom="commerce" data-slides="2" role="button" tabindex="0" aria-label="이멤버 이랜드 통합 멤버십 앱">
         <div class="pt"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/emember/">이멤버 — 이랜드 통합 멤버십</a></h3>
@@ -2096,7 +2118,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="full" data-slug="yeoun" data-slides="3" role="button" tabindex="0" aria-label="여운 사주명리 AI 소개팅 풀스택">
+      <article class="pc" data-feat data-cat="full" data-slug="yeoun" data-dom="dating" data-slides="3" role="button" tabindex="0" aria-label="여운 사주명리 AI 소개팅 풀스택">
         <div class="pt"><img src="pf/yeoun.webp" alt="여운 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/yeoun/">여운 — 사주명리 AI 소개팅</a></h3>
@@ -2107,7 +2129,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="app" data-slug="everyreels" data-slides="2" role="button" tabindex="0" aria-label="Everyreels 숏드라마 스트리밍">
+      <article class="pc" data-feat data-cat="app" data-slug="everyreels" data-dom="media" data-slides="2" role="button" tabindex="0" aria-label="Everyreels 숏드라마 스트리밍">
         <div class="pt"><img src="pf/everyreels.webp" alt="Everyreels 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/everyreels/">Everyreels — 숏드라마 스트리밍</a></h3>
@@ -2118,7 +2140,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="full" data-slug="jieum" data-slides="2" role="button" tabindex="0" aria-label="지음 소개팅 앱 풀스택 구축">
+      <article class="pc" data-feat data-cat="full" data-slug="jieum" data-dom="dating" data-slides="2" role="button" tabindex="0" aria-label="지음 소개팅 앱 풀스택 구축">
         <div class="pt"><img src="pf/jieum.webp" alt="지음 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/jieum/">지음 — 법률 기반 소개팅 풀스택</a></h3>
@@ -2129,7 +2151,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="sdk" data-slug="saucesdk" data-slides="1" role="button" tabindex="0" aria-label="Sauce Live·Clip 커머스 SDK">
+      <article class="pc" data-feat data-cat="sdk" data-slug="saucesdk" data-dom="commerce" data-slides="1" role="button" tabindex="0" aria-label="Sauce Live·Clip 커머스 SDK">
         <div class="pt"><img src="pf/saucesdk.webp" alt="Sauce Live·Clip SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/saucesdk/">Sauce Live·Clip — 커머스 SDK</a></h3>
@@ -2140,7 +2162,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="sdk" data-slug="stipop" data-slides="2" role="button" tabindex="0" aria-label="Stipop 스티커 Flutter SDK">
+      <article class="pc" data-feat data-cat="sdk" data-slug="stipop" data-dom="media" data-slides="2" role="button" tabindex="0" aria-label="Stipop 스티커 Flutter SDK">
         <div class="pt"><img src="pf/stipop.webp" alt="Stipop Flutter SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/stipop/">Stipop — 스티커 Flutter SDK</a></h3>
@@ -2151,7 +2173,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="app" data-slug="momscode" data-slides="1" role="button" tabindex="0" aria-label="MomsCode 임신성 당뇨 관리 앱">
+      <article class="pc" data-feat data-cat="app" data-slug="momscode" data-dom="health" data-slides="1" role="button" tabindex="0" aria-label="MomsCode 임신성 당뇨 관리 앱">
         <div class="pt"><img src="pf/momscode.webp" alt="MomsCode 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/momscode/">MomsCode — 헬스케어 (캐나다 출시)</a></h3>
@@ -2162,7 +2184,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-feat data-cat="maint" data-slug="saucestudio" data-slides="2" role="button" tabindex="0" aria-label="SauceStudio Native to Flutter 전환">
+      <article class="pc" data-feat data-cat="maint" data-slug="saucestudio" data-dom="commerce" data-slides="2" role="button" tabindex="0" aria-label="SauceStudio Native to Flutter 전환">
         <div class="pt"><img src="pf/saucestudio.webp" alt="SauceStudio 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/saucestudio/">SauceStudio — Native→Flutter 전환</a></h3>
@@ -2184,7 +2206,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" data-slug="waterfarmers" data-slides="3" role="button" tabindex="0" aria-label="WaterFarmers 생태체험 교육 앱">
+      <article class="pc" data-cat="app" data-slug="waterfarmers" data-dom="edu" data-slides="3" role="button" tabindex="0" aria-label="WaterFarmers 생태체험 교육 앱">
         <div class="pt"><img src="pf/waterfarmers.webp" alt="WaterFarmers 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/waterfarmers/">WaterFarmers — 생태체험 교육 앱</a></h3>
@@ -2195,7 +2217,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="full" data-slug="vine" data-slides="2" role="button" tabindex="0" aria-label="바인 크리스천 데이팅 앱">
+      <article class="pc" data-cat="full" data-slug="vine" data-dom="dating" data-slides="2" role="button" tabindex="0" aria-label="바인 크리스천 데이팅 앱">
         <div class="pt"><img src="pf/vine.webp" alt="바인 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/vine/">바인 — 크리스천 데이팅</a></h3>
@@ -2206,7 +2228,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" data-slug="sauceclip" data-slides="2" role="button" tabindex="0" aria-label="SauceClip 숏폼 영상 편집앱">
+      <article class="pc" data-cat="app" data-slug="sauceclip" data-dom="media" data-slides="2" role="button" tabindex="0" aria-label="SauceClip 숏폼 영상 편집앱">
         <div class="pt"><img src="pf/sauceclip.webp" alt="SauceClip 영상 편집앱 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/sauceclip/">SauceClip — 숏폼 영상 편집앱</a></h3>
@@ -2217,7 +2239,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" data-slug="langdy" data-slides="2" role="button" tabindex="0" aria-label="랭디 1:1 매칭 교육 앱">
+      <article class="pc" data-cat="app" data-slug="langdy" data-dom="edu" data-slides="2" role="button" tabindex="0" aria-label="랭디 1:1 매칭 교육 앱">
         <div class="pt"><img src="pf/langdy.webp" alt="랭디 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/langdy/">랭디 — 1:1 매칭 교육 앱</a></h3>
@@ -2239,7 +2261,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="app" data-slug="minusplus" data-slides="1" role="button" tabindex="0" aria-label="마이너스플러스 체성분 관리 앱">
+      <article class="pc" data-cat="app" data-slug="minusplus" data-dom="health" data-slides="1" role="button" tabindex="0" aria-label="마이너스플러스 체성분 관리 앱">
         <div class="pt"><img src="pf/minusplus.webp" alt="마이너스플러스 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/minusplus/">마이너스플러스 — 체성분 관리</a></h3>
@@ -2250,7 +2272,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="maint" data-slug="smartbible" data-slides="3" role="button" tabindex="0" aria-label="스마트 성경과찬송가 인앱결제·음원 고도화">
+      <article class="pc" data-cat="maint" data-slug="smartbible" data-dom="media" data-slides="3" role="button" tabindex="0" aria-label="스마트 성경과찬송가 인앱결제·음원 고도화">
         <div class="pt"><img src="pf/smartbible.webp" alt="스마트 성경과찬송가 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/smartbible/">스마트 성경과찬송가 — 음원 구독</a></h3>
@@ -2272,7 +2294,7 @@
           </div>
         </div>
       </article>
-      <article class="pc" data-cat="maint" data-slug="myhealthnote" data-slides="1" role="button" tabindex="0" aria-label="마이헬스노트 iOS 유지보수">
+      <article class="pc" data-cat="maint" data-slug="myhealthnote" data-dom="health" data-slides="1" role="button" tabindex="0" aria-label="마이헬스노트 iOS 유지보수">
         <div class="pt"><img src="pf/myhealthnote.webp" alt="마이헬스노트 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
           <h3 class="pn"><a href="work/myhealthnote/">마이헬스노트 — 당뇨 관리 iOS</a></h3>
@@ -2508,25 +2530,38 @@
       io.observe(el);
     });
 
-    /* 포트폴리오 카테고리 필터 + 더보기 접기 */
+    /* 포트폴리오 필터(유형/분야 중 하나만 활성) + 더보기 접기 */
     const pfGrid = document.getElementById('pfGrid');
     const pfBtns = document.querySelectorAll('.pf-btn');
     const pfMore = document.getElementById('pfMore');
-    let pfFilter = 'all';
+    let pfKind = 'all';   /* all | cat | dom */
+    let pfValue = null;
     let pfExpanded = false;
 
+    function pfMatch(card) {
+      if (pfKind === 'cat') return card.dataset.cat === pfValue;
+      if (pfKind === 'dom') return card.dataset.dom === pfValue;
+      return true;
+    }
+
     function pfRender() {
-      pfGrid.classList.toggle('collapsed', pfFilter === 'all' && !pfExpanded);
+      pfGrid.classList.toggle('collapsed', pfKind === 'all' && !pfExpanded);
       pfGrid.querySelectorAll('.pc').forEach((card) => {
-        card.classList.toggle('hide', pfFilter !== 'all' && card.dataset.cat !== pfFilter);
+        card.classList.toggle('hide', pfKind !== 'all' && !pfMatch(card));
       });
-      pfMore.hidden = pfFilter !== 'all';
+      pfMore.hidden = pfKind !== 'all';
       pfMore.textContent = pfExpanded ? '대표 프로젝트만 보기 ↑' : '전체 18개 프로젝트 보기 ↓';
       pfMore.setAttribute('aria-expanded', String(pfExpanded));
     }
 
     pfBtns.forEach((btn) => btn.addEventListener('click', () => {
-      pfFilter = btn.dataset.filter;
+      if (btn.dataset.filter) {
+        pfKind = btn.dataset.filter === 'all' ? 'all' : 'cat';
+        pfValue = btn.dataset.filter;
+      } else {
+        pfKind = 'dom';
+        pfValue = btn.dataset.domFilter;
+      }
       pfBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
       pfRender();
     }));
