@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Stipop 스티커 Flutter SDK 개발 및 pub.dev 공개 배포 | QuokkaGround</title>
+  <meta name="description" content="앱에 스티커 기능을 붙일 수 있는 Stipop 서비스의 Flutter SDK를 개발해 pub.dev에 공개 배포한 프로젝트입니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.com/work/stipop/" />
+  <meta name="theme-color" content="#4a9e00" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://quokkaground.com/work/stipop/" />
+  <meta property="og:site_name" content="QuokkaGround" />
+  <meta property="og:title" content="Stipop 스티커 Flutter SDK 개발 및 pub.dev 공개 배포" />
+  <meta property="og:description" content="앱에 스티커 기능을 붙일 수 있는 Stipop 서비스의 Flutter SDK를 개발해 pub.dev에 공개 배포한 프로젝트입니다." />
+  <meta property="og:image" content="https://quokkaground.com/pf/stipop.webp" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Stipop 스티커 Flutter SDK 개발 및 pub.dev 공개 배포",
+  "description": "앱에 스티커 기능을 붙일 수 있는 Stipop 서비스의 Flutter SDK를 개발해 pub.dev에 공개 배포한 프로젝트입니다.",
+  "url": "https://quokkaground.com/work/stipop/",
+  "image": "https://quokkaground.com/pf/stipop.webp",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "장태관",
+    "jobTitle": "대표 개발자"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuokkaGround",
+    "url": "https://quokkaground.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "QuokkaGround",
+      "item": "https://quokkaground.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "포트폴리오",
+      "item": "https://quokkaground.com/#portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Stipop — 스티커 Flutter SDK",
+      "item": "https://quokkaground.com/work/stipop/"
+    }
+  ]
+}
+  </script>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
+--line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
+--acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
+--fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+--fm:ui-monospace,'SF Mono',Menlo,monospace;
+--sh-sm:0 1px 2px rgba(17,18,20,.04)}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
+position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+.crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
+.crumb a{color:var(--ink-3);text-decoration:none}
+.crumb a:hover{color:var(--acc-text)}
+.eyebrow{font-family:var(--fm);font-size:.74rem;letter-spacing:.12em;color:var(--acc-text);margin-bottom:12px}
+h1{font-family:var(--fh);font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.tag{font-family:var(--fm);font-size:.74rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg-subtle)}
+.period{font-size:.85rem;color:var(--ink-3);margin-bottom:26px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 30px}
+.links a{font-size:.86rem;font-weight:500;border:1px solid var(--acc-line);border-radius:999px;padding:8px 16px;text-decoration:none;background:var(--acc-wash)}
+h2{font-family:var(--fh);font-size:1.12rem;letter-spacing:-.01em;margin:38px 0 12px}
+ul{padding-left:20px;display:grid;gap:6px;font-size:.94rem;color:var(--ink-2)}
+ul li::marker{color:var(--acc)}
+figure{margin:16px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:var(--r);display:block;box-shadow:var(--sh-sm)}
+.ach{display:grid;gap:12px;margin-top:6px}
+.ach div{background:var(--bg-subtle);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ach b{display:block;font-size:.94rem;margin-bottom:4px}
+.ach p{font-size:.88rem;color:var(--ink-2)}
+.cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
+.cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
+.pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
+.pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
+footer{border-top:1px solid var(--line-2);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}</style>
+</head>
+
+<body>
+  <nav aria-label="주요 메뉴">
+    <a href="../../" class="brand"><i aria-hidden="true"></i>QuokkaGround</a>
+    <a href="../../#contact" class="cta">프로젝트 문의</a>
+  </nav>
+  <main>
+    <p class="crumb"><a href="../../">홈</a> / <a href="../../#portfolio">포트폴리오</a> / Stipop — 스티커 Flutter SDK</p>
+    <p class="eyebrow">SDK·플러그인</p>
+    <h1>Stipop 스티커 Flutter SDK 개발 및 pub.dev 공개 배포</h1>
+    <div class="meta"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Kotlin</span><span class="tag">Swift</span><span class="tag">Method Channel</span><span class="tag">Event Channel</span><span class="tag">pub.dev</span><span class="tag">SDK/Plugin</span></div>
+    <p class="period">참여 기간 · 2021.12</p>
+    <div class="links"><a href="https://pub.dev/packages/stipop_sdk" target="_blank" rel="noopener">pub.dev 패키지 보기 ↗</a><a href="https://github.com/stipop-development/stipop-flutter-sdk" target="_blank" rel="noopener">GitHub 저장소 보기 ↗</a></div>
+    <figure><img src="../../pf/d/stipop-01.webp" alt="Stipop — 스티커 Flutter SDK 상세 이미지 1" width="1080" loading="lazy" decoding="async" /></figure>
+<figure><img src="../../pf/d/stipop-02.webp" alt="Stipop — 스티커 Flutter SDK 상세 이미지 2" width="1080" loading="lazy" decoding="async" /></figure>
+
+    <h2>포트폴리오 소개</h2>
+<ul><li>앱에 스티커 기능을 붙일 수 있는 Stipop 서비스의 Flutter SDK를 개발해 pub.dev에 공개 배포한 프로젝트입니다.</li><li>네이티브(Android Kotlin·iOS Swift) Stipop UI SDK를 Method/Event Channel로 감싸 Flutter 앱에서 바로 쓸 수 있게 만들고, 샘플 코드와 문서로 개발자 연동을 지원했습니다.</li></ul>
+<h2>작업 범위</h2>
+<ul><li>Flutter 플러그인(SDK) 개발</li><li>네이티브 Stipop UI SDK(Kotlin·Swift) 래핑 및 Method/Event Channel 통신 구현</li><li>스티커 검색·키보드 호출 API와 선택 콜백 설계</li><li>pub.dev 공개 배포</li><li>샘플 코드·문서화로 개발자 지원</li></ul>
+<h2>주요 업무 및 기능</h2>
+<ul><li>래핑: 네이티브 Stipop UI SDK를 Flutter 플러그인으로 병합</li><li>브릿지: Method Channel(showSearch·showKeyboard 호출) / Event Channel(스티커 선택 이벤트)</li><li>API: 개발자가 쉽게 쓰도록 간단한 호출·콜백 설계</li><li>배포: pub.dev 공개 배포, 버전 관리</li><li>지원: 샘플 코드·문서화</li></ul>
+<h2>주안점</h2>
+<ul><li>네이티브 UI SDK를 Flutter에 안정적으로 통합(Channel 통신)</li><li>개발자가 몇 줄로 붙일 수 있는 간결한 API</li><li>공개 배포 품질(문서·샘플·버전)</li></ul>
+
+    <h2>문제점</h2>
+<ul><li>스티커 기능(네이티브 UI SDK)은 있었지만 Flutter에서 바로 쓸 방법이 없었습니다.</li><li>네이티브(Kotlin·Swift) 기능을 Flutter와 안정적으로 통신·통합해야 했습니다.</li><li>외부 개발자가 쉽게 붙이려면 간결한 API와 문서·샘플이 필요했습니다.</li></ul>
+<h2>프로젝트 목표</h2>
+<ul><li>네이티브 Stipop UI SDK를 Flutter 플러그인으로 래핑.</li><li>Method/Event Channel로 호출·이벤트를 안정적으로 연결.</li><li>pub.dev 공개 배포와 문서·샘플로 개발자 연동을 지원.</li></ul>
+<h2>주안점</h2>
+<ul><li>Channel 통신의 안정성과 이벤트 정합성.</li><li>몇 줄로 붙는 간결한 API 설계.</li><li>공개 패키지 품질(문서·샘플·버전 관리).</li></ul>
+
+    <h2>프로젝트 성과</h2>
+<div class="ach"><div><b>Flutter 스티커 SDK 개발</b><p>네이티브 Stipop UI SDK(Kotlin·Swift)를 Method/Event Channel로 감싸 Flutter 앱에서 바로 쓰는 플러그인으로 개발했습니다.</p></div><div><b>pub.dev 공개 배포</b><p>Flutter SDK(stipop_sdk)를 pub.dev에 공개 배포해, 누구나 flutter pub add로 설치·연동할 수 있게 했습니다.</p></div><div><b>간결한 API·문서화로 개발자 지원</b><p>검색·키보드 호출과 스티커 선택 콜백 등 간단한 API를 설계하고, 샘플 코드·문서로 개발자 온보딩을 지원했습니다.</p></div></div>
+
+    <div class="cta-box">
+      <p>비슷한 프로젝트를 계획 중이신가요? 아이디어 단계여도 괜찮습니다.</p>
+      <a href="../../#contact">프로젝트 문의하기 →</a>
+    </div>
+    <nav class="pn-nav" aria-label="다른 프로젝트">
+      <a href="../saucesdk/" rel="prev">← Sauce Live·Clip — 커머스 SDK</a>
+      <a href="../emember/" rel="next">이멤버 — 이랜드 통합 멤버십 →</a>
+    </nav>
+  </main>
+  <footer>
+    <a href="../../">QuokkaGround</a> — 모바일 앱·웹·백엔드 풀스택 개발팀 · <a href="../../#portfolio">전체 포트폴리오</a>
+  </footer>
+</body>
+
+</html>

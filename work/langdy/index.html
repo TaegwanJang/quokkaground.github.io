@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>1:1 매칭 교육 앱 랭디 Flutter Android·iOS 개발 및 앱 내 통화(VoIP) 구현 | QuokkaGround</title>
+  <meta name="description" content="학습자와 튜터를 1:1로 잇는 교육 서비스 &#x27;랭디&#x27; 앱을 Flutter로 Android·iOS 동시 개발한 프로젝트입니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.com/work/langdy/" />
+  <meta name="theme-color" content="#4a9e00" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://quokkaground.com/work/langdy/" />
+  <meta property="og:site_name" content="QuokkaGround" />
+  <meta property="og:title" content="1:1 매칭 교육 앱 랭디 Flutter Android·iOS 개발 및 앱 내 통화(VoIP) 구현" />
+  <meta property="og:description" content="학습자와 튜터를 1:1로 잇는 교육 서비스 &#x27;랭디&#x27; 앱을 Flutter로 Android·iOS 동시 개발한 프로젝트입니다." />
+  <meta property="og:image" content="https://quokkaground.com/pf/langdy.webp" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "1:1 매칭 교육 앱 랭디 Flutter Android·iOS 개발 및 앱 내 통화(VoIP) 구현",
+  "description": "학습자와 튜터를 1:1로 잇는 교육 서비스 '랭디' 앱을 Flutter로 Android·iOS 동시 개발한 프로젝트입니다.",
+  "url": "https://quokkaground.com/work/langdy/",
+  "image": "https://quokkaground.com/pf/langdy.webp",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "장태관",
+    "jobTitle": "대표 개발자"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuokkaGround",
+    "url": "https://quokkaground.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "QuokkaGround",
+      "item": "https://quokkaground.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "포트폴리오",
+      "item": "https://quokkaground.com/#portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "랭디 — 1:1 매칭 교육 앱",
+      "item": "https://quokkaground.com/work/langdy/"
+    }
+  ]
+}
+  </script>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
+--line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
+--acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
+--fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+--fm:ui-monospace,'SF Mono',Menlo,monospace;
+--sh-sm:0 1px 2px rgba(17,18,20,.04)}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
+position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+.crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
+.crumb a{color:var(--ink-3);text-decoration:none}
+.crumb a:hover{color:var(--acc-text)}
+.eyebrow{font-family:var(--fm);font-size:.74rem;letter-spacing:.12em;color:var(--acc-text);margin-bottom:12px}
+h1{font-family:var(--fh);font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.tag{font-family:var(--fm);font-size:.74rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg-subtle)}
+.period{font-size:.85rem;color:var(--ink-3);margin-bottom:26px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 30px}
+.links a{font-size:.86rem;font-weight:500;border:1px solid var(--acc-line);border-radius:999px;padding:8px 16px;text-decoration:none;background:var(--acc-wash)}
+h2{font-family:var(--fh);font-size:1.12rem;letter-spacing:-.01em;margin:38px 0 12px}
+ul{padding-left:20px;display:grid;gap:6px;font-size:.94rem;color:var(--ink-2)}
+ul li::marker{color:var(--acc)}
+figure{margin:16px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:var(--r);display:block;box-shadow:var(--sh-sm)}
+.ach{display:grid;gap:12px;margin-top:6px}
+.ach div{background:var(--bg-subtle);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ach b{display:block;font-size:.94rem;margin-bottom:4px}
+.ach p{font-size:.88rem;color:var(--ink-2)}
+.cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
+.cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
+.pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
+.pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
+footer{border-top:1px solid var(--line-2);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}</style>
+</head>
+
+<body>
+  <nav aria-label="주요 메뉴">
+    <a href="../../" class="brand"><i aria-hidden="true"></i>QuokkaGround</a>
+    <a href="../../#contact" class="cta">프로젝트 문의</a>
+  </nav>
+  <main>
+    <p class="crumb"><a href="../../">홈</a> / <a href="../../#portfolio">포트폴리오</a> / 랭디 — 1:1 매칭 교육 앱</p>
+    <p class="eyebrow">앱 개발</p>
+    <h1>1:1 매칭 교육 앱 랭디 Flutter Android·iOS 개발 및 앱 내 통화(VoIP) 구현</h1>
+    <div class="meta"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Tencent RTC</span><span class="tag">VoIP</span><span class="tag">Flutter Webview</span><span class="tag">BLoC</span><span class="tag">GetX</span><span class="tag">Android</span><span class="tag">iOS</span></div>
+    <p class="period">참여 기간 · 2020.10 ~ 2021.06</p>
+    <div class="links"><a href="https://apps.apple.com/kr/app/id6443480770" target="_blank" rel="noopener">App Store에서 보기 ↗</a></div>
+    <figure><img src="../../pf/d/langdy-01.webp" alt="랭디 — 1:1 매칭 교육 앱 상세 이미지 1" width="1080" loading="lazy" decoding="async" /></figure>
+<figure><img src="../../pf/d/langdy-02.webp" alt="랭디 — 1:1 매칭 교육 앱 상세 이미지 2" width="1080" loading="lazy" decoding="async" /></figure>
+
+    <h2>포트폴리오 소개</h2>
+<ul><li>학습자와 튜터를 1:1로 잇는 교육 서비스 &#x27;랭디&#x27; 앱을 Flutter로 Android·iOS 동시 개발한 프로젝트입니다.</li><li>외부 전화앱 없이 앱 안에서 실시간 음성 통화로 1:1 수업이 이뤄지도록 Tencent RTC 기반 통화(VoIP)를 구현했습니다.</li></ul>
+<h2>작업 범위</h2>
+<ul><li>Flutter 기반 Android·iOS 앱 동시 개발</li><li>Tencent RTC를 활용한 앱 내 1:1 통화(VoIP) 구현</li><li>Flutter Webview로 웹 콘텐츠·화면 연동</li><li>BLoC·GetX 기반 상태관리 아키텍처</li></ul>
+<h2>주요 업무 및 기능</h2>
+<ul><li>앱: Flutter로 Android·iOS 동시 개발</li><li>통화: Tencent RTC 기반 앱 내 실시간 음성 통화(1:1 수업)</li><li>연동: Flutter Webview로 웹 화면·콘텐츠 연동</li><li>아키텍처: BLoC·GetX 상태관리</li></ul>
+<h2>주안점</h2>
+<ul><li>앱 이탈 없이 앱 안에서 이뤄지는 안정적인 1:1 실시간 통화</li><li>하나의 Flutter 코드베이스로 Android·iOS 동시 대응</li><li>상태관리(BLoC·GetX)와 Webview 연동의 일관성</li></ul>
+
+    <h2>문제점</h2>
+<ul><li>1:1 매칭 교육은 학습자와 튜터가 실시간으로 대화해야 하므로 안정적인 통화가 핵심이었습니다.</li><li>외부 전화앱을 거치지 않고 앱 안에서 통화가 이뤄져야 학습 흐름이 끊기지 않습니다.</li><li>Android·iOS를 효율적으로 동시 대응해야 했습니다.</li></ul>
+<h2>프로젝트 목표</h2>
+<ul><li>Flutter로 Android·iOS 앱을 동시 개발.</li><li>Tencent RTC로 앱 내 1:1 실시간 음성 통화(VoIP)를 구현.</li><li>Webview 연동과 BLoC·GetX 상태관리로 일관된 구조 확보.</li></ul>
+<h2>주안점</h2>
+<ul><li>앱 내 통화(VoIP)의 실시간성과 안정성.</li><li>크로스플랫폼 동시 개발 효율.</li><li>상태관리·Webview 연동의 일관성.</li></ul>
+
+    <h2>프로젝트 성과</h2>
+<div class="ach"><div><b>Flutter Android·iOS 동시 개발</b><p>하나의 Flutter 코드베이스로 랭디 앱을 Android·iOS 동시 개발하고 BLoC·GetX로 상태관리를 구성했습니다.</p></div><div><b>앱 내 1:1 통화(VoIP) 구현</b><p>Tencent RTC를 활용해 외부 전화앱 없이 앱 안에서 학습자–튜터가 실시간 음성 통화로 1:1 수업하도록 구현했습니다.</p></div><div><b>Flutter Webview 연동</b><p>Flutter Webview로 웹 콘텐츠·화면을 앱에 연동해 학습 화면 구성을 유연하게 처리했습니다.</p></div></div>
+
+    <div class="cta-box">
+      <p>비슷한 프로젝트를 계획 중이신가요? 아이디어 단계여도 괜찮습니다.</p>
+      <a href="../../#contact">프로젝트 문의하기 →</a>
+    </div>
+    <nav class="pn-nav" aria-label="다른 프로젝트">
+      <a href="../sauceclip/" rel="prev">← SauceClip — 숏폼 영상 편집앱</a>
+      <a href="../cabinet/" rel="next">Cabinet — 소셜 지도 앱 →</a>
+    </nav>
+  </main>
+  <footer>
+    <a href="../../">QuokkaGround</a> — 모바일 앱·웹·백엔드 풀스택 개발팀 · <a href="../../#portfolio">전체 포트폴리오</a>
+  </footer>
+</body>
+
+</html>

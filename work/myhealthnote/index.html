@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>당뇨 관리 앱 마이헬스노트 iOS 유지보수 (데이터 분석·알림·성능 개선) | QuokkaGround</title>
+  <meta name="description" content="혈당·식사·운동 등 생활습관을 기록하면 맞춤형 메시지를 제공하는 당뇨 관리 앱의 iOS 유지보수를 담당했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.com/work/myhealthnote/" />
+  <meta name="theme-color" content="#4a9e00" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://quokkaground.com/work/myhealthnote/" />
+  <meta property="og:site_name" content="QuokkaGround" />
+  <meta property="og:title" content="당뇨 관리 앱 마이헬스노트 iOS 유지보수 (데이터 분석·알림·성능 개선)" />
+  <meta property="og:description" content="혈당·식사·운동 등 생활습관을 기록하면 맞춤형 메시지를 제공하는 당뇨 관리 앱의 iOS 유지보수를 담당했습니다." />
+  <meta property="og:image" content="https://quokkaground.com/pf/myhealthnote.webp" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "당뇨 관리 앱 마이헬스노트 iOS 유지보수 (데이터 분석·알림·성능 개선)",
+  "description": "혈당·식사·운동 등 생활습관을 기록하면 맞춤형 메시지를 제공하는 당뇨 관리 앱의 iOS 유지보수를 담당했습니다.",
+  "url": "https://quokkaground.com/work/myhealthnote/",
+  "image": "https://quokkaground.com/pf/myhealthnote.webp",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "장태관",
+    "jobTitle": "대표 개발자"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuokkaGround",
+    "url": "https://quokkaground.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "QuokkaGround",
+      "item": "https://quokkaground.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "포트폴리오",
+      "item": "https://quokkaground.com/#portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "마이헬스노트 — 당뇨 관리 iOS",
+      "item": "https://quokkaground.com/work/myhealthnote/"
+    }
+  ]
+}
+  </script>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
+--line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
+--acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
+--fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+--fm:ui-monospace,'SF Mono',Menlo,monospace;
+--sh-sm:0 1px 2px rgba(17,18,20,.04)}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
+position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+.crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
+.crumb a{color:var(--ink-3);text-decoration:none}
+.crumb a:hover{color:var(--acc-text)}
+.eyebrow{font-family:var(--fm);font-size:.74rem;letter-spacing:.12em;color:var(--acc-text);margin-bottom:12px}
+h1{font-family:var(--fh);font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.tag{font-family:var(--fm);font-size:.74rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg-subtle)}
+.period{font-size:.85rem;color:var(--ink-3);margin-bottom:26px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 30px}
+.links a{font-size:.86rem;font-weight:500;border:1px solid var(--acc-line);border-radius:999px;padding:8px 16px;text-decoration:none;background:var(--acc-wash)}
+h2{font-family:var(--fh);font-size:1.12rem;letter-spacing:-.01em;margin:38px 0 12px}
+ul{padding-left:20px;display:grid;gap:6px;font-size:.94rem;color:var(--ink-2)}
+ul li::marker{color:var(--acc)}
+figure{margin:16px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:var(--r);display:block;box-shadow:var(--sh-sm)}
+.ach{display:grid;gap:12px;margin-top:6px}
+.ach div{background:var(--bg-subtle);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ach b{display:block;font-size:.94rem;margin-bottom:4px}
+.ach p{font-size:.88rem;color:var(--ink-2)}
+.cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
+.cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
+.pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
+.pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
+footer{border-top:1px solid var(--line-2);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}</style>
+</head>
+
+<body>
+  <nav aria-label="주요 메뉴">
+    <a href="../../" class="brand"><i aria-hidden="true"></i>QuokkaGround</a>
+    <a href="../../#contact" class="cta">프로젝트 문의</a>
+  </nav>
+  <main>
+    <p class="crumb"><a href="../../">홈</a> / <a href="../../#portfolio">포트폴리오</a> / 마이헬스노트 — 당뇨 관리 iOS</p>
+    <p class="eyebrow">유지보수·전환</p>
+    <h1>당뇨 관리 앱 마이헬스노트 iOS 유지보수 (데이터 분석·알림·성능 개선)</h1>
+    <div class="meta"><span class="tag">iOS</span><span class="tag">Swift</span><span class="tag">Firebase Analytics</span><span class="tag">FCM(Firebase Cloud Messaging)</span></div>
+    <p class="period">참여 기간 · 2019.09 ~ 2019.12</p>
+    
+    <figure><img src="../../pf/d/myhealthnote-01.webp" alt="마이헬스노트 — 당뇨 관리 iOS 상세 이미지 1" width="1080" loading="lazy" decoding="async" /></figure>
+
+    <h2>포트폴리오 소개</h2>
+<ul><li>혈당·식사·운동 등 생활습관을 기록하면 맞춤형 메시지를 제공하는 당뇨 관리 앱의 iOS 유지보수를 담당했습니다.</li><li>데이터 분석 기반의 서비스 개선, 맞춤형 알림, 그리고 버그·기능·성능 개선을 진행했습니다.</li></ul>
+<h2>작업 범위</h2>
+<ul><li>iOS 앱 유지보수 (버그 수정·기능 개선·성능 최적화)</li><li>Firebase Analytics로 사용자 활동 데이터 분석·서비스 개선</li><li>FCM으로 맞춤형 알림·메시지 제공</li><li>운영 중 이슈 대응·안정화</li></ul>
+<h2>주요 업무 및 기능</h2>
+<ul><li>데이터 분석: Firebase Analytics로 활동 데이터를 분석해 개선 포인트 도출·반영</li><li>알림: FCM으로 사용자 맞춤형 알림·푸시 메시지 제공</li><li>유지보수: 버그 수정, 기능 개선, 성능 최적화로 앱 안정성 향상</li></ul>
+<h2>주안점</h2>
+<ul><li>운영 중인 앱의 안정성을 지키며 개선(회귀 최소화)</li><li>데이터 분석으로 근거 있는 개선 우선순위 도출</li><li>알림의 정확한 전달과 사용자 경험</li></ul>
+
+    <h2>문제점</h2>
+<ul><li>운영 중인 당뇨 관리 앱에서 버그·성능 이슈와 개선 요구가 이어졌습니다.</li><li>무엇을 먼저 개선할지 근거가 필요했습니다.</li><li>사용자에게 맞춤형 정보를 제때 전달할 수단이 필요했습니다.</li></ul>
+<h2>프로젝트 목표</h2>
+<ul><li>iOS 앱을 안정적으로 유지보수하며 버그·기능·성능을 개선.</li><li>Firebase Analytics로 활동 데이터를 분석해 개선 우선순위를 도출.</li><li>FCM으로 맞춤형 알림·메시지를 제공.</li></ul>
+<h2>주안점</h2>
+<ul><li>운영 안정성(회귀 최소화)을 지키는 유지보수.</li><li>데이터 분석 기반의 개선 판단.</li><li>알림의 정확한 전달과 사용자 경험.</li></ul>
+
+    <h2>프로젝트 성과</h2>
+<div class="ach"><div><b>데이터 분석 기반 서비스 개선</b><p>Firebase Analytics로 사용자 활동 데이터를 분석하고, 그 결과를 iOS 앱 개선에 반영했습니다.</p></div><div><b>맞춤형 알림(FCM) 제공</b><p>FCM으로 사용자 맞춤형 알림·푸시 메시지를 제공해 재방문과 참여를 지원했습니다.</p></div><div><b>iOS 유지보수·안정화</b><p>버그 수정·기능 개선·성능 최적화로 운영 중 앱의 안정성을 높이는 유지보수를 담당했습니다.</p></div></div>
+
+    <div class="cta-box">
+      <p>비슷한 프로젝트를 계획 중이신가요? 아이디어 단계여도 괜찮습니다.</p>
+      <a href="../../#contact">프로젝트 문의하기 →</a>
+    </div>
+    <nav class="pn-nav" aria-label="다른 프로젝트">
+      <a href="../photomon/" rel="prev">← 포토몬 — Target SDK 정책 대응</a>
+      <a href="../jieum/" rel="next">지음 — 법률 기반 소개팅 풀스택 →</a>
+    </nav>
+  </main>
+  <footer>
+    <a href="../../">QuokkaGround</a> — 모바일 앱·웹·백엔드 풀스택 개발팀 · <a href="../../#portfolio">전체 포트폴리오</a>
+  </footer>
+</body>
+
+</html>

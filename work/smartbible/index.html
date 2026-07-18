@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>성경·찬송가 앱 iOS 인앱결제(구독)·음원 재생 고도화 | QuokkaGround</title>
+  <meta name="description" content="운영 중인 성경·찬송가 앱에서 iOS 인앱결제(StoreKit 구독)와 찬송가 음원 재생 기능을 고도화했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.com/work/smartbible/" />
+  <meta name="theme-color" content="#4a9e00" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://quokkaground.com/work/smartbible/" />
+  <meta property="og:site_name" content="QuokkaGround" />
+  <meta property="og:title" content="성경·찬송가 앱 iOS 인앱결제(구독)·음원 재생 고도화" />
+  <meta property="og:description" content="운영 중인 성경·찬송가 앱에서 iOS 인앱결제(StoreKit 구독)와 찬송가 음원 재생 기능을 고도화했습니다." />
+  <meta property="og:image" content="https://quokkaground.com/pf/smartbible.webp" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "성경·찬송가 앱 iOS 인앱결제(구독)·음원 재생 고도화",
+  "description": "운영 중인 성경·찬송가 앱에서 iOS 인앱결제(StoreKit 구독)와 찬송가 음원 재생 기능을 고도화했습니다.",
+  "url": "https://quokkaground.com/work/smartbible/",
+  "image": "https://quokkaground.com/pf/smartbible.webp",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "장태관",
+    "jobTitle": "대표 개발자"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuokkaGround",
+    "url": "https://quokkaground.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "QuokkaGround",
+      "item": "https://quokkaground.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "포트폴리오",
+      "item": "https://quokkaground.com/#portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "스마트 성경과찬송가 — 음원 구독",
+      "item": "https://quokkaground.com/work/smartbible/"
+    }
+  ]
+}
+  </script>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
+--line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
+--acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
+--fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+--fm:ui-monospace,'SF Mono',Menlo,monospace;
+--sh-sm:0 1px 2px rgba(17,18,20,.04)}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
+position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+.crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
+.crumb a{color:var(--ink-3);text-decoration:none}
+.crumb a:hover{color:var(--acc-text)}
+.eyebrow{font-family:var(--fm);font-size:.74rem;letter-spacing:.12em;color:var(--acc-text);margin-bottom:12px}
+h1{font-family:var(--fh);font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.tag{font-family:var(--fm);font-size:.74rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg-subtle)}
+.period{font-size:.85rem;color:var(--ink-3);margin-bottom:26px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 30px}
+.links a{font-size:.86rem;font-weight:500;border:1px solid var(--acc-line);border-radius:999px;padding:8px 16px;text-decoration:none;background:var(--acc-wash)}
+h2{font-family:var(--fh);font-size:1.12rem;letter-spacing:-.01em;margin:38px 0 12px}
+ul{padding-left:20px;display:grid;gap:6px;font-size:.94rem;color:var(--ink-2)}
+ul li::marker{color:var(--acc)}
+figure{margin:16px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:var(--r);display:block;box-shadow:var(--sh-sm)}
+.ach{display:grid;gap:12px;margin-top:6px}
+.ach div{background:var(--bg-subtle);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ach b{display:block;font-size:.94rem;margin-bottom:4px}
+.ach p{font-size:.88rem;color:var(--ink-2)}
+.cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
+.cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
+.pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
+.pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
+footer{border-top:1px solid var(--line-2);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}</style>
+</head>
+
+<body>
+  <nav aria-label="주요 메뉴">
+    <a href="../../" class="brand"><i aria-hidden="true"></i>QuokkaGround</a>
+    <a href="../../#contact" class="cta">프로젝트 문의</a>
+  </nav>
+  <main>
+    <p class="crumb"><a href="../../">홈</a> / <a href="../../#portfolio">포트폴리오</a> / 스마트 성경과찬송가 — 음원 구독</p>
+    <p class="eyebrow">유지보수·전환</p>
+    <h1>성경·찬송가 앱 iOS 인앱결제(구독)·음원 재생 고도화</h1>
+    <div class="meta"><span class="tag">iOS</span><span class="tag">Swift</span><span class="tag">StoreKit</span><span class="tag">AVFoundation</span><span class="tag">Firebase Storage</span><span class="tag">In-App Purchase(구독)</span></div>
+    <p class="period">참여 기간 · 2024.07 ~ 2024.08</p>
+    
+    <figure><img src="../../pf/d/smartbible-01.webp" alt="스마트 성경과찬송가 — 음원 구독 상세 이미지 1" width="1080" loading="lazy" decoding="async" /></figure>
+<figure><img src="../../pf/d/smartbible-02.webp" alt="스마트 성경과찬송가 — 음원 구독 상세 이미지 2" width="1080" loading="lazy" decoding="async" /></figure>
+<figure><img src="../../pf/d/smartbible-03.webp" alt="스마트 성경과찬송가 — 음원 구독 상세 이미지 3" width="1080" loading="lazy" decoding="async" /></figure>
+
+    <h2>포트폴리오 소개</h2>
+<ul><li>운영 중인 성경·찬송가 앱에서 iOS 인앱결제(StoreKit 구독)와 찬송가 음원 재생 기능을 고도화했습니다.</li><li>찬송가 음원을 Firebase Storage에서 내려받아 로컬에 캐싱하고 재생하는 파이프라인을 설계하고, AVFoundation으로 재생·컨트롤과 상태 관리를 구현했습니다.</li></ul>
+<h2>작업 범위</h2>
+<ul><li>StoreKit 기반 구독 결제 구조 설계 및 구독 상태 동기화</li><li>Firebase Storage 음원 다운로드 → 로컬 캐싱 → 재생 파이프라인 설계</li><li>선다운로드(Preload) 구조로 곡 전환 시 지연 최소화</li><li>캐시 전략으로 네트워크 비용·재생 지연 최적화</li><li>AVFoundation 기반 오디오 재생 상태 관리·컨트롤 UI 아키텍처 설계</li></ul>
+<h2>주요 업무 및 기능</h2>
+<ul><li>음원 재생: AVFoundation으로 찬송가 재생·정지·반복 등 컨트롤과 재생 상태 관리</li><li>음원 파이프라인: Firebase Storage 다운로드 → 로컬 캐싱 → 재생, 선다운로드로 곡 전환 지연 최소화</li><li>최적화: 캐시 전략으로 반복 재생 시 네트워크 비용·지연 절감</li><li>구독 결제: StoreKit 구독 결제 구조와 구독 상태 동기화</li></ul>
+<h2>주안점</h2>
+<ul><li>곡 전환 지연을 줄이는 선다운로드(Preload)와 캐시 전략</li><li>오디오 재생 상태의 정확한 관리와 컨트롤 UI 일관성</li><li>구독 결제와 구독 상태의 신뢰성 있는 동기화</li></ul>
+
+    <h2>문제점</h2>
+<ul><li>찬송가 음원을 매번 네트워크에서 받으면 곡 전환이 느리고 데이터 비용이 컸습니다.</li><li>오디오 재생 상태(재생·정지·반복)를 일관되게 관리할 구조가 필요했습니다.</li><li>구독 결제와 구독 상태를 신뢰성 있게 동기화해야 했습니다.</li></ul>
+<h2>프로젝트 목표</h2>
+<ul><li>음원을 로컬에 캐싱하고 선다운로드(Preload)해 곡 전환 지연을 최소화.</li><li>AVFoundation으로 재생·컨트롤과 상태 관리를 견고하게 구현.</li><li>StoreKit 구독 결제 구조와 구독 상태 동기화를 구현.</li></ul>
+<h2>주안점</h2>
+<ul><li>선다운로드·캐시 전략으로 재생 지연·네트워크 비용 최적화.</li><li>오디오 재생 상태 관리와 컨트롤 UI 일관성.</li><li>구독 결제 상태 동기화의 신뢰성.</li></ul>
+
+    <h2>프로젝트 성과</h2>
+<div class="ach"><div><b>찬송가 음원 재생·컨트롤 구현</b><p>AVFoundation으로 찬송가 음원 재생과 재생·반복 컨트롤 UI를 구현하고, 오디오 재생 상태 관리 아키텍처를 설계했습니다.</p></div><div><b>음원 캐싱·선다운로드 최적화</b><p>Firebase Storage 음원의 다운로드-로컬 캐싱-재생 파이프라인을 설계하고, 선다운로드로 곡 전환 지연을 최소화했습니다.</p></div><div><b>StoreKit 구독 결제 구현</b><p>StoreKit 기반 구독 결제 구조를 설계하고 구독 상태 동기화 로직을 구현했습니다.</p></div></div>
+
+    <div class="cta-box">
+      <p>비슷한 프로젝트를 계획 중이신가요? 아이디어 단계여도 괜찮습니다.</p>
+      <a href="../../#contact">프로젝트 문의하기 →</a>
+    </div>
+    <nav class="pn-nav" aria-label="다른 프로젝트">
+      <a href="../minusplus/" rel="prev">← 마이너스플러스 — 체성분 관리</a>
+      <a href="../photomon/" rel="next">포토몬 — Target SDK 정책 대응 →</a>
+    </nav>
+  </main>
+  <footer>
+    <a href="../../">QuokkaGround</a> — 모바일 앱·웹·백엔드 풀스택 개발팀 · <a href="../../#portfolio">전체 포트폴리오</a>
+  </footer>
+</body>
+
+</html>

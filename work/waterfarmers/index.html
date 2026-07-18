@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>새우 사육 생태체험 교육앱 워터파머스 Flutter iOS·Android 신규 개발 | QuokkaGround</title>
+  <meta name="description" content="어린이가 직접 새우를 키우며 수생태계를 배우는 체험형 교육앱 &#x27;워터파머스&#x27;를 Flutter로 iOS·Android 신규 개발했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.com/work/waterfarmers/" />
+  <meta name="theme-color" content="#4a9e00" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://quokkaground.com/work/waterfarmers/" />
+  <meta property="og:site_name" content="QuokkaGround" />
+  <meta property="og:title" content="새우 사육 생태체험 교육앱 워터파머스 Flutter iOS·Android 신규 개발" />
+  <meta property="og:description" content="어린이가 직접 새우를 키우며 수생태계를 배우는 체험형 교육앱 &#x27;워터파머스&#x27;를 Flutter로 iOS·Android 신규 개발했습니다." />
+  <meta property="og:image" content="https://quokkaground.com/pf/waterfarmers.webp" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "새우 사육 생태체험 교육앱 워터파머스 Flutter iOS·Android 신규 개발",
+  "description": "어린이가 직접 새우를 키우며 수생태계를 배우는 체험형 교육앱 '워터파머스'를 Flutter로 iOS·Android 신규 개발했습니다.",
+  "url": "https://quokkaground.com/work/waterfarmers/",
+  "image": "https://quokkaground.com/pf/waterfarmers.webp",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "장태관",
+    "jobTitle": "대표 개발자"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuokkaGround",
+    "url": "https://quokkaground.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "QuokkaGround",
+      "item": "https://quokkaground.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "포트폴리오",
+      "item": "https://quokkaground.com/#portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "WaterFarmers — 생태체험 교육 앱",
+      "item": "https://quokkaground.com/work/waterfarmers/"
+    }
+  ]
+}
+  </script>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
+--line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
+--acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
+--fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+--fm:ui-monospace,'SF Mono',Menlo,monospace;
+--sh-sm:0 1px 2px rgba(17,18,20,.04)}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
+position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+.crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
+.crumb a{color:var(--ink-3);text-decoration:none}
+.crumb a:hover{color:var(--acc-text)}
+.eyebrow{font-family:var(--fm);font-size:.74rem;letter-spacing:.12em;color:var(--acc-text);margin-bottom:12px}
+h1{font-family:var(--fh);font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.tag{font-family:var(--fm);font-size:.74rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg-subtle)}
+.period{font-size:.85rem;color:var(--ink-3);margin-bottom:26px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 30px}
+.links a{font-size:.86rem;font-weight:500;border:1px solid var(--acc-line);border-radius:999px;padding:8px 16px;text-decoration:none;background:var(--acc-wash)}
+h2{font-family:var(--fh);font-size:1.12rem;letter-spacing:-.01em;margin:38px 0 12px}
+ul{padding-left:20px;display:grid;gap:6px;font-size:.94rem;color:var(--ink-2)}
+ul li::marker{color:var(--acc)}
+figure{margin:16px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:var(--r);display:block;box-shadow:var(--sh-sm)}
+.ach{display:grid;gap:12px;margin-top:6px}
+.ach div{background:var(--bg-subtle);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ach b{display:block;font-size:.94rem;margin-bottom:4px}
+.ach p{font-size:.88rem;color:var(--ink-2)}
+.cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
+.cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
+.pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
+.pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
+footer{border-top:1px solid var(--line-2);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}</style>
+</head>
+
+<body>
+  <nav aria-label="주요 메뉴">
+    <a href="../../" class="brand"><i aria-hidden="true"></i>QuokkaGround</a>
+    <a href="../../#contact" class="cta">프로젝트 문의</a>
+  </nav>
+  <main>
+    <p class="crumb"><a href="../../">홈</a> / <a href="../../#portfolio">포트폴리오</a> / WaterFarmers — 생태체험 교육 앱</p>
+    <p class="eyebrow">앱 개발</p>
+    <h1>새우 사육 생태체험 교육앱 워터파머스 Flutter iOS·Android 신규 개발</h1>
+    <div class="meta"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">네이버 로그인</span><span class="tag">카카오 로그인</span><span class="tag">QR 스캔</span><span class="tag">게임화</span><span class="tag">푸시 알림</span><span class="tag">iOS</span><span class="tag">Android</span></div>
+    <p class="period">참여 기간 · 2025.09 ~ 2025.10</p>
+    <div class="links"><a href="https://apps.apple.com/kr/app/waterfarmers/id6753274824" target="_blank" rel="noopener">App Store에서 보기 ↗</a></div>
+    <figure><img src="../../pf/d/waterfarmers-01.webp" alt="WaterFarmers — 생태체험 교육 앱 상세 이미지 1" width="1080" loading="lazy" decoding="async" /></figure>
+<figure><img src="../../pf/d/waterfarmers-02.webp" alt="WaterFarmers — 생태체험 교육 앱 상세 이미지 2" width="1080" loading="lazy" decoding="async" /></figure>
+<figure><img src="../../pf/d/waterfarmers-03.webp" alt="WaterFarmers — 생태체험 교육 앱 상세 이미지 3" width="1080" loading="lazy" decoding="async" /></figure>
+
+    <h2>포트폴리오 소개</h2>
+<ul><li>어린이가 직접 새우를 키우며 수생태계를 배우는 체험형 교육앱 &#x27;워터파머스&#x27;를 Flutter로 iOS·Android 신규 개발했습니다.</li><li>양식장 현장 방문 체험과 가정 내 사육 활동을 연계해, QR 스탬프 게임·미션 학습·사육 기록으로 생태 학습을 이어가도록 만들었습니다.</li></ul>
+<h2>작업 범위</h2>
+<ul><li>Flutter 기반 iOS·Android 앱 신규 개발</li><li>네이버·카카오 소셜 로그인</li><li>QR 스캔 기반 현장 스탬프 게임</li><li>연령대(3~4세/5~7세/초등) 분기 로직·UI</li><li>새우 사육 기록(사진 업로드·관찰)과 새우 생태 노트</li><li>미션 학습 로직(온도·상태·물색 기록 분석), 물색 그라데이션 슬라이더 UI</li><li>새우 크기 입력 시 무게·사료량 자동 계산</li><li>사용자 기록 기반 실험 보고서 산출</li><li>게임화(일일 과제·보상 스티커·랭킹), 주간 물 환수 알림·푸시</li><li>iOS/Android 스토어 배포</li></ul>
+<h2>주요 업무 및 기능</h2>
+<ul><li>현장: QR 스캔 스탬프 게임으로 양식장 곳곳의 미션 수행</li><li>가정: 새우 사육 기록·관찰 노트로 학습 연계</li><li>학습 로직: 연령 분기, 무게·사료량 자동 계산, 기록 분석·실험 보고서</li><li>리텐션: 게임화(스티커·랭킹), 물 환수 푸시</li><li>연동/배포: 소셜 로그인, iOS·Android 출시</li></ul>
+<h2>주안점</h2>
+<ul><li>현장(오프라인 체험)과 가정(온라인 사육)을 하나의 학습 흐름으로 연결</li><li>어린이 대상에 맞는 연령 분기 UI와 게임화</li><li>사육 기록을 학습(미션·보고서)으로 연결하는 로직</li></ul>
+
+    <h2>문제점</h2>
+<ul><li>양식장 현장 체험이 일회성으로 끝나, 가정에서 학습이 이어지지 않았습니다.</li><li>어린이 대상이라 연령에 맞는 난이도·UI와 흥미 유발(게임화)이 필요했습니다.</li><li>사육 활동을 &#x27;학습&#x27;으로 연결할 기록·분석 구조가 필요했습니다.</li></ul>
+<h2>프로젝트 목표</h2>
+<ul><li>현장(QR 스탬프)과 가정(사육 노트)을 연계한 체험형 교육앱을 Flutter로 개발.</li><li>연령 분기·게임화로 어린이 몰입을 높이고, 기록을 미션·실험 보고서로 연결.</li><li>iOS·Android 동시 출시.</li></ul>
+<h2>주안점</h2>
+<ul><li>현장-가정 연계 학습 흐름.</li><li>어린이 친화 연령 분기 UI·게임화.</li><li>기록→분석→보고서로 이어지는 학습 로직.</li></ul>
+
+    <h2>프로젝트 성과</h2>
+<div class="ach"><div><b>현장+가정 연계 체험 교육앱 개발</b><p>QR 스탬프 게임(현장)과 새우 사육 노트(가정)를 연계한 체험형 교육앱을 Flutter로 iOS·Android 신규 개발했습니다.</p></div><div><b>학습 로직·자동 계산 구현</b><p>연령대 분기 UI와 함께, 새우 크기로 무게·사료량을 자동 계산하고 기록을 분석해 미션 학습·실험 보고서로 연결했습니다.</p></div><div><b>게임화·소셜 로그인·출시</b><p>보상 스티커·랭킹·물 환수 푸시로 리텐션을 높이고, 네이버·카카오 로그인을 붙여 iOS·Android에 출시했습니다.</p></div></div>
+
+    <div class="cta-box">
+      <p>비슷한 프로젝트를 계획 중이신가요? 아이디어 단계여도 괜찮습니다.</p>
+      <a href="../../#contact">프로젝트 문의하기 →</a>
+    </div>
+    <nav class="pn-nav" aria-label="다른 프로젝트">
+      <a href="../isacfood/" rel="prev">← IsacFood — 구내식당 예약·평가</a>
+      <a href="../vine/" rel="next">바인 — 크리스천 데이팅 →</a>
+    </nav>
+  </main>
+  <footer>
+    <a href="../../">QuokkaGround</a> — 모바일 앱·웹·백엔드 풀스택 개발팀 · <a href="../../#portfolio">전체 포트폴리오</a>
+  </footer>
+</body>
+
+</html>

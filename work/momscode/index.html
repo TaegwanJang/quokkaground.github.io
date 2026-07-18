@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>임신성 당뇨 관리 앱 Flutter 개발 및 AppleHealth 연동 (Canada 출시) | QuokkaGround</title>
+  <meta name="description" content="생활습관을 기록해 임신성 당뇨를 관리하도록 돕는 헬스케어 앱(캐나다 출시)에서, AppleHealth 연동과 사용자 데이터 분석 부분을 담당했습니다." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://quokkaground.com/work/momscode/" />
+  <meta name="theme-color" content="#4a9e00" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://quokkaground.com/work/momscode/" />
+  <meta property="og:site_name" content="QuokkaGround" />
+  <meta property="og:title" content="임신성 당뇨 관리 앱 Flutter 개발 및 AppleHealth 연동 (Canada 출시)" />
+  <meta property="og:description" content="생활습관을 기록해 임신성 당뇨를 관리하도록 돕는 헬스케어 앱(캐나다 출시)에서, AppleHealth 연동과 사용자 데이터 분석 부분을 담당했습니다." />
+  <meta property="og:image" content="https://quokkaground.com/pf/momscode.webp" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "임신성 당뇨 관리 앱 Flutter 개발 및 AppleHealth 연동 (Canada 출시)",
+  "description": "생활습관을 기록해 임신성 당뇨를 관리하도록 돕는 헬스케어 앱(캐나다 출시)에서, AppleHealth 연동과 사용자 데이터 분석 부분을 담당했습니다.",
+  "url": "https://quokkaground.com/work/momscode/",
+  "image": "https://quokkaground.com/pf/momscode.webp",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "장태관",
+    "jobTitle": "대표 개발자"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "QuokkaGround",
+    "url": "https://quokkaground.com/"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "QuokkaGround",
+      "item": "https://quokkaground.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "포트폴리오",
+      "item": "https://quokkaground.com/#portfolio"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "MomsCode — 헬스케어 (캐나다 출시)",
+      "item": "https://quokkaground.com/work/momscode/"
+    }
+  ]
+}
+  </script>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
+--line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
+--acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
+--fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+--fm:ui-monospace,'SF Mono',Menlo,monospace;
+--sh-sm:0 1px 2px rgba(17,18,20,.04)}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--acc-text)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
+position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+.crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
+.crumb a{color:var(--ink-3);text-decoration:none}
+.crumb a:hover{color:var(--acc-text)}
+.eyebrow{font-family:var(--fm);font-size:.74rem;letter-spacing:.12em;color:var(--acc-text);margin-bottom:12px}
+h1{font-family:var(--fh);font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.tag{font-family:var(--fm);font-size:.74rem;padding:5px 11px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);background:var(--bg-subtle)}
+.period{font-size:.85rem;color:var(--ink-3);margin-bottom:26px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 30px}
+.links a{font-size:.86rem;font-weight:500;border:1px solid var(--acc-line);border-radius:999px;padding:8px 16px;text-decoration:none;background:var(--acc-wash)}
+h2{font-family:var(--fh);font-size:1.12rem;letter-spacing:-.01em;margin:38px 0 12px}
+ul{padding-left:20px;display:grid;gap:6px;font-size:.94rem;color:var(--ink-2)}
+ul li::marker{color:var(--acc)}
+figure{margin:16px 0}
+figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:var(--r);display:block;box-shadow:var(--sh-sm)}
+.ach{display:grid;gap:12px;margin-top:6px}
+.ach div{background:var(--bg-subtle);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ach b{display:block;font-size:.94rem;margin-bottom:4px}
+.ach p{font-size:.88rem;color:var(--ink-2)}
+.cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
+.cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
+.pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
+.pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
+footer{border-top:1px solid var(--line-2);padding:28px 24px;text-align:center;font-size:.8rem;color:var(--ink-3)}
+footer a{color:var(--ink-3)}</style>
+</head>
+
+<body>
+  <nav aria-label="주요 메뉴">
+    <a href="../../" class="brand"><i aria-hidden="true"></i>QuokkaGround</a>
+    <a href="../../#contact" class="cta">프로젝트 문의</a>
+  </nav>
+  <main>
+    <p class="crumb"><a href="../../">홈</a> / <a href="../../#portfolio">포트폴리오</a> / MomsCode — 헬스케어 (캐나다 출시)</p>
+    <p class="eyebrow">앱 개발</p>
+    <h1>임신성 당뇨 관리 앱 Flutter 개발 및 AppleHealth 연동 (Canada 출시)</h1>
+    <div class="meta"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Swift</span><span class="tag">Method Channel</span><span class="tag">Event Channel</span><span class="tag">HealthKit(AppleHealth)</span><span class="tag">Firebase Analytics</span><span class="tag">BLoC</span></div>
+    <p class="period">참여 기간 · 2019.12 ~ 2020.07</p>
+    
+    <figure><img src="../../pf/d/momscode-01.webp" alt="MomsCode — 헬스케어 (캐나다 출시) 상세 이미지 1" width="1080" loading="lazy" decoding="async" /></figure>
+
+    <h2>포트폴리오 소개</h2>
+<ul><li>생활습관을 기록해 임신성 당뇨를 관리하도록 돕는 헬스케어 앱(캐나다 출시)에서, AppleHealth 연동과 사용자 데이터 분석 부분을 담당했습니다.</li><li>AppleHealth는 iOS 네이티브(HealthKit·Swift) 형태라, 이를 Flutter 플러그인(Method/Event Channel)으로 만들어 Flutter 앱에서 건강 데이터를 활용하도록 구현했습니다.</li></ul>
+<h2>작업 범위</h2>
+<ul><li>Flutter iOS/Android 앱 개발 (iOS 파트 Plugin은 Swift)</li><li>AppleHealth를 Flutter Plugin으로 직접 개발해 연동 (Method/Event Channel)</li><li>건강 데이터의 앱 수신·활용 처리</li><li>Firebase Analytics로 사용자 데이터 분석·서비스 개선</li><li>BLoC 패턴 기반 상태관리 아키텍처</li><li>개발 완료 후 유지보수 대응</li></ul>
+<h2>주요 업무 및 기능</h2>
+<ul><li>Native ↔ Flutter 브릿지: Method/Event Channel로 AppleHealth(HealthKit)를 Flutter에 연동</li><li>건강 데이터: 생활습관·건강 데이터를 앱에서 수신·활용하도록 처리</li><li>데이터 분석: Firebase Analytics로 사용자 행동·데이터를 분석해 서비스 개선에 활용</li><li>BLoC 아키텍처로 데이터 흐름·상태 구조화</li></ul>
+<h2>주안점</h2>
+<ul><li>네이티브 전용 AppleHealth(HealthKit)를 Flutter 플러그인으로 안정 연동</li><li>건강 데이터의 정확한 수신과 개인정보 민감성 고려</li><li>데이터 분석 기반의 서비스 개선 루프</li></ul>
+
+    <h2>문제점</h2>
+<ul><li>AppleHealth(HealthKit)가 iOS 네이티브 전용이라 Flutter 앱에 그대로 붙일 수 없었습니다.</li><li>임신성 당뇨 관리 특성상 생활습관·건강 데이터를 정확히 수신·활용해야 했습니다.</li><li>서비스 개선을 위해 사용자 데이터를 분석할 수 있는 기반이 필요했습니다.</li></ul>
+<h2>프로젝트 목표</h2>
+<ul><li>AppleHealth를 Flutter 플러그인으로 연동해 Flutter 앱에서 건강 데이터를 활용.</li><li>Firebase Analytics로 사용자 데이터를 분석하고 서비스 개선에 활용.</li><li>BLoC 아키텍처로 데이터 흐름을 유지보수 가능하게 구조화.</li></ul>
+<h2>주안점</h2>
+<ul><li>네이티브 AppleHealth의 Flutter 브릿지 안정성.</li><li>건강 데이터 수신 정확성과 개인정보 민감성.</li><li>데이터 분석 기반 서비스 개선.</li></ul>
+
+    <h2>프로젝트 성과</h2>
+<div class="ach"><div><b>AppleHealth 건강 데이터 연동</b><p>AppleHealth(HealthKit)를 Flutter 플러그인(Method/Event Channel, Swift)으로 연동해 앱이 건강 데이터를 활용하도록 구현했습니다.</p></div><div><b>Firebase Analytics 기반 데이터 분석</b><p>Firebase Analytics로 사용자 데이터를 분석해 서비스 개선에 활용하고, BLoC로 데이터 흐름을 구조화했습니다.</p></div><div><b>담당 기능 개발 완료 후 유지보수</b><p>캐나다에 출시된 앱에서 담당한 연동·분석 기능을 완료하고, 배포 이후 유지보수 단계까지 대응했습니다.</p></div></div>
+
+    <div class="cta-box">
+      <p>비슷한 프로젝트를 계획 중이신가요? 아이디어 단계여도 괜찮습니다.</p>
+      <a href="../../#contact">프로젝트 문의하기 →</a>
+    </div>
+    <nav class="pn-nav" aria-label="다른 프로젝트">
+      <a href="../everyreels/" rel="prev">← Everyreels — 숏드라마 스트리밍</a>
+      <a href="../saucestudio/" rel="next">SauceStudio — Native→Flutter 전환 →</a>
+    </nav>
+  </main>
+  <footer>
+    <a href="../../">QuokkaGround</a> — 모바일 앱·웹·백엔드 풀스택 개발팀 · <a href="../../#portfolio">전체 포트폴리오</a>
+  </footer>
+</body>
+
+</html>
