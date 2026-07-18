@@ -19,8 +19,8 @@
   <meta property="og:title" content="QuokkaGround | 모바일 앱·웹·백엔드 풀스택 개발팀" />
   <meta property="og:description" content="Flutter 앱, 관리자 웹, Node.js·Java 백엔드까지 대표 개발자가 직접 설계·구현하는 풀스택 개발팀" />
   <meta property="og:image" content="https://quokkaground.com/og-image.jpg" />
-  <meta property="og:image:width" content="1066" />
-  <meta property="og:image:height" content="799" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="QuokkaGround — 모바일 앱·웹·백엔드 풀스택 개발팀" />
   <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -86,8 +86,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
     rel="stylesheet" />
+  <link rel="preload" as="image" href="quokka_neon.webp" fetchpriority="high" />
   <style>
     *,
     *::before,
@@ -140,7 +141,7 @@
       --sh-lg: 0 24px 60px -20px rgba(17, 18, 20, .22);
 
       --fh: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
-      --fm: 'Space Mono', monospace;
+      --fm: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Menlo, monospace;
       --fb: 'Noto Sans KR', sans-serif;
 
       /* legacy aliases (kept for inline styles in markup) */
@@ -898,39 +899,59 @@
       border-top: 1px solid var(--line-2)
     }
 
-    /* portfolio marquee — cards scroll horizontally, pause on hover */
-    .pf-marquee {
-      position: relative;
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent)
-    }
-
-    .pf-track {
+    /* portfolio filter — category chips above a static grid */
+    .pf-filter {
       display: flex;
-      width: max-content;
-      animation: pfScroll 52s linear infinite
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 auto 36px;
+      max-width: 720px
     }
 
-    .pf-marquee:hover .pf-track,
-    .pf-marquee:focus-within .pf-track {
-      animation-play-state: paused
+    .pf-btn {
+      font-family: var(--fb);
+      font-size: .86rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink-2);
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s, box-shadow .2s
     }
 
-    @keyframes pfScroll {
-      from {
-        transform: translateX(0)
-      }
-
-      to {
-        transform: translateX(-50%)
-      }
+    .pf-btn:hover {
+      border-color: var(--acc-line);
+      color: var(--acc-text)
     }
 
-    .pf-track .pc {
-      flex: 0 0 auto;
-      width: clamp(280px, 80vw, 338px);
-      margin-right: 20px
+    .pf-btn[aria-pressed="true"] {
+      background: var(--acc);
+      border-color: var(--acc);
+      color: #fff;
+      box-shadow: var(--sh-sm)
+    }
+
+    .pf-btn .cnt {
+      font-family: var(--fm);
+      font-size: .72rem;
+      opacity: .65;
+      margin-left: 4px
+    }
+
+    /* portfolio grid — every card visible, no auto-scroll */
+    .pf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+      gap: 20px;
+      max-width: 1180px;
+      margin: 0 auto
+    }
+
+    .pf-grid .pc.hide {
+      display: none
     }
 
     .pc {
@@ -949,57 +970,25 @@
     }
 
     .pt {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      aspect-ratio: 1/1;
       overflow: hidden;
       border-bottom: 1px solid var(--line-2)
     }
 
     .pt img {
-      width: auto;
-      height: 70%;
-      object-fit: contain;
-      border-radius: 16px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
       transition: transform .35s cubic-bezier(.16, 1, .3, 1)
     }
 
     .pc:hover .pt img {
-      transform: scale(1.06)
-    }
-
-    .pt-vine {
-      background: linear-gradient(135deg, #e8dff5, #d0b8f0)
-    }
-
-    .pt-isaac {
-      /* near-white mint: the icon's white square melts into the header */
-      background: linear-gradient(135deg, #fbfdfb, #e4f3e9)
-    }
-
-    .pt-jieum {
-      /* warm stone grey echoing the black ink-brush icon */
-      background: linear-gradient(135deg, #efeeec, #d6d4cf)
-    }
-
-    .pt-smart {
-      /* warm cream→tan matching the opaque brown artwork of smartbible.png */
-      background: linear-gradient(135deg, #f2e8d8, #d8bc94)
-    }
-
-    .pt-water {
-      /* near-white aqua for the white-background illustration */
-      background: linear-gradient(135deg, #fbfdfd, #e2f1f1)
-    }
-
-    .pt-every {
-      /* soft pink echoing the brand's pink “e” on black */
-      background: linear-gradient(135deg, #fdf0f7, #f4cfe4)
+      transform: scale(1.03)
     }
 
     .pb-inner {
-      padding: 24px
+      padding: 20px
     }
 
     .pn {
@@ -1629,6 +1618,43 @@
       }
     }
 
+    /* honeypot — visually removed, invisible to humans, tempting to bots */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden
+    }
+
+    /* privacy consent row */
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px
+    }
+
+    .consent input[type="checkbox"] {
+      flex: 0 0 auto;
+      width: 17px;
+      height: 17px;
+      margin-top: 3px;
+      accent-color: var(--acc)
+    }
+
+    .consent label {
+      font-size: .82rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+      cursor: pointer
+    }
+
+    .consent label strong {
+      color: var(--ink);
+      font-weight: 500
+    }
+
     /* REDUCED MOTION */
     @media (prefers-reduced-motion: reduce) {
 
@@ -1651,15 +1677,6 @@
         opacity: 1 !important;
         transform: none !important
       }
-
-      .pf-track {
-        animation: none;
-        transform: none
-      }
-
-      .pf-marquee {
-        overflow-x: auto
-      }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -1673,6 +1690,7 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicon-192x192.png">
 </head>
 
 <body>
@@ -1705,7 +1723,7 @@
     <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
       <div class="hero-img-ring" aria-hidden="true"></div>
       <div class="hero-img-ring2" aria-hidden="true"></div>
-      <img src="quokka_neon.jpg" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
+      <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
         width="1102" height="734" fetchpriority="high" decoding="async"
         style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
     </div>
@@ -1729,10 +1747,6 @@
       <div class="hs">
         <div class="hs-n">iOS <span>&amp;</span> Android</div>
         <div class="hs-l">DUAL PLATFORM</div>
-      </div>
-      <div class="hs">
-        <div class="hs-n">100<span>%</span></div>
-        <div class="hs-l">DELIVERY</div>
       </div>
     </div>
   </header>
@@ -1801,78 +1815,214 @@
     <div class="tc">
       <p class="sl reveal">포트폴리오</p>
       <h2 id="port-h" class="reveal">직접 만든 서비스들</h2>
-      <p class="ss reveal">아이디어 단계부터 스토어 출시까지 함께한 프로젝트들입니다.</p>
+      <p class="ss reveal">신규 앱 개발부터 SDK 공개 배포, 풀스택 구축, 운영 중 서비스의 전환·정책 대응까지 — 실제로 완료·출시한 프로젝트들입니다.</p>
     </div>
-    <div class="pf-marquee reveal" role="group" aria-label="포트폴리오 자동 스크롤 — 마우스를 올리면 멈춥니다">
-    <div class="pf-track" id="pfTrack">
-      <article class="pc" aria-label="IsacFood 샐러드 예약 앱">
-        <div class="pt pt-isaac"><img src="isacfood.png" alt="IsacFood 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
+    <div class="pf-filter reveal" role="group" aria-label="포트폴리오 카테고리 필터">
+      <button type="button" class="pf-btn" data-filter="all" aria-pressed="true">전체<span class="cnt">18</span></button>
+      <button type="button" class="pf-btn" data-filter="app" aria-pressed="false">앱 개발<span class="cnt">9</span></button>
+      <button type="button" class="pf-btn" data-filter="sdk" aria-pressed="false">SDK·플러그인<span class="cnt">2</span></button>
+      <button type="button" class="pf-btn" data-filter="full" aria-pressed="false">풀스택<span class="cnt">3</span></button>
+      <button type="button" class="pf-btn" data-filter="maint" aria-pressed="false">유지보수·전환<span class="cnt">4</span></button>
+    </div>
+    <div class="pf-grid reveal" id="pfGrid">
+      <article class="pc" data-cat="full" aria-label="지음 소개팅 앱 풀스택 구축">
+        <div class="pt"><img src="pf/jieum.webp" alt="지음 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
-          <h3 class="pn">IsacFood — 샐러드 예약 앱</h3>
-          <p class="pd">Flutter 기반 샐러드 예약·식사 평가 앱 신규 개발. 예약 생성·수정·취소 플로우, 상태 관리, 별점/리뷰 시스템, 푸시 알림 연동까지 전담 구현.</p>
-          <div class="ptags">
-            <span class="ptag t-mob">Flutter</span><span class="ptag t-mob">Dart</span>
-            <span class="ptag t-back">REST API</span><span class="ptag t-infra">Push 알림</span>
-          </div>
-        </div>
-      </article>
-      <article class="pc" aria-label="바인 운영 고도화">
-        <div class="pt pt-vine"><img src="vine.png" alt="바인 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
-        <div class="pb-inner">
-          <h3 class="pn">바인 — 데이팅 플랫폼 고도화</h3>
-          <p class="pd">운영 중 데이팅 앱의 매칭·결제·가입 프로세스 전면 개선. 자동 환불 로직 설계, iOS/Android 클라이언트 수정, React 관리자 웹 기능 개선.</p>
+          <h3 class="pn">지음 — 법률 기반 소개팅 풀스택</h3>
+          <p class="pd">변호사가 만든 안전한 소개팅 앱. iOS(Swift)·Android(Kotlin) 신규 개발 + Node.js REST API + React 관리자 웹까지 풀스택 구축. 본인인증·매칭·운영 시스템 전담.</p>
           <div class="ptags">
             <span class="ptag t-mob">Swift</span><span class="ptag t-mob">Kotlin</span>
             <span class="ptag t-back">Node.js</span><span class="ptag t-mob">React</span>
           </div>
         </div>
       </article>
-      <article class="pc" aria-label="WaterFarmers 수생태 교육 앱">
-        <div class="pt pt-water"><img src="waterfarmers.png" alt="WaterFarmers 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
+      <article class="pc" data-cat="sdk" aria-label="Sauce Live·Clip 커머스 SDK">
+        <div class="pt"><img src="pf/saucesdk.webp" alt="Sauce Live·Clip SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
-          <h3 class="pn">WaterFarmers — 수생태 교육 앱</h3>
-          <p class="pd">새우 양식장 기반 생태 체험 교육용 앱. QR 스탬프 게임·미션 학습·게임화 시스템·물 색상 그라디언트 슬라이더 등 인터랙티브 UI 전담 구현.</p>
+          <h3 class="pn">Sauce Live·Clip — 커머스 SDK</h3>
+          <p class="pd">라이브·숏폼 커머스 SDK를 iOS(Swift)·Android(Kotlin)로 개발. 고객사 자사몰 회원 연동, SDK 배포·연동 문서화까지 담당.</p>
           <div class="ptags">
-            <span class="ptag t-mob">Flutter</span><span class="ptag t-back">소셜로그인</span>
-            <span class="ptag t-tool">QR 스캔</span><span class="ptag t-infra">스토어 배포</span>
+            <span class="ptag t-mob">Swift</span><span class="ptag t-mob">Kotlin</span>
+            <span class="ptag t-tool">SDK 배포</span><span class="ptag t-back">회원 연동</span>
           </div>
         </div>
       </article>
-      <article class="pc" aria-label="Everyreels 숏폼 스트리밍 플랫폼">
-        <div class="pt pt-every"><img src="everyreels.png" alt="Everyreels 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
+      <article class="pc" data-cat="sdk" aria-label="Stipop 스티커 Flutter SDK">
+        <div class="pt"><img src="pf/stipop.webp" alt="Stipop Flutter SDK 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
-          <h3 class="pn">Everyreels — 숏폼 스트리밍</h3>
+          <h3 class="pn">Stipop — 스티커 Flutter SDK</h3>
+          <p class="pd">네이티브 스티커 UI SDK를 Method/Event Channel 브릿지로 래핑한 Flutter SDK 개발, pub.dev 공개 배포. 도입 개발자 지원까지 담당.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-tool">pub.dev 배포</span>
+            <span class="ptag t-mob">네이티브 브릿지</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="이멤버 이랜드 통합 멤버십 앱">
+        <div class="pt"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">이멤버 — 이랜드 통합 멤버십</h3>
+          <p class="pd">이랜드 통합 멤버십 앱의 결제 모듈·앱보안 SDK 연동·이벤트 콘텐츠 개발 담당. 대규모 회원 기반 서비스의 Flutter 개발·유지보수.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-back">결제 모듈</span>
+            <span class="ptag t-infra">앱보안 SDK</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="Everyreels 숏드라마 스트리밍">
+        <div class="pt"><img src="pf/everyreels.webp" alt="Everyreels 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">Everyreels — 숏드라마 스트리밍</h3>
           <p class="pd">30% 완성 상태로 긴급 투입. 동영상 재생 파이프라인 아키텍처 전면 개선, 플레이어 컨트롤러·상태 동기화 구현으로 일정 내 출시 완료.</p>
           <div class="ptags">
             <span class="ptag t-mob">Flutter</span><span class="ptag t-tool">미디어 처리</span>
-            <span class="ptag t-mob">비동기 상태관리</span><span class="ptag t-tool">Figma</span>
+            <span class="ptag t-mob">비동기 상태관리</span>
           </div>
         </div>
       </article>
-      <article class="pc" aria-label="지음 소개팅 앱 풀스택">
-        <div class="pt pt-jieum"><img src="jieum.png" alt="지음 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
+      <article class="pc" data-cat="app" aria-label="MomsCode 임신성 당뇨 관리 앱">
+        <div class="pt"><img src="pf/momscode.webp" alt="MomsCode 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
-          <h3 class="pn">지음(Jieum) — 법률 기반 소개팅</h3>
-          <p class="pd">변호사가 만든 안전한 소개팅 앱. iOS(Swift)·Android(Kotlin) 신규 개발 + Node.js REST API + React 관리자 웹 풀스택 구축.
-            본인인증·매칭·운영 시스템 전담.</p>
+          <h3 class="pn">MomsCode — 헬스케어 (캐나다 출시)</h3>
+          <p class="pd">임신성 당뇨 관리 앱 Flutter iOS·Android 개발. AppleHealth 연동·Firebase Analytics 분석, 캐나다 마켓 출시·유지보수.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-infra">AppleHealth</span>
+            <span class="ptag t-tool">글로벌 출시</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="maint" aria-label="SauceStudio Native to Flutter 전환">
+        <div class="pt"><img src="pf/saucestudio.webp" alt="SauceStudio 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">SauceStudio — Native→Flutter 전환</h3>
+          <p class="pd">라이브 방송 송출 앱을 iOS/Android 네이티브에서 Flutter로 전환. 네이티브 기능 통합·플러그인 구성·소켓 실시간 채팅 구현.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter 전환</span><span class="ptag t-back">소켓 채팅</span>
+            <span class="ptag t-mob">Riverpod</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="full" aria-label="여운 사주명리 AI 소개팅 풀스택">
+        <div class="pt"><img src="pf/yeoun.webp" alt="여운 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">여운 — 사주명리 AI 소개팅</h3>
+          <p class="pd">React Native 앱·백엔드·AI 궁합 리포트·관리자 웹까지 기획부터 출시·운영까지 풀스택 단독 구축한 자체 서비스.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">React Native</span><span class="ptag t-back">백엔드</span>
+            <span class="ptag t-tool">AI 리포트</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="IsacFood 구내식당 예약 앱">
+        <div class="pt"><img src="pf/isacfood.webp" alt="IsacFood 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">IsacFood — 구내식당 예약·평가</h3>
+          <p class="pd">구내식당 예약·식사 평가 앱 Flutter 신규 개발. 예약 생성·수정·취소 플로우, 별점/리뷰 시스템, 푸시 알림 연동 전담 구현.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-back">REST API</span>
+            <span class="ptag t-infra">Push 알림</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="WaterFarmers 생태체험 교육 앱">
+        <div class="pt"><img src="pf/waterfarmers.webp" alt="WaterFarmers 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">WaterFarmers — 생태체험 교육 앱</h3>
+          <p class="pd">새우 양식장 기반 생태 체험 교육용 앱. QR 스탬프 게임·미션 학습·게임화 시스템 등 인터랙티브 UI 전담 구현, 스토어 배포.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-back">소셜로그인</span>
+            <span class="ptag t-tool">QR 스캔</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="full" aria-label="바인 크리스천 데이팅 앱">
+        <div class="pt"><img src="pf/vine.webp" alt="바인 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">바인 — 크리스천 데이팅</h3>
+          <p class="pd">가톨릭 크리스천 데이팅 앱 개발·운영. 매칭·결제·가입 프로세스 개선과 자동 환불 로직 설계, Node.js 서버·React 관리자 웹까지 대응.</p>
           <div class="ptags">
             <span class="ptag t-mob">Swift</span><span class="ptag t-mob">Kotlin</span>
             <span class="ptag t-back">Node.js</span><span class="ptag t-mob">React</span>
           </div>
         </div>
       </article>
-      <article class="pc" aria-label="스마트 성경 찬송 구독형 음원 앱">
-        <div class="pt pt-smart"><img src="smartbible.png" alt="스마트 성경 찬송 앱 아이콘" width="1024" height="1024" loading="lazy" decoding="async" /></div>
+      <article class="pc" data-cat="app" aria-label="SauceClip 숏폼 영상 편집앱">
+        <div class="pt"><img src="pf/sauceclip.webp" alt="SauceClip 영상 편집앱 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
-          <h3 class="pn">스마트 성경 찬송 — 구독형 음원 앱</h3>
-          <p class="pd">StoreKit 기반 구독 결제 설계, Firebase Storage 음원 다운로드·로컬 캐싱·재생 파이프라인 구축. 선다운로드 구조로 곡 전환 지연 최소화.</p>
+          <h3 class="pn">SauceClip — 숏폼 영상 편집앱</h3>
+          <p class="pd">숏폼 영상 편집앱 Flutter 개발. Kotlin·Swift 네이티브 영상편집 기능을 Method/Event Channel 브릿지로 통합.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-tool">영상 편집</span>
+            <span class="ptag t-mob">네이티브 통합</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="랭디 1:1 매칭 교육 앱">
+        <div class="pt"><img src="pf/langdy.webp" alt="랭디 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">랭디 — 1:1 매칭 교육 앱</h3>
+          <p class="pd">1:1 매칭 교육 앱 Flutter Android·iOS 개발. 앱 내 통화(VoIP) 구현과 Webview 연동으로 수업 플로우 구축.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-back">앱 내 통화</span>
+            <span class="ptag t-tool">Webview</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="Cabinet 위치기반 소셜 지도 앱">
+        <div class="pt"><img src="pf/cabinet.webp" alt="Cabinet 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">Cabinet — 소셜 지도 앱</h3>
+          <p class="pd">위치기반 소셜 지도 앱 iOS·Android 개발·운영. 장소 검색·공유·나만의 지도 기능 구현.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">iOS</span><span class="ptag t-mob">Android</span>
+            <span class="ptag t-back">위치기반</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="app" aria-label="마이너스플러스 체성분 관리 앱">
+        <div class="pt"><img src="pf/minusplus.webp" alt="마이너스플러스 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">마이너스플러스 — 체성분 관리</h3>
+          <p class="pd">체성분 관리 앱 Flutter iOS·Android 개발. TUYA 체중계 SDK를 플러그인으로 연동, BLE 하드웨어 통신 구현.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Flutter</span><span class="ptag t-infra">TUYA SDK</span>
+            <span class="ptag t-infra">BLE</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="maint" aria-label="스마트 성경과찬송가 인앱결제·음원 고도화">
+        <div class="pt"><img src="pf/smartbible.webp" alt="스마트 성경과찬송가 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">스마트 성경과찬송가 — 음원 구독</h3>
+          <p class="pd">iOS 인앱결제(StoreKit 구독)·음원 재생 고도화. Firebase Storage 다운로드·로컬 캐싱·선다운로드 구조로 곡 전환 지연 최소화.</p>
           <div class="ptags">
             <span class="ptag t-mob">Swift</span><span class="ptag t-tool">StoreKit</span>
             <span class="ptag t-infra">Firebase</span><span class="ptag t-mob">AVFoundation</span>
           </div>
         </div>
       </article>
-    </div>
+      <article class="pc" data-cat="maint" aria-label="포토몬 Target SDK 정책 대응">
+        <div class="pt"><img src="pf/photomon.webp" alt="포토몬 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">포토몬 — Target SDK 정책 대응</h3>
+          <p class="pd">사진인화 앱 Android Target SDK 34→35 상향. Google Play 정책 대응·호환성 검증·안정 배포까지 유지보수 전담.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">Android</span><span class="ptag t-tool">정책 대응</span>
+            <span class="ptag t-infra">안정 배포</span>
+          </div>
+        </div>
+      </article>
+      <article class="pc" data-cat="maint" aria-label="마이헬스노트 iOS 유지보수">
+        <div class="pt"><img src="pf/myhealthnote.webp" alt="마이헬스노트 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
+        <div class="pb-inner">
+          <h3 class="pn">마이헬스노트 — 당뇨 관리 iOS</h3>
+          <p class="pd">당뇨 관리 앱 iOS 유지보수. Firebase Analytics 데이터 분석·FCM 푸시 알림·버그 수정·성능 개선.</p>
+          <div class="ptags">
+            <span class="ptag t-mob">iOS</span><span class="ptag t-infra">Firebase</span>
+            <span class="ptag t-back">FCM</span>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -1884,18 +2034,18 @@
     <div class="met-row">
       <div class="met reveal">
         <div class="mn">10<span>+</span></div>
-        <div class="ml">YEARS EXP.</div>
-        <div class="md">2016년부터 활동 중</div>
-      </div>
-      <div class="met reveal">
-        <div class="mn">20<span>+</span></div>
-        <div class="ml">PROJECTS</div>
-        <div class="md">기획부터 출시까지</div>
-      </div>
-      <div class="met reveal">
-        <div class="mn">10<span>+</span></div>
         <div class="ml">APPS LIVE</div>
         <div class="md">App Store · Play Store</div>
+      </div>
+      <div class="met reveal">
+        <div class="mn">2<span>개</span></div>
+        <div class="ml">SDK SHIPPED</div>
+        <div class="md">pub.dev 공개 배포 포함</div>
+      </div>
+      <div class="met reveal">
+        <div class="mn">CA<span>🇨🇦</span></div>
+        <div class="ml">GLOBAL LAUNCH</div>
+        <div class="md">캐나다 헬스케어 앱 출시</div>
       </div>
       <div class="met reveal">
         <div class="mn">3<span>천만원</span></div>
@@ -2000,6 +2150,15 @@
           <textarea class="fta" id="msg" name="message"
             placeholder="어떤 앱/서비스를 만들고 싶으신가요? 규모, 일정, 예산 등 알고 계신 범위를 자유롭게 적어주세요." required></textarea>
         </div>
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">웹사이트 (입력하지 마세요)</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="agree" name="agree" required />
+          <label for="agree"><strong>개인정보 수집·이용 동의 (필수)</strong> — 문의 응대 목적으로 이름·이메일·문의 내용을 수집하며,
+            응대 완료 후 지체 없이 파기합니다. 동의를 거부할 수 있으나 이 경우 폼 접수가 제한됩니다.</label>
+        </div>
         <button type="submit" class="fsub" id="submitBtn">메시지 보내기 →</button>
         <p class="form-msg" id="formMsg"></p>
       </form>
@@ -2052,15 +2211,16 @@
       io.observe(el);
     });
 
-    /* 포트폴리오 마퀴: 카드 세트를 한 번 복제해 이음새 없는 무한 루프 */
-    const pfTrack = document.getElementById('pfTrack');
-    if (pfTrack) {
-      pfTrack.querySelectorAll('.pc').forEach((card) => {
-        const clone = card.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        pfTrack.appendChild(clone);
+    /* 포트폴리오 카테고리 필터 */
+    const pfGrid = document.getElementById('pfGrid');
+    const pfBtns = document.querySelectorAll('.pf-btn');
+    pfBtns.forEach((btn) => btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      pfBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      pfGrid.querySelectorAll('.pc').forEach((card) => {
+        card.classList.toggle('hide', filter !== 'all' && card.dataset.cat !== filter);
       });
-    }
+    }));
 
     /* 폼 제출 → Make Webhook */
     const form = document.getElementById('contactForm');
@@ -2069,6 +2229,15 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      /* honeypot: 봇이 채운 제출은 조용히 성공 처리 */
+      if (document.getElementById('website').value) {
+        msg.textContent = '✓ 문의가 전송되었습니다. 빠르게 답변드리겠습니다!';
+        msg.className = 'form-msg success';
+        form.reset();
+        return;
+      }
+
       btn.disabled = true;
       btn.textContent = '전송 중';
       btn.classList.add('loading');
