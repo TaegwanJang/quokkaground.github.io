@@ -16,14 +16,14 @@ SITE = 'https://quokkaground.com'
 
 # 랜딩 카드 순서와 동일. (slug, 포트폴리오 폴더, 카드 제목, 카테고리 라벨, 슬라이드 수)
 PROJECTS = [
+    ('emember', '이멤버', '이멤버 — 이랜드 통합 멤버십', '앱 개발', 2),
+    ('yeoun', '여운', '여운 — 사주명리 AI 소개팅', '풀스택', 3),
+    ('everyreels', 'Everyreels', 'Everyreels — 숏드라마 스트리밍', '앱 개발', 2),
     ('jieum', '지음', '지음 — 법률 기반 소개팅 풀스택', '풀스택', 2),
     ('saucesdk', 'SauceSDK', 'Sauce Live·Clip — 커머스 SDK', 'SDK·플러그인', 1),
     ('stipop', 'Stipop', 'Stipop — 스티커 Flutter SDK', 'SDK·플러그인', 2),
-    ('emember', '이멤버', '이멤버 — 이랜드 통합 멤버십', '앱 개발', 2),
-    ('everyreels', 'Everyreels', 'Everyreels — 숏드라마 스트리밍', '앱 개발', 2),
     ('momscode', 'MomsCode', 'MomsCode — 헬스케어 (캐나다 출시)', '앱 개발', 1),
     ('saucestudio', 'SauceStudio', 'SauceStudio — Native→Flutter 전환', '유지보수·전환', 2),
-    ('yeoun', '여운', '여운 — 사주명리 AI 소개팅', '풀스택', 3),
     ('isacfood', 'IsacFood', 'IsacFood — 구내식당 예약·평가', '앱 개발', 2),
     ('waterfarmers', 'WaterFarmers', 'WaterFarmers — 생태체험 교육 앱', '앱 개발', 3),
     ('vine', '바인', '바인 — 크리스천 데이팅', '풀스택', 2),
