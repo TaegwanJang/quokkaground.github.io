@@ -2804,6 +2804,7 @@
       scrollLock();
       pmBody.scrollTop = 0;
       pmClose.focus();
+      track('project_view', { project: slug, via: instant ? 'deeplink' : 'card' });
       if (location.hash !== '#p=' + slug) history.pushState(null, '', '#p=' + slug);
     }
 
@@ -2956,6 +2957,16 @@
       if (contactEl) cio2.observe(contactEl);
     }
 
+    /* GA 이벤트 트래커 — 이름·이메일 등 개인정보는 전송하지 않음 */
+    function track(name, params) {
+      try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (_) { /* no-op */ }
+    }
+
+    /* 문의 CTA 클릭 (nav·히어로·모달·푸터) — 폼 도달 전 이탈 파악용 */
+    document.querySelectorAll('a[href="#contact"], a[href$="/#contact"]').forEach((a) => {
+      a.addEventListener('click', () => track('contact_click', { link_text: a.textContent.trim().slice(0, 30) }));
+    });
+
     /* 이메일 주소 JS 조립 — 수확 봇 차단(소스에 완성 주소 없음), 사람에겐 동일 표시 */
     document.querySelectorAll('.js-mail').forEach((a) => {
       const addr = a.dataset.u + '@' + a.dataset.d;
@@ -3002,10 +3013,12 @@
         if (!res.ok) throw new Error(res.status);
         msg.textContent = '✓ 문의가 전송되었습니다. 빠르게 답변드리겠습니다!';
         msg.className = 'form-msg success';
+        track('contact_submit');
         form.reset();
       } catch {
         msg.textContent = '전송에 실패했습니다. 이메일로 직접 문의해주세요.';
         msg.className = 'form-msg error';
+        track('contact_submit_error');
       } finally {
         btn.disabled = false;
         btn.textContent = '메시지 보내기 →';
