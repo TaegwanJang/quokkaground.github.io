@@ -52,7 +52,7 @@
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "contact@quokkaground.com",
+    "url": "https://quokkaground.com/#contact",
     "contactType": "customer service"
   }
 }
@@ -2606,8 +2606,8 @@
         <p class="sl reveal">연락처</p>
         <h2 id="contact-h" class="reveal">프로젝트를<br />시작해볼까요?</h2>
         <p class="cp reveal">아이디어 단계도 괜찮습니다. 예산·일정이 정해지지 않아도 괜찮습니다. 편하게 먼저 이야기 나눠요.</p>
-        <a href="mailto:contact@quokkaground.com" class="crow reveal"><span class="ci-icon"
-            aria-hidden="true">✉️</span>contact@quokkaground.com</a>
+        <a href="#contact" class="crow reveal js-mail" data-u="contact" data-d="quokkaground.com"><span
+            class="ci-icon" aria-hidden="true">✉️</span><span class="jm-t">이메일 (문의 폼 이용 가능)</span></a>
         <span class="crow reveal"><span class="ci-icon" aria-hidden="true">📍</span>경기도 평택시 · 원격 가능</span>
         <span class="crow reveal"><span class="ci-icon" aria-hidden="true">⚡</span>영업일 기준 24시간 이내 답변</span>
       </div>
@@ -2656,7 +2656,8 @@
     <div class="biz" aria-label="사업자 정보">
       <strong>쿼카그라운드</strong> &nbsp;|&nbsp; 대표 장태관 &nbsp;|&nbsp;
       사업자등록번호: <strong>656-04-03166</strong> &nbsp;|&nbsp;
-      이메일: <a href="mailto:contact@quokkaground.com">contact@quokkaground.com</a><br />
+      이메일: <a href="#contact" class="js-mail" data-u="contact" data-d="quokkaground.com"><span class="jm-t">문의
+          폼</span></a><br />
       경기도 평택시 · 원격 가능
     </div>
     <p class="fc">© 2026 <span>QuokkaGround</span>. All rights reserved.</p>
@@ -2955,6 +2956,14 @@
       if (contactEl) cio2.observe(contactEl);
     }
 
+    /* 이메일 주소 JS 조립 — 수확 봇 차단(소스에 완성 주소 없음), 사람에겐 동일 표시 */
+    document.querySelectorAll('.js-mail').forEach((a) => {
+      const addr = a.dataset.u + '@' + a.dataset.d;
+      a.href = 'mailto:' + addr;
+      const t = a.querySelector('.jm-t');
+      if (t) t.textContent = addr;
+    });
+
     /* 폼 제출 → Make Webhook */
     const form = document.getElementById('contactForm');
     const btn = document.getElementById('submitBtn');
@@ -2963,8 +2972,8 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      /* honeypot: 봇이 채운 제출은 조용히 성공 처리 */
-      if (document.getElementById('website').value) {
+      /* honeypot·타임트랩: 봇 제출은 조용히 성공 처리 */
+      if (document.getElementById('website').value || performance.now() < 3000) {
         msg.textContent = '✓ 문의가 전송되었습니다. 빠르게 답변드리겠습니다!';
         msg.className = 'form-msg success';
         form.reset();
