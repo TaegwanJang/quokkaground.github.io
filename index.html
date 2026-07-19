@@ -2796,12 +2796,12 @@
       }
     }
 
-    /* 숫자 카운트업 — 정수 값만, 0→값 700ms ease-out, 1회 */
+    /* 숫자 카운트업 — 정수 값만, 0→값 700ms ease-out, 1회.
+       진입 페이드(reveal/히어로 fu)가 끝난 뒤 시작해야 눈에 보인다. */
     const cntEls = document.querySelectorAll('.cntu[data-count]');
+
     function runCount(el) {
       const target = parseInt(el.dataset.count, 10);
-      if (REDUCED.matches) { el.textContent = target; return; }
-      el.style.minWidth = el.offsetWidth + 'px'; /* 최종값 폭 고정 */
       const t0 = performance.now();
       const DUR = 700;
       function tick(now) {
@@ -2813,9 +2813,31 @@
       }
       requestAnimationFrame(tick);
     }
+
+    function armCount(el) {
+      if (REDUCED.matches) { el.textContent = el.dataset.count; return; }
+      el.style.minWidth = el.offsetWidth + 'px'; /* 최종값 폭 먼저 고정 */
+      el.textContent = '0';                      /* 페이드 중에는 0이 보이게 */
+      const host = el.closest('.reveal, .hero-stats');
+      const start = () => {
+        if (el.dataset.counted) return;          /* 이벤트+폴백 중복 실행 가드 */
+        el.dataset.counted = '1';
+        runCount(el);
+      };
+      if (!host || getComputedStyle(host).opacity === '1') { start(); return; }
+      const evName = host.classList.contains('hero-stats') ? 'animationend' : 'transitionend';
+      const onEnd = (e) => {
+        if (evName === 'transitionend' && e.propertyName !== 'opacity') return;
+        host.removeEventListener(evName, onEnd);
+        start();
+      };
+      host.addEventListener(evName, onEnd);
+      setTimeout(start, 2500);                   /* 이벤트 유실 대비 폴백 — 0 고정 방지 */
+    }
+
     if (cntEls.length) {
       const cio = new IntersectionObserver((es) => es.forEach((e) => {
-        if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); }
+        if (e.isIntersecting) { armCount(e.target); cio.unobserve(e.target); }
       }), { threshold: .5 });
       cntEls.forEach((el) => cio.observe(el));
     }
