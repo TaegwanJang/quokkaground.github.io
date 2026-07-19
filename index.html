@@ -1037,22 +1037,51 @@
       opacity: 1
     }
 
-    /* project detail modal */
+    /* project detail modal — mount(display) → open(전환) 2단계 */
     .pm {
       position: fixed;
       inset: 0;
       z-index: 200;
       display: none;
+      opacity: 0;
       background: rgba(17, 18, 20, .55);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px)
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      transition: opacity .16s ease-out, backdrop-filter .16s ease-out, -webkit-backdrop-filter .16s ease-out
     }
 
-    .pm.open {
+    .pm.mounted {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px
+    }
+
+    .pm.open {
+      opacity: 1;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px)
+    }
+
+    .pm-panel {
+      transform: scale(.97);
+      opacity: 0;
+      transition: transform .18s cubic-bezier(.22, 1, .36, 1), opacity .18s cubic-bezier(.22, 1, .36, 1)
+    }
+
+    .pm.open .pm-panel {
+      transform: scale(1);
+      opacity: 1
+    }
+
+    .pm.closing,
+    .pm.closing .pm-panel {
+      transition-duration: .12s
+    }
+
+    .pm.instant,
+    .pm.instant .pm-panel {
+      transition: none
     }
 
     .pm-panel {
@@ -1902,6 +1931,13 @@
       font-weight: 500
     }
 
+    /* count-up: 자릿수 변동 시 레이아웃 시프트 방지 */
+    .cntu {
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+      text-align: center
+    }
+
     /* readability pass (dark) */
     .about-text p {
       max-width: 62ch
@@ -2079,11 +2115,11 @@
     </div>
     <div class="hero-stats" aria-label="주요 실적 수치">
       <div class="hs">
-        <div class="hs-n">9<span>+</span></div>
+        <div class="hs-n"><b class="cntu" data-count="9">9</b><span>+</span></div>
         <div class="hs-l">YEARS EXP.</div>
       </div>
       <div class="hs">
-        <div class="hs-n">20<span>+</span></div>
+        <div class="hs-n"><b class="cntu" data-count="20">20</b><span>+</span></div>
         <div class="hs-l">PROJECTS</div>
       </div>
       <div class="hs">
@@ -2370,12 +2406,12 @@
       소규모 팀이어도 법인 수준의 프로세스 투명성과 코드 품질을 제공합니다.</p>
     <div class="met-row">
       <div class="met reveal">
-        <div class="mn">10<span>+</span></div>
+        <div class="mn"><b class="cntu" data-count="10">10</b><span>+</span></div>
         <div class="ml">APPS LIVE</div>
         <div class="md">App Store · Play Store</div>
       </div>
       <div class="met reveal">
-        <div class="mn">3<span>개</span></div>
+        <div class="mn"><b class="cntu" data-count="3">3</b><span>개</span></div>
         <div class="ml">SDK SHIPPED</div>
         <div class="md">Stipop · Sauce Live · Sauce Clip</div>
       </div>
@@ -2657,7 +2693,26 @@
     const pmClose = document.getElementById('pmClose');
     let pmLastFocus = null;
 
-    function pmOpen(card) {
+    const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let pmHideTimer = null;
+
+    /* body 스크롤 잠금 + 스크롤바 폭 보정(레이아웃 시프트 방지) */
+    function scrollLock() {
+      const sw = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      if (sw > 0) {
+        document.body.style.paddingRight = sw + 'px';
+        nav.style.paddingRight = (parseFloat(getComputedStyle(nav).paddingRight) + sw) + 'px';
+      }
+    }
+
+    function scrollUnlock() {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      nav.style.paddingRight = '';
+    }
+
+    function pmOpen(card, instant) {
       const slug = card.dataset.slug;
       const total = parseInt(card.dataset.slides, 10) || 0;
       pmTitle.textContent = card.querySelector('.pn').textContent;
@@ -2672,19 +2727,44 @@
       }
       document.getElementById('pmPage').href = 'work/' + slug + '/';
       pmLastFocus = document.activeElement;
-      pm.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      clearTimeout(pmHideTimer);
+      pm.classList.remove('closing');
+      pm.classList.add('mounted');
+      if (instant || REDUCED.matches) {
+        pm.classList.add('instant', 'open');
+      } else {
+        /* mount 후 다음 프레임에 open → 전환 발동 */
+        requestAnimationFrame(() => requestAnimationFrame(() => pm.classList.add('open')));
+      }
+      scrollLock();
       pmBody.scrollTop = 0;
       pmClose.focus();
       if (location.hash !== '#p=' + slug) history.pushState(null, '', '#p=' + slug);
     }
 
     function pmHide() {
+      const instant = pm.classList.contains('instant') || REDUCED.matches;
+      pm.classList.add('closing');
       pm.classList.remove('open');
-      document.body.style.overflow = '';
+      const unmount = () => {
+        pm.classList.remove('mounted', 'closing', 'instant');
+        scrollUnlock();
+      };
+      clearTimeout(pmHideTimer);
+      pmHideTimer = setTimeout(unmount, instant ? 0 : 130); /* 닫힘 120ms + 여유 */
       if (location.hash.indexOf('#p=') === 0) history.pushState(null, '', location.pathname);
       if (pmLastFocus) pmLastFocus.focus();
     }
+
+    /* 포커스 트랩: 모달 열림 중 Tab 순환 */
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !pm.classList.contains('open')) return;
+      const focusables = pm.querySelectorAll('a[href], button:not([disabled])');
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
 
     pfGrid.querySelectorAll('.pc[data-slug]').forEach((card) => {
       card.addEventListener('click', (e) => {
@@ -2712,8 +2792,32 @@
       const target = pfGrid.querySelector('.pc[data-slug="' + location.hash.slice(3) + '"]');
       if (target) {
         if (!target.hasAttribute('data-feat')) { pfExpanded = true; pfRender(); }
-        pmOpen(target);
+        pmOpen(target, true);
       }
+    }
+
+    /* 숫자 카운트업 — 정수 값만, 0→값 700ms ease-out, 1회 */
+    const cntEls = document.querySelectorAll('.cntu[data-count]');
+    function runCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      if (REDUCED.matches) { el.textContent = target; return; }
+      el.style.minWidth = el.offsetWidth + 'px'; /* 최종값 폭 고정 */
+      const t0 = performance.now();
+      const DUR = 700;
+      function tick(now) {
+        const p = Math.min((now - t0) / DUR, 1);
+        const eased = 1 - Math.pow(1 - p, 3); /* ease-out cubic */
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+        else el.style.minWidth = '';
+      }
+      requestAnimationFrame(tick);
+    }
+    if (cntEls.length) {
+      const cio = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); }
+      }), { threshold: .5 });
+      cntEls.forEach((el) => cio.observe(el));
     }
 
     /* 폼 제출 → Make Webhook */
