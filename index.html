@@ -303,6 +303,14 @@
       transform: scaleX(1)
     }
 
+    .nls a.active {
+      color: var(--ink)
+    }
+
+    .nls a.active::after {
+      transform: scaleX(1)
+    }
+
     .nc {
       font-family: var(--fm);
       font-size: .82rem;
@@ -1931,6 +1939,27 @@
       font-weight: 500
     }
 
+    /* process 순차 점등 — JS가 .proc-seq를 붙인 경우에만 대기 상태로 시작 */
+    .proc-seq .proc {
+      opacity: .3;
+      transform: translateY(8px);
+      transition: opacity .45s ease, transform .45s ease
+    }
+
+    .proc-seq .proc .pr-n {
+      color: var(--ink-3);
+      transition: color .45s ease
+    }
+
+    .proc-seq .proc.on {
+      opacity: 1;
+      transform: none
+    }
+
+    .proc-seq .proc.on .pr-n {
+      color: var(--acc-text)
+    }
+
     /* count-up: 자릿수 변동 시 레이아웃 시프트 방지 */
     .cntu {
       display: inline-block;
@@ -2840,6 +2869,55 @@
         if (e.isIntersecting) { armCount(e.target); cio.unobserve(e.target); }
       }), { threshold: .5 });
       cntEls.forEach((el) => cio.observe(el));
+    }
+
+    /* 프로세스 5단계 순차 점등 — 행 페이드 종료 후 01→05 스태거 */
+    const procRow = document.querySelector('.proc-row');
+    if (procRow && !REDUCED.matches) {
+      procRow.classList.add('proc-seq');
+      const procCards = procRow.querySelectorAll('.proc');
+      let procLit = false;
+      const light = () => {
+        if (procLit) return;
+        procLit = true;
+        procCards.forEach((c, i) => setTimeout(() => c.classList.add('on'), 140 + i * 170));
+      };
+      const pio = new IntersectionObserver((es) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        pio.disconnect();
+        if (getComputedStyle(procRow).opacity === '1') { light(); return; }
+        procRow.addEventListener('transitionend', (ev) => {
+          if (ev.propertyName === 'opacity') light();
+        });
+        setTimeout(light, 2500); /* 이벤트 유실 폴백 */
+      }), { threshold: .35 });
+      pio.observe(procRow);
+    }
+
+    /* nav 스크롤스파이 — 현재 섹션의 링크에 언더라인 고정 */
+    const spyLinks = document.querySelectorAll('.nls a[href^="#"]');
+    const spyMap = new Map();
+    spyLinks.forEach((a) => {
+      const sec = document.querySelector(a.getAttribute('href'));
+      if (sec) spyMap.set(sec, a);
+    });
+    const spyClear = () => spyLinks.forEach((a) => a.classList.remove('active'));
+    if (spyMap.size) {
+      const sio = new IntersectionObserver((es) => es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        spyClear();
+        const link = spyMap.get(e.target);
+        if (link) link.classList.add('active');
+      }), { rootMargin: '-35% 0px -60% 0px' });
+      spyMap.forEach((_, sec) => sio.observe(sec));
+      /* 링크 없는 구간(히어로·문의)에서는 표시 해제 */
+      const heroEl = document.getElementById('hero');
+      const contactEl = document.getElementById('contact');
+      const cio2 = new IntersectionObserver((es) => es.forEach((e) => {
+        if (e.isIntersecting) spyClear();
+      }), { rootMargin: '-35% 0px -60% 0px' });
+      if (heroEl) cio2.observe(heroEl);
+      if (contactEl) cio2.observe(contactEl);
     }
 
     /* 폼 제출 → Make Webhook */
