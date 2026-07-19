@@ -12,7 +12,7 @@
   <meta name="author" content="장태관 — QuokkaGround" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://quokkaground.com/" />
-  <meta name="theme-color" content="#111310" />
+  <meta name="theme-color" content="#4a9e00" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://quokkaground.com/" />
   <meta property="og:site_name" content="QuokkaGround" />
@@ -102,46 +102,46 @@
     }
 
     :root {
-      /* surfaces — warm near-black, green-tinted (software-craft dark) */
-      --bg: #111310;
-      --bg-subtle: #151812;
-      --bg-panel: #191d16;
-      --bg-panel-2: #1e231b;
-      --bg-sage: #141811;
+      /* surfaces — layered warm-neutral (Linear discipline) */
+      --bg: #ffffff;
+      --bg-subtle: #fafafa;
+      --bg-panel: #f6f7f7;
+      --bg-panel-2: #f0f1f2;
+      --bg-sage: #f1f5ec;
 
-      /* ink ramp — warm off-white */
-      --ink: #eceee7;
-      --ink-2: #b6bcac;
-      --ink-3: #868d7b;
+      /* ink ramp */
+      --ink: #14161a;
+      --ink-2: #565b63;
+      --ink-3: #878d96;
 
       /* hairlines */
-      --line: rgba(236, 238, 231, .09);
-      --line-2: rgba(236, 238, 231, .055);
-      --line-strong: rgba(236, 238, 231, .18);
+      --line: rgba(17, 18, 20, .08);
+      --line-2: rgba(17, 18, 20, .05);
+      --line-strong: rgba(17, 18, 20, .16);
 
-      /* accent — QuokkaGround green, tuned for dark canvas */
-      --acc: #6fce3c;
-      --acc-2: #83dc51;
-      --acc-text: #8fdf63;
-      --acc-wash: rgba(111, 206, 60, .09);
-      --acc-line: rgba(111, 206, 60, .3);
-      --acc-glow: rgba(111, 206, 60, .22);
+      /* accent — QuokkaGround brand green, tuned for AA on white */
+      --acc: #4a9e00;
+      --acc-2: #5fb800;
+      --acc-text: #3d8300;
+      --acc-wash: rgba(74, 158, 0, .06);
+      --acc-line: rgba(74, 158, 0, .22);
+      --acc-glow: rgba(74, 158, 0, .16);
 
-      /* signal colours — brightened for dark ground */
-      --sig-mob: #6db3f2;
-      --sig-back: #8fdf63;
-      --sig-infra: #e3b45c;
-      --sig-tool: #c29bf2;
+      /* signal colours — muted, revealed on hover */
+      --sig-mob: #1f74c4;
+      --sig-back: #3d8300;
+      --sig-infra: #b07400;
+      --sig-tool: #7a37c9;
 
       /* radius scale */
       --r-sm: 8px;
       --r: 12px;
       --r-lg: 16px;
 
-      /* elevation — deep, crisp */
-      --sh-sm: 0 1px 2px rgba(0, 0, 0, .3);
-      --sh: 0 8px 30px -12px rgba(0, 0, 0, .5);
-      --sh-lg: 0 24px 60px -20px rgba(0, 0, 0, .65);
+      /* elevation — crisp, not blurry */
+      --sh-sm: 0 1px 2px rgba(17, 18, 20, .04);
+      --sh: 0 8px 30px -12px rgba(17, 18, 20, .16);
+      --sh-lg: 0 24px 60px -20px rgba(17, 18, 20, .22);
 
       --fh: 'IBM Plex Sans KR', sans-serif;
       --fm: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Menlo, monospace;
@@ -177,7 +177,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 1px 1px, rgba(236, 238, 231, .05) 1px, transparent 0);
+      background: radial-gradient(circle at 1px 1px, rgba(17, 18, 20, .035) 1px, transparent 0);
       background-size: 26px 26px;
       pointer-events: none;
       z-index: 0;
@@ -218,7 +218,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 64px;
-      background: rgba(17, 19, 16, .72);
+      background: rgba(255, 255, 255, .72);
       backdrop-filter: saturate(1.6) blur(20px);
       -webkit-backdrop-filter: saturate(1.6) blur(20px);
       border-bottom: 1px solid transparent;
@@ -227,7 +227,7 @@
 
     nav.sc {
       padding: 11px 64px;
-      background: rgba(17, 19, 16, .88);
+      background: rgba(255, 255, 255, .82);
       border-bottom: 1px solid var(--line);
       box-shadow: var(--sh-sm)
     }
@@ -317,7 +317,7 @@
 
     .nc:hover {
       background: var(--acc);
-      color: #0d0f0b;
+      color: #fff;
       box-shadow: 0 6px 18px -6px var(--acc-glow)
     }
 
@@ -342,7 +342,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(17, 19, 16, .97);
+      background: rgba(255, 255, 255, .97);
       backdrop-filter: blur(8px);
       z-index: 200;
       flex-direction: column;
@@ -447,7 +447,7 @@
       position: absolute;
       inset: -22px;
       border-radius: 28px;
-      border: 1px dashed rgba(236, 238, 231, .14);
+      border: 1px dashed rgba(17, 18, 20, .1);
       animation: ringPulse 4.6s ease-in-out infinite reverse
     }
 
@@ -543,7 +543,7 @@
 
     .bp {
       background: var(--acc);
-      color: #0d0f0b;
+      color: #fff;
       font-family: var(--fm);
       font-size: .9rem;
       font-weight: 700;
@@ -563,7 +563,7 @@
 
     .bg {
       border: 1px solid var(--line-strong);
-      background: rgba(236, 238, 231, .04);
+      background: rgba(255, 255, 255, .5);
       color: var(--ink-2);
       font-family: var(--fm);
       font-size: .9rem;
@@ -727,13 +727,13 @@
       color: var(--ink-2);
       transition: color .22s, border-color .22s, background .22s, box-shadow .22s, transform .22s;
       cursor: default;
-      background: var(--bg-panel);
+      background: #fff;
       box-shadow: var(--sh-sm)
     }
 
     .sc-tag.t-mob {
       color: var(--sig-mob);
-      border-color: rgba(109, 179, 242, .32)
+      border-color: rgba(31, 116, 196, .32)
     }
 
     .sc-tag.t-back {
@@ -743,18 +743,18 @@
 
     .sc-tag.t-infra {
       color: var(--sig-infra);
-      border-color: rgba(227, 180, 92, .32)
+      border-color: rgba(176, 116, 0, .32)
     }
 
     .sc-tag.t-tool {
       color: var(--sig-tool);
-      border-color: rgba(194, 155, 242, .32)
+      border-color: rgba(122, 55, 201, .32)
     }
 
     .sc-tag.t-mob:hover {
-      border-color: rgba(109, 179, 242, .5);
-      background: rgba(109, 179, 242, .1);
-      box-shadow: 0 6px 16px -8px rgba(109, 179, 242, .45);
+      border-color: rgba(31, 116, 196, .5);
+      background: rgba(31, 116, 196, .05);
+      box-shadow: 0 6px 16px -8px rgba(31, 116, 196, .45);
       transform: translateY(-2px)
     }
 
@@ -766,16 +766,16 @@
     }
 
     .sc-tag.t-infra:hover {
-      border-color: rgba(227, 180, 92, .5);
-      background: rgba(227, 180, 92, .1);
-      box-shadow: 0 6px 16px -8px rgba(227, 180, 92, .45);
+      border-color: rgba(176, 116, 0, .5);
+      background: rgba(176, 116, 0, .05);
+      box-shadow: 0 6px 16px -8px rgba(176, 116, 0, .45);
       transform: translateY(-2px)
     }
 
     .sc-tag.t-tool:hover {
-      border-color: rgba(194, 155, 242, .5);
-      background: rgba(194, 155, 242, .1);
-      box-shadow: 0 6px 16px -8px rgba(194, 155, 242, .45);
+      border-color: rgba(122, 55, 201, .5);
+      background: rgba(122, 55, 201, .05);
+      box-shadow: 0 6px 16px -8px rgba(122, 55, 201, .45);
       transform: translateY(-2px)
     }
 
@@ -966,7 +966,7 @@
     .pf-btn[aria-pressed="true"] {
       background: var(--acc);
       border-color: var(--acc);
-      color: #0d0f0b;
+      color: #fff;
       box-shadow: var(--sh-sm)
     }
 
@@ -1043,7 +1043,7 @@
       inset: 0;
       z-index: 200;
       display: none;
-      background: rgba(0, 0, 0, .62);
+      background: rgba(17, 18, 20, .55);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px)
     }
@@ -1219,8 +1219,8 @@
 
     .ptag.t-mob {
       color: var(--sig-mob);
-      border-color: rgba(109, 179, 242, .2);
-      background: rgba(109, 179, 242, .1)
+      border-color: rgba(31, 116, 196, .2);
+      background: rgba(31, 116, 196, .05)
     }
 
     .ptag.t-back {
@@ -1231,14 +1231,14 @@
 
     .ptag.t-infra {
       color: var(--sig-infra);
-      border-color: rgba(227, 180, 92, .2);
-      background: rgba(227, 180, 92, .1)
+      border-color: rgba(176, 116, 0, .2);
+      background: rgba(176, 116, 0, .05)
     }
 
     .ptag.t-tool {
       color: var(--sig-tool);
-      border-color: rgba(194, 155, 242, .2);
-      background: rgba(194, 155, 242, .1)
+      border-color: rgba(122, 55, 201, .2);
+      background: rgba(122, 55, 201, .05)
     }
 
     /* PROCESS — AI dev·verify pipeline + metrics */
@@ -1547,7 +1547,7 @@
     .fi:focus,
     .fta:focus {
       border-color: var(--acc);
-      background: var(--bg-panel);
+      background: #fff;
       box-shadow: 0 0 0 3px var(--acc-wash)
     }
 
@@ -1568,7 +1568,7 @@
 
     .fsub {
       background: var(--acc);
-      color: #0d0f0b;
+      color: #fff;
       font-family: var(--fm);
       font-size: .92rem;
       font-weight: 700;

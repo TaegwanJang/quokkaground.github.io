@@ -1,30 +1,31 @@
 ---
-version: 2.0
+version: 3.0
 name: QuokkaGround-landing-design
-description: "A software-craft dark studio landing in the Linear × Supabase lineage: a warm, green-tinted near-black canvas (#111310) layered with charcoal panels (#191d16 → #1e231b), hairline borders in warm off-white at 5–18% alpha, and a single chromatic event — the QuokkaGround green (#6fce3c) tuned for dark ground and applied only to CTAs (with near-black text, Supabase-style), the h1 em, focus rings, eyebrow markers, and a blinking terminal caret. Ink is warm off-white (#eceee7 → #767d6d). All type is IBM Plex Sans KR (400/500/700) — one family carrying display and body — with the system mono stack for labels, stats, and terminal details. Portfolio covers (colorful 480px Wishket cards) act as the page's jewelry against the dark panels. Four brightened signal colours (blue/green/amber/purple) categorise tech tags. Deep crisp shadows, a faint off-white dot-grid fading after the hero, no gradients as decoration. Single deliberate dark theme — no light mode."
+description: "A light warm-neutral studio landing (Linear discipline, Wise-calm) on layered near-white surfaces (#ffffff → #f0f1f2) with a sage hero band (#f1f5ec), a deep ink ramp (#14161a → #878d96), and a single chromatic event — the QuokkaGround green (#4a9e00, AA-tuned) on CTAs (white text), the h1 em, focus rings, eyebrow markers, and a blinking terminal caret. All type is IBM Plex Sans KR (400/500/700) with the system mono stack for labels, stats, and terminal details. Body sets at 17px/1.75 with word-break: keep-all; paragraphs cap at 62ch. Desktop hero is two-column (left-aligned copy / ringed neon mascot). Four muted signal colours categorise tech tags. Crisp small shadows, a faint ink dot-grid fading after the hero, no gradients as decoration. Light was chosen over dark deliberately: dense Korean sales copy reads better on light ground — dark identity lives on in the terminal profile card and mono details."
 
 colors:
-  accent: "#6fce3c"
-  accent-hover: "#83dc51"
-  accent-text: "#8fdf63"           # AA-safe green for small text on dark
-  on-accent: "#0d0f0b"             # near-black text on green CTAs (never white)
-  accent-wash: "rgba(111,206,60,.09)"
-  accent-line: "rgba(111,206,60,.3)"
-  accent-glow: "rgba(111,206,60,.22)"
-  ink: "#eceee7"
-  ink-secondary: "#a8ae9f"
-  ink-tertiary: "#767d6d"
-  canvas: "#111310"                # warm near-black, green-tinted
-  surface-subtle: "#151812"
-  surface-panel: "#191d16"
-  surface-panel-2: "#1e231b"
-  hairline: "rgba(236,238,231,.09)"
-  hairline-soft: "rgba(236,238,231,.055)"
-  hairline-strong: "rgba(236,238,231,.18)"
-  signal-mobile: "#6db3f2"
-  signal-backend: "#8fdf63"
-  signal-infra: "#e3b45c"
-  signal-tool: "#c29bf2"
+  accent: "#4a9e00"
+  accent-hover: "#5fb800"
+  accent-text: "#3d8300"           # AA-safe green for small text on white
+  on-accent: "#ffffff"
+  accent-wash: "rgba(74,158,0,.06)"
+  accent-line: "rgba(74,158,0,.22)"
+  accent-glow: "rgba(74,158,0,.16)"
+  ink: "#14161a"
+  ink-secondary: "#565b63"
+  ink-tertiary: "#878d96"
+  canvas: "#ffffff"
+  surface-subtle: "#fafafa"
+  surface-panel: "#f6f7f7"
+  surface-panel-2: "#f0f1f2"
+  surface-sage: "#f1f5ec"          # hero band tint
+  hairline: "rgba(17,18,20,.08)"
+  hairline-soft: "rgba(17,18,20,.05)"
+  hairline-strong: "rgba(17,18,20,.16)"
+  signal-mobile: "#1f74c4"
+  signal-backend: "#3d8300"
+  signal-infra: "#b07400"
+  signal-tool: "#7a37c9"
 
 typography:
   family: IBM Plex Sans KR (400 / 500 / 700) — the only loaded family
@@ -50,37 +51,37 @@ rounded:
   pill: 999px   # filter chips, nav CTA
 
 elevation:
-  sm: "0 1px 2px rgba(0,0,0,.3)"
-  md: "0 8px 30px -12px rgba(0,0,0,.5)"
-  lg: "0 24px 60px -20px rgba(0,0,0,.65)"   # card hover
+  sm: "0 1px 2px rgba(17,18,20,.04)"
+  md: "0 8px 30px -12px rgba(17,18,20,.16)"
+  lg: "0 24px 60px -20px rgba(17,18,20,.22)"   # card hover
   rules:
-    - Shadows are deep and downward; glows are reserved for accent CTAs (accent-glow).
+    - Shadows are crisp and downward, never blurry halos.
     - Hover = translateY(-6px) + shadow-lg + accent-line border, 300ms ease-out-expo.
 
 page-order: hero → portfolio (proof first) → process → about → stack → testimonials → contact. Single contact CTA — no duplicate CTA band.
 
 readability:
-  - Body 17px / 1.75 line-height; paragraphs capped at 62ch; ink-secondary #b6bcac tuned for dark halation.
+  - Body 17px / 1.75 line-height; paragraphs capped at 62ch.
   - Containers cap at 1180px (1380px ≥1800px viewports, body 18px there).
 
 atmosphere:
-  - Fixed dot-grid (1px off-white dots at 5%, 26px cell) masked to fade out by 720px scroll.
-  - Hero band sits on a marginally deeper green-tinted surface; sections alternate canvas / surface-subtle with hairline top borders.
-  - The neon quokka mascot (green CRT glow) is native to this theme — frame it with soft rings, no border.
-  - No gradients as decoration, no glassmorphism beyond the translucent nav blur.
+  - Fixed dot-grid (1px ink dots at 3.5%, 26px cell) masked to fade out by 720px scroll.
+  - Hero band sits on the sage tint; sections alternate canvas / surface-subtle with hairline top borders.
+  - The neon quokka mascot is framed with soft accent rings on the sage band.
+  - No gradients as decoration, no glassmorphism beyond the translucent white nav blur.
 
 components:
-  nav: "Fixed top bar on rgba(17,19,16,.72) blur; hairline bottom on scroll; brand dot + wordmark, links centre, green pill CTA with near-black text."
+  nav: "Fixed top bar on rgba(255,255,255,.72) blur; hairline bottom on scroll; brand dot + wordmark, links centre, green pill CTA."
   hero: "Two-column on desktop — left: mono eyebrow with blinking '_' caret, left-aligned display h1 (accent em), sub (max 36em), solid/ghost buttons, 3-stat strip; right: ringed neon mascot (clamp 250–440px). Collapses to centered single column under 1000px with mascot first."
   section-head: "Mono eyebrow (.sl) → display h2 → one-line sub; centered."
   portfolio-card: "Charcoal panel, square 480px WebP cover full-bleed (1.03 scale on hover), body: bold title as crawlable link, 2-line desc, signal-coloured mono tags, '상세 보기 →' affordance."
-  portfolio-filter: "Two labeled chip rows (유형 / 분야); active chip = solid green with near-black text; counts in mono."
-  project-modal: "Centered dialog (860px, full-screen mobile) over rgba(0,0,0,.62) blur: title bar + circular close, on-demand 1080px slides, page-link + contact CTA footer. Deep link #p=<slug>."
+  portfolio-filter: "Two labeled chip rows (유형 / 분야); active chip = solid green with white text; counts in mono."
+  project-modal: "Centered dialog (860px, full-screen mobile) over rgba(17,18,20,.55) blur: title bar + circular close, on-demand 1080px slides, page-link + contact CTA footer. Deep link #p=<slug>."
   process-step: "5-up grid of subtle panels — mono accent number, bold title, small desc; hover = accent wash."
   metric-tile: "4-up bordered row; huge 700-weight number with accent unit span, mono label, factual desc. Numbers must be verifiable — never borrowed prestige."
-  terminal-card: "Profile card as terminal window — dots bar on panel-2, mono `// key` labels, right-aligned values; fully native to the dark theme."
+  terminal-card: "Profile card as terminal window — dots bar on panel-2, mono `// key` labels, right-aligned values; the page's deliberate dark-identity moment."
   testimonial-card: "Star row (accent), quote, emoji avatar + anonymised role. No client names, no platform ratings."
-  form: "Charcoal inputs on subtle surface, green focus ring, honeypot (.hp-field), required privacy consent (1-year retention wording), solid green submit with near-black text."
+  form: "Subtle-surface inputs, green focus ring, honeypot (.hp-field), required privacy consent (1-year retention wording), solid green submit."
 
 motion:
   - IntersectionObserver .reveal fade-up, 90ms sibling stagger, one-shot.
