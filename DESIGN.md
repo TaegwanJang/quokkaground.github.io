@@ -57,6 +57,12 @@ elevation:
     - Shadows are deep and downward; glows are reserved for accent CTAs (accent-glow).
     - Hover = translateY(-6px) + shadow-lg + accent-line border, 300ms ease-out-expo.
 
+page-order: hero → portfolio (proof first) → process → about → stack → testimonials → contact. Single contact CTA — no duplicate CTA band.
+
+readability:
+  - Body 17px / 1.75 line-height; paragraphs capped at 62ch; ink-secondary #b6bcac tuned for dark halation.
+  - Containers cap at 1180px (1380px ≥1800px viewports, body 18px there).
+
 atmosphere:
   - Fixed dot-grid (1px off-white dots at 5%, 26px cell) masked to fade out by 720px scroll.
   - Hero band sits on a marginally deeper green-tinted surface; sections alternate canvas / surface-subtle with hairline top borders.
@@ -65,7 +71,7 @@ atmosphere:
 
 components:
   nav: "Fixed top bar on rgba(17,19,16,.72) blur; hairline bottom on scroll; brand dot + wordmark, links centre, green pill CTA with near-black text."
-  hero: "Centered column — ringed neon mascot, mono eyebrow with blinking '_' caret (caretBlink 1.1s steps), display h1 with accent em, sub, solid/ghost buttons, 3-stat strip over hairline."
+  hero: "Two-column on desktop — left: mono eyebrow with blinking '_' caret, left-aligned display h1 (accent em), sub (max 36em), solid/ghost buttons, 3-stat strip; right: ringed neon mascot (clamp 250–440px). Collapses to centered single column under 1000px with mascot first."
   section-head: "Mono eyebrow (.sl) → display h2 → one-line sub; centered."
   portfolio-card: "Charcoal panel, square 480px WebP cover full-bleed (1.03 scale on hover), body: bold title as crawlable link, 2-line desc, signal-coloured mono tags, '상세 보기 →' affordance."
   portfolio-filter: "Two labeled chip rows (유형 / 분야); active chip = solid green with near-black text; counts in mono."

@@ -111,8 +111,8 @@
 
       /* ink ramp — warm off-white */
       --ink: #eceee7;
-      --ink-2: #a8ae9f;
-      --ink-3: #767d6d;
+      --ink-2: #b6bcac;
+      --ink-3: #868d7b;
 
       /* hairlines */
       --line: rgba(236, 238, 231, .09);
@@ -163,7 +163,8 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--fb);
-      line-height: 1.65;
+      font-size: 1.0625rem;
+      line-height: 1.75;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -272,7 +273,7 @@
 
     .nls a {
       font-family: var(--fm);
-      font-size: .8rem;
+      font-size: .86rem;
       color: var(--ink-2);
       text-decoration: none;
       letter-spacing: .02em;
@@ -378,19 +379,22 @@
       cursor: pointer
     }
 
-    /* HERO — flat sage band (Wise): brand green lives in the canvas, calmly */
+    /* HERO — two-column: left copy, right neon mascot */
     header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 150px 60px 90px;
+      padding: 172px 64px 96px;
       position: relative;
       overflow: hidden;
       background: var(--bg-sage);
       border-bottom: 1px solid var(--line-2)
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .85fr);
+      gap: clamp(48px, 6vw, 100px);
+      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto
     }
 
     .halo {
@@ -412,8 +416,9 @@
 
     .hero-img-outer {
       position: relative;
-      width: clamp(210px, 24vw, 320px);
-      margin: 0 auto 34px;
+      width: clamp(250px, 28vw, 440px);
+      margin: 0;
+      justify-self: center;
       opacity: 0;
       animation: popIn .8s .1s cubic-bezier(.34, 1.56, .64, 1) forwards
     }
@@ -498,12 +503,11 @@
 
     h1 {
       font-family: var(--fh);
-      font-size: clamp(3rem, 5.8vw, 6rem);
+      font-size: clamp(2.9rem, 4.4vw, 4.7rem);
       font-weight: 700;
-      line-height: 1.02;
-      letter-spacing: -.045em;
-      max-width: 800px;
-      margin-bottom: 22px;
+      line-height: 1.06;
+      letter-spacing: -.04em;
+      margin-bottom: 24px;
       opacity: 0;
       animation: fu .7s .55s forwards
     }
@@ -515,11 +519,11 @@
     }
 
     .hero-sub {
-      font-size: 1.12rem;
+      font-size: 1.14rem;
       color: var(--ink-2);
       line-height: 1.9;
-      max-width: 540px;
-      margin: 0 auto 40px;
+      max-width: 36em;
+      margin: 0 0 40px;
       opacity: 0;
       animation: fu .7s .7s forwards
     }
@@ -532,7 +536,6 @@
     .hero-btns {
       display: flex;
       gap: 14px;
-      justify-content: center;
       flex-wrap: wrap;
       opacity: 0;
       animation: fu .7s .85s forwards
@@ -592,21 +595,23 @@
     .hero-stats {
       display: flex;
       gap: 0;
-      margin-top: 74px;
-      padding-top: 40px;
+      margin-top: 64px;
+      padding-top: 36px;
       border-top: 1px solid var(--line);
       width: 100%;
-      max-width: 720px;
-      justify-content: center;
+      max-width: 620px;
       opacity: 0;
       animation: fu .7s 1s forwards
     }
 
     .hs {
       flex: 1;
-      text-align: center;
-      padding: 0 24px;
+      padding: 0 28px;
       border-right: 1px solid var(--line)
+    }
+
+    .hs:first-child {
+      padding-left: 0
     }
 
     .hs:last-child {
@@ -680,7 +685,7 @@
 
     .ss {
       color: var(--ink-2);
-      font-size: 1.02rem;
+      font-size: 1.08rem;
       max-width: 500px;
       line-height: 1.85;
       margin-bottom: 58px
@@ -1457,40 +1462,6 @@
       color: var(--ink-3)
     }
 
-    /* CTA — enclosed rounded banner card (Cal.com/Linear cta-banner) */
-    #cta {
-      background: var(--bg-sage);
-      border: 1px solid var(--line);
-      border-radius: var(--r-lg);
-      width: min(1200px, calc(100% - 48px));
-      margin: 96px auto;
-      padding: 88px 64px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--sh-sm)
-    }
-
-    #cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 50% 80% at 50% 130%, var(--acc-glow) 0%, transparent 60%);
-      pointer-events: none
-    }
-
-    #cta h2 {
-      font-size: clamp(2.2rem, 4.2vw, 3.3rem);
-      max-width: 640px;
-      margin: 0 auto 16px
-    }
-
-    #cta p {
-      color: var(--ink-2);
-      margin-bottom: 40px;
-      font-size: 1.04rem
-    }
-
     /* CONTACT */
     #contact {
       background: var(--bg-subtle)
@@ -1790,8 +1761,7 @@
       }
 
       section,
-      #process,
-      #cta {
+      #process {
         padding: 88px 40px
       }
 
@@ -1823,8 +1793,7 @@
       }
 
       section,
-      #process,
-      #cta {
+      #process {
         padding: 68px 20px
       }
 
@@ -1933,6 +1902,95 @@
       font-weight: 500
     }
 
+    /* readability pass (dark) */
+    .about-text p {
+      max-width: 62ch
+    }
+
+    .al {
+      color: var(--ink-2);
+      font-size: .84rem
+    }
+
+    .av {
+      font-size: .97rem
+    }
+
+    .tt {
+      font-size: .97rem
+    }
+
+    .ab {
+      font-size: .82rem
+    }
+
+    .met-row,
+    .tg {
+      max-width: 1180px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .cg {
+      max-width: 1180px;
+      margin: 0 auto
+    }
+
+    /* wide desktop (≥1800px) */
+    @media(min-width:1800px) {
+      body {
+        font-size: 1.125rem
+      }
+
+      .hero-grid {
+        max-width: 1420px
+      }
+
+      .pf-grid,
+      .proc-row,
+      .met-row,
+      .tg,
+      .cg {
+        max-width: 1380px
+      }
+    }
+
+    /* hero collapse to single column */
+    @media(max-width:1000px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center
+      }
+
+      .hero-img-outer {
+        order: -1;
+        width: clamp(210px, 46vw, 320px)
+      }
+
+      .hero-sub {
+        margin: 0 auto 36px
+      }
+
+      .hero-btns {
+        justify-content: center
+      }
+
+      .hero-stats {
+        margin-left: auto;
+        margin-right: auto
+      }
+
+      .hs {
+        text-align: center;
+        padding: 0 20px
+      }
+
+      .hs:first-child {
+        padding-left: 20px
+      }
+    }
+
     /* REDUCED MOTION */
     @media (prefers-reduced-motion: reduce) {
 
@@ -1986,10 +2044,10 @@
 
   <div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
     <button class="mmc" id="mmc" aria-label="메뉴 닫기">✕</button>
-    <a href="#stack" onclick="cM()">기술 스택</a>
-    <a href="#about" onclick="cM()">자기소개</a>
     <a href="#portfolio" onclick="cM()">포트폴리오</a>
     <a href="#process" onclick="cM()">일하는 방식</a>
+    <a href="#about" onclick="cM()">자기소개</a>
+    <a href="#stack" onclick="cM()">기술 스택</a>
     <a href="#testimonials" onclick="cM()">후기</a>
     <a href="#contact" onclick="cM()" style="color:var(--acc-text)">문의하기 →</a>
   </div>
@@ -1997,10 +2055,10 @@
   <nav id="nav" role="navigation" aria-label="주요 메뉴">
     <a href="#" class="nl" aria-label="QuokkaGround 홈"><span class="nd" aria-hidden="true"></span>QuokkaGround</a>
     <ul class="nls">
-      <li><a href="#stack">기술 스택</a></li>
-      <li><a href="#about">자기소개</a></li>
       <li><a href="#portfolio">포트폴리오</a></li>
       <li><a href="#process">일하는 방식</a></li>
+      <li><a href="#about">자기소개</a></li>
+      <li><a href="#stack">기술 스택</a></li>
       <li><a href="#testimonials">후기</a></li>
     </ul>
     <a href="#contact" class="nc">문의하기</a>
@@ -2009,13 +2067,8 @@
 
   <header id="hero" role="banner">
     <div class="halo" aria-hidden="true"></div>
-    <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
-      <div class="hero-img-ring" aria-hidden="true"></div>
-      <div class="hero-img-ring2" aria-hidden="true"></div>
-      <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
-        width="1102" height="734" fetchpriority="high" decoding="async"
-        style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
-    </div>
+    <div class="hero-grid">
+    <div class="hero-text">
     <p class="hero-eye"><i aria-hidden="true"></i>FULLSTACK DEV STUDIO</p>
     <h1>앱·웹·백엔드를<br /><em>기획부터 출시까지 책임집니다</em></h1>
     <p class="hero-sub"><strong>QuokkaGround</strong> 개발팀 대표 개발자 <strong>장태관</strong>입니다. <br />Flutter · React Native · Node.js —
@@ -2038,77 +2091,16 @@
         <div class="hs-l">FULL-STACK</div>
       </div>
     </div>
+    </div>
+    <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
+      <div class="hero-img-ring" aria-hidden="true"></div>
+      <div class="hero-img-ring2" aria-hidden="true"></div>
+      <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
+        width="1102" height="734" fetchpriority="high" decoding="async"
+        style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
+    </div>
+    </div>
   </header>
-
-  <section id="stack" aria-labelledby="stack-h">
-    <div class="tc">
-      <p class="sl reveal">기술 스택</p>
-      <h2 id="stack-h" class="reveal">프로젝트에 맞는<br />최적의 조합을 씁니다</h2>
-      <p class="ss reveal">모바일부터 인프라까지 — 대표 개발자 중심으로 전체 스택을 커버합니다.</p>
-    </div>
-    <div class="stack-cloud reveal" aria-label="사용 가능 기술 목록">
-      <span class="sc-tag t-mob">Flutter</span><span class="sc-tag t-mob">Dart</span>
-      <span class="sc-tag t-mob">React Native</span>
-      <span class="sc-tag t-mob">Swift (iOS)</span><span class="sc-tag t-mob">Kotlin (Android)</span>
-      <span class="sc-tag t-mob">React</span><span class="sc-tag t-mob">Next.js</span>
-      <span class="sc-tag t-mob">GetX</span><span class="sc-tag t-mob">Riverpod</span>
-      <span class="sc-tag t-mob">Dio/Retrofit</span>
-      <span class="sc-tag t-back">Node.js</span><span class="sc-tag t-back">Express</span>
-      <span class="sc-tag t-back">NestJS</span><span class="sc-tag t-back">Java</span>
-      <span class="sc-tag t-back">Spring Boot</span><span class="sc-tag t-back">TypeScript</span>
-      <span class="sc-tag t-back">JWT</span><span class="sc-tag t-back">WebSocket</span>
-      <span class="sc-tag t-back">Supabase</span>
-      <span class="sc-tag t-infra">PostgreSQL</span><span class="sc-tag t-infra">PostGIS</span>
-      <span class="sc-tag t-infra">MySQL</span><span class="sc-tag t-infra">AWS EC2</span>
-      <span class="sc-tag t-infra">Aurora Serverless</span><span class="sc-tag t-infra">S3</span>
-      <span class="sc-tag t-infra">CloudFront</span><span class="sc-tag t-infra">Firebase</span>
-      <span class="sc-tag t-infra">AWS Lambda</span><span class="sc-tag t-infra">DynamoDB</span>
-      <span class="sc-tag t-infra">TencentCloud RTC</span>
-      <span class="sc-tag t-tool">OpenAI API</span><span class="sc-tag t-tool">Claude API</span>
-      <span class="sc-tag t-tool">Figma</span><span class="sc-tag t-tool">GitHub</span>
-      <span class="sc-tag t-tool">Notion</span>
-    </div>
-  </section>
-
-  <section id="about" aria-labelledby="about-h">
-    <div class="about-cols">
-      <div class="about-text">
-        <p class="sl reveal">자기소개</p>
-        <h2 id="about-h" class="reveal">대표 개발자가<br />직접 책임집니다</h2>
-        <p class="reveal"><strong>QuokkaGround(쿼카그라운드)</strong>는 대표 개발자 <strong>장태관</strong>이 직접 실무를 수행하는
-          개발팀입니다. 웹 프론트엔드·서버 개발(기획 겸)·디자인까지, 창업기부터 함께해 온 동료들이 한 팀을 이루고
-          있습니다. 장태관 대표는 Flutter·모바일·풀스택 개발자로, 2016년부터 본격적으로 활동을
-          시작해 20개 이상의 서비스를 기획·개발·출시했습니다.</p>
-        <p class="reveal">Flutter·React Native 기반 iOS·Android 크로스플랫폼 앱을 주력으로, Node.js / Spring Boot 백엔드,
-          React·Next.js 관리자 웹, AWS 인프라, OpenAI·Claude API 기반 AI 기능까지 <strong>핵심 개발자가 직접 설계하고
-          구현</strong>합니다. 중간 전달자 없이 빠른 의사결정이 가능하고, 팀이 웹·앱·백엔드 전 영역에 대응합니다.</p>
-        <p class="reveal">이랜드 통합 멤버십, 라이브커머스 SDK, 글로벌 헬스케어 앱 등 <strong>기업 프로젝트 실무 경험</strong>이 있으며,
-          모든 프로젝트는 규모와 무관하게 <strong>계획→승인→구현→검증→리뷰 5단계 체계</strong>로 진행합니다.</p>
-        <p class="reveal">Wishket 등 국내 주요 플랫폼에서 스타트업·개인사업자·중소기업 클라이언트와 함께 서비스를 만들어왔습니다.</p>
-        <div class="about-badges reveal">
-          <span class="ab">📍 경기도 평택시</span><span class="ab">🤝 창업부터 함께한 팀</span>
-          <span class="ab">💼 개인사업자</span><span class="ab">🏆 정부지원 수상</span>
-        </div>
-      </div>
-      <div class="about-card reveal" aria-label="주요 이력 카드">
-        <div class="term-bar" aria-hidden="true">
-          <span class="term-dots"><i></i><i></i><i></i></span>
-          <span class="term-name">quokkaground.profile</span>
-        </div>
-        <div class="term-body">
-          <div class="acr"><span class="al">주력 플랫폼</span><span class="av bl">Flutter · React Native</span></div>
-          <div class="acr"><span class="al">백엔드</span><span class="av">Node.js · Spring Boot · Supabase</span></div>
-          <div class="acr"><span class="al">AI/LLM</span><span class="av">OpenAI · Claude API (프롬프트 설계)</span></div>
-          <div class="acr"><span class="al">인프라</span><span class="av">AWS (EC2 · Lambda · RDS · S3) · Firebase</span></div>
-          <div class="acr"><span class="al">경력</span><span class="av bl">9년+ (2016~)</span></div>
-          <div class="acr"><span class="al">완료 프로젝트</span><span class="av">20건 이상</span></div>
-          <div class="acr"><span class="al">활동 플랫폼</span><span class="av">Wishket</span></div>
-          <div class="acr"><span class="al">협업 구성</span><span class="av bl">모바일 · 웹 · 서버/기획 · 디자인</span></div>
-          <div class="acr"><span class="al">협업 방식</span><span class="av bl">원격 기본 · 대면 협의 가능</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="portfolio" aria-labelledby="port-h">
     <div class="tc">
@@ -2400,6 +2392,76 @@
     </div>
   </section>
 
+  <section id="about" aria-labelledby="about-h">
+    <div class="about-cols">
+      <div class="about-text">
+        <p class="sl reveal">자기소개</p>
+        <h2 id="about-h" class="reveal">대표 개발자가<br />직접 책임집니다</h2>
+        <p class="reveal"><strong>QuokkaGround(쿼카그라운드)</strong>는 대표 개발자 <strong>장태관</strong>이 직접 실무를 수행하는
+          개발팀입니다. 웹 프론트엔드·서버 개발(기획 겸)·디자인까지, 창업기부터 함께해 온 동료들이 한 팀을 이루고
+          있습니다. 장태관 대표는 Flutter·모바일·풀스택 개발자로, 2016년부터 본격적으로 활동을
+          시작해 20개 이상의 서비스를 기획·개발·출시했습니다.</p>
+        <p class="reveal">Flutter·React Native 기반 iOS·Android 크로스플랫폼 앱을 주력으로, Node.js / Spring Boot 백엔드,
+          React·Next.js 관리자 웹, AWS 인프라, OpenAI·Claude API 기반 AI 기능까지 <strong>핵심 개발자가 직접 설계하고
+          구현</strong>합니다. 중간 전달자 없이 빠른 의사결정이 가능하고, 팀이 웹·앱·백엔드 전 영역에 대응합니다.</p>
+        <p class="reveal">이랜드 통합 멤버십, 라이브커머스 SDK, 글로벌 헬스케어 앱 등 <strong>기업 프로젝트 실무 경험</strong>이 있으며,
+          모든 프로젝트는 규모와 무관하게 <strong>계획→승인→구현→검증→리뷰 5단계 체계</strong>로 진행합니다.</p>
+        <p class="reveal">Wishket 등 국내 주요 플랫폼에서 스타트업·개인사업자·중소기업 클라이언트와 함께 서비스를 만들어왔습니다.</p>
+        <div class="about-badges reveal">
+          <span class="ab">📍 경기도 평택시</span><span class="ab">🤝 창업부터 함께한 팀</span>
+          <span class="ab">💼 개인사업자</span><span class="ab">🏆 정부지원 수상</span>
+        </div>
+      </div>
+      <div class="about-card reveal" aria-label="주요 이력 카드">
+        <div class="term-bar" aria-hidden="true">
+          <span class="term-dots"><i></i><i></i><i></i></span>
+          <span class="term-name">quokkaground.profile</span>
+        </div>
+        <div class="term-body">
+          <div class="acr"><span class="al">주력 플랫폼</span><span class="av bl">Flutter · React Native</span></div>
+          <div class="acr"><span class="al">백엔드</span><span class="av">Node.js · Spring Boot · Supabase</span></div>
+          <div class="acr"><span class="al">AI/LLM</span><span class="av">OpenAI · Claude API (프롬프트 설계)</span></div>
+          <div class="acr"><span class="al">인프라</span><span class="av">AWS (EC2 · Lambda · RDS · S3) · Firebase</span></div>
+          <div class="acr"><span class="al">경력</span><span class="av bl">9년+ (2016~)</span></div>
+          <div class="acr"><span class="al">완료 프로젝트</span><span class="av">20건 이상</span></div>
+          <div class="acr"><span class="al">활동 플랫폼</span><span class="av">Wishket</span></div>
+          <div class="acr"><span class="al">협업 구성</span><span class="av bl">모바일 · 웹 · 서버/기획 · 디자인</span></div>
+          <div class="acr"><span class="al">협업 방식</span><span class="av bl">원격 기본 · 대면 협의 가능</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" aria-labelledby="stack-h">
+    <div class="tc">
+      <p class="sl reveal">기술 스택</p>
+      <h2 id="stack-h" class="reveal">프로젝트에 맞는<br />최적의 조합을 씁니다</h2>
+      <p class="ss reveal">모바일부터 인프라까지 — 대표 개발자 중심으로 전체 스택을 커버합니다.</p>
+    </div>
+    <div class="stack-cloud reveal" aria-label="사용 가능 기술 목록">
+      <span class="sc-tag t-mob">Flutter</span><span class="sc-tag t-mob">Dart</span>
+      <span class="sc-tag t-mob">React Native</span>
+      <span class="sc-tag t-mob">Swift (iOS)</span><span class="sc-tag t-mob">Kotlin (Android)</span>
+      <span class="sc-tag t-mob">React</span><span class="sc-tag t-mob">Next.js</span>
+      <span class="sc-tag t-mob">GetX</span><span class="sc-tag t-mob">Riverpod</span>
+      <span class="sc-tag t-mob">Dio/Retrofit</span>
+      <span class="sc-tag t-back">Node.js</span><span class="sc-tag t-back">Express</span>
+      <span class="sc-tag t-back">NestJS</span><span class="sc-tag t-back">Java</span>
+      <span class="sc-tag t-back">Spring Boot</span><span class="sc-tag t-back">TypeScript</span>
+      <span class="sc-tag t-back">JWT</span><span class="sc-tag t-back">WebSocket</span>
+      <span class="sc-tag t-back">Supabase</span>
+      <span class="sc-tag t-infra">PostgreSQL</span><span class="sc-tag t-infra">PostGIS</span>
+      <span class="sc-tag t-infra">MySQL</span><span class="sc-tag t-infra">AWS EC2</span>
+      <span class="sc-tag t-infra">Aurora Serverless</span><span class="sc-tag t-infra">S3</span>
+      <span class="sc-tag t-infra">CloudFront</span><span class="sc-tag t-infra">Firebase</span>
+      <span class="sc-tag t-infra">AWS Lambda</span><span class="sc-tag t-infra">DynamoDB</span>
+      <span class="sc-tag t-infra">TencentCloud RTC</span>
+      <span class="sc-tag t-tool">OpenAI API</span><span class="sc-tag t-tool">Claude API</span>
+      <span class="sc-tag t-tool">Figma</span><span class="sc-tag t-tool">GitHub</span>
+      <span class="sc-tag t-tool">Notion</span>
+    </div>
+  </section>
+
   <section id="testimonials" aria-labelledby="test-h">
     <div class="tc">
       <p class="sl reveal">클라이언트 후기</p>
@@ -2458,16 +2520,6 @@
     </div>
   </section>
 
-  <section id="cta" aria-labelledby="cta-h">
-    <p class="sl reveal" style="text-align:center">지금 시작하기</p>
-    <h2 id="cta-h" class="reveal">프로젝트가 있으신가요?<br /><em style="font-style:normal;color:var(--acc-text)">함께 만들어봐요.</em></h2>
-    <p class="reveal">요구사항이 정리되지 않았어도 괜찮습니다. 간단한 아이디어만 알려주시면 실현 방법과 예상 일정을 함께 정리해드립니다.</p>
-    <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="#contact" class="bp">문의하기 →</a>
-      <a href="mailto:contact@quokkaground.com" class="bg">이메일 바로가기</a>
-    </div>
-  </section>
-
   <section id="contact" aria-labelledby="contact-h">
     <div class="cg">
       <div class="ci">
@@ -2515,9 +2567,9 @@
       <div class="fb"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc);display:inline-block"
           aria-hidden="true"></span>QuokkaGround</div>
       <ul class="fn">
-        <li><a href="#about">자기소개</a></li>
-        <li><a href="#stack">기술 스택</a></li>
         <li><a href="#portfolio">포트폴리오</a></li>
+        <li><a href="#process">일하는 방식</a></li>
+        <li><a href="#about">자기소개</a></li>
         <li><a href="#contact">문의</a></li>
       </ul>
     </div>
