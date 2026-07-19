@@ -128,19 +128,19 @@ def e(s):
 
 
 CSS = '''*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#fff;--bg-subtle:#fafafa;--ink:#14161a;--ink-2:#565b63;--ink-3:#878d96;
---line:rgba(17,18,20,.08);--line-2:rgba(17,18,20,.05);--acc:#4a9e00;--acc-text:#3d8300;
---acc-wash:rgba(74,158,0,.06);--acc-line:rgba(74,158,0,.22);--r:12px;--r-sm:8px;
---fh:'Plus Jakarta Sans','Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;
+:root{--bg:#111310;--bg-subtle:#151812;--ink:#eceee7;--ink-2:#a8ae9f;--ink-3:#767d6d;
+--line:rgba(236,238,231,.09);--line-2:rgba(236,238,231,.055);--acc:#6fce3c;--acc-text:#8fdf63;
+--acc-wash:rgba(111,206,60,.09);--acc-line:rgba(111,206,60,.3);--r:12px;--r-sm:8px;
+--fh:'IBM Plex Sans KR',sans-serif;--fb:'IBM Plex Sans KR',sans-serif;
 --fm:ui-monospace,'SF Mono',Menlo,monospace;
---sh-sm:0 1px 2px rgba(17,18,20,.04)}
+--sh-sm:0 1px 2px rgba(0,0,0,.3)}
 body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 a{color:var(--acc-text)}
 nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line-2);
-position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+position:sticky;top:0;background:rgba(17,19,16,.88);backdrop-filter:blur(8px);z-index:10}
 nav .brand{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-weight:700;color:var(--ink);text-decoration:none;font-size:.95rem}
 nav .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
-nav .cta{font-size:.86rem;font-weight:500;color:#fff;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
+nav .cta{font-size:.86rem;font-weight:500;color:#0d0f0b;background:var(--acc);padding:8px 16px;border-radius:999px;text-decoration:none}
 main{max-width:800px;margin:0 auto;padding:48px 20px 80px}
 .crumb{font-size:.8rem;color:var(--ink-3);margin-bottom:20px}
 .crumb a{color:var(--ink-3);text-decoration:none}
@@ -163,7 +163,7 @@ figure img{width:100%;height:auto;border:1px solid var(--line-2);border-radius:v
 .ach p{font-size:.88rem;color:var(--ink-2)}
 .cta-box{margin-top:52px;text-align:center;background:var(--acc-wash);border:1px solid var(--acc-line);border-radius:var(--r);padding:34px 20px}
 .cta-box p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
-.cta-box a{display:inline-block;background:var(--acc);color:#fff;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
+.cta-box a{display:inline-block;background:var(--acc);color:#0d0f0b;font-weight:600;text-decoration:none;padding:12px 26px;border-radius:999px}
 .pn-nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;font-size:.88rem}
 .pn-nav a{text-decoration:none;color:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 16px;flex:1;max-width:48%}
 .pn-nav a:hover{border-color:var(--acc-line);color:var(--acc-text)}
@@ -269,7 +269,7 @@ def build_page(idx, slug, folder, card_title, cat, slides):
   <link rel="apple-touch-icon" href="/favicon-192x192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
 {jsonld}
   </script>
