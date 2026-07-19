@@ -1939,6 +1939,21 @@
       font-weight: 500
     }
 
+    /* 포트폴리오 필터 전환 (View Transitions API 지원 브라우저) */
+    ::view-transition-group(*) {
+      animation-duration: .28s;
+      animation-timing-function: cubic-bezier(.22, 1, .36, 1)
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      ::view-transition-group(*),
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none !important
+      }
+    }
+
     /* process 순차 점등 — JS가 .proc-seq를 붙인 경우에만 대기 상태로 시작 */
     .proc-seq .proc {
       opacity: .3;
@@ -2687,6 +2702,22 @@
       return true;
     }
 
+    /* 필터 전환: 지원 시 View Transition(잔류 카드 위치 이동 + 등퇴장 페이드), 미지원·RM은 즉시 토글 */
+    pfGrid.querySelectorAll('.pc[data-slug]').forEach((c) => {
+      c.style.viewTransitionName = 'pc-' + c.dataset.slug;
+    });
+
+    function pfApply(mutate) {
+      if (document.startViewTransition && !REDUCED.matches) {
+        let ran = false;
+        document.startViewTransition(() => { ran = true; mutate(); });
+        /* 콜백 지연·실패 대비 보험 — pfRender는 상태 기반 멱등이라 이중 실행 무해 */
+        setTimeout(() => { if (!ran) mutate(); }, 350);
+      } else {
+        mutate();
+      }
+    }
+
     function pfRender() {
       pfGrid.classList.toggle('collapsed', pfKind === 'all' && !pfExpanded);
       pfGrid.querySelectorAll('.pc').forEach((card) => {
@@ -2706,13 +2737,17 @@
         pfValue = btn.dataset.domFilter;
       }
       pfBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      pfRender();
+      pfApply(pfRender);
     }));
 
     pfMore.addEventListener('click', () => {
       pfExpanded = !pfExpanded;
-      pfRender();
-      if (!pfExpanded) document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+      if (pfExpanded) {
+        pfApply(pfRender); /* 펼침: 전환 */
+      } else {
+        pfRender();        /* 접힘: 스크롤 점프와 겹치면 어색 → 즉시 토글 */
+        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+      }
     });
 
     /* 프로젝트 상세 모달 (해시 딥링크 #p=slug 지원) */
