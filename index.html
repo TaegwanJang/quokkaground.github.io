@@ -999,13 +999,21 @@
       display: none
     }
 
-    .pf-grid.collapsed .pc:not([data-feat]) {
-      display: none
-    }
-
     .pf-more-wrap {
+      display: none;
       text-align: center;
       margin-top: 32px
+    }
+
+    /* 접기·더보기는 모바일 전용 (데스크톱은 항상 전체 표시) */
+    @media(max-width:760px) {
+      .pf-grid.collapsed .pc:not([data-feat]) {
+        display: none
+      }
+
+      .pf-more-wrap {
+        display: block
+      }
     }
 
     .pf-more {
@@ -2216,7 +2224,7 @@
       <button type="button" class="pf-btn" data-dom-filter="media" aria-pressed="false">미디어·콘텐츠<span class="cnt">4</span></button>
       <button type="button" class="pf-btn" data-dom-filter="edu" aria-pressed="false">교육<span class="cnt">2</span></button>
     </div>
-    <div class="pf-grid collapsed reveal" id="pfGrid">
+    <div class="pf-grid reveal" id="pfGrid">
       <article class="pc" data-feat data-cat="app" data-slug="emember" data-dom="commerce" data-slides="2" role="button" tabindex="0" aria-label="이멤버 이랜드 통합 멤버십 앱">
         <div class="pt"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
@@ -2417,7 +2425,7 @@
       </article>
     </div>
     <div class="pf-more-wrap">
-      <button type="button" class="pf-more" id="pfMore" aria-expanded="false">전체 18개 프로젝트 보기 ↓</button>
+      <button type="button" class="pf-more" id="pfMore" aria-expanded="true">간단히 보기 ↑</button>
     </div>
   </section>
 
@@ -2712,7 +2720,7 @@
     const pfMore = document.getElementById('pfMore');
     let pfKind = 'all';   /* all | cat | dom */
     let pfValue = null;
-    let pfExpanded = false;
+    let pfExpanded = true;
 
     function pfMatch(card) {
       if (pfKind === 'cat') return card.dataset.cat === pfValue;
@@ -2742,7 +2750,7 @@
         card.classList.toggle('hide', pfKind !== 'all' && !pfMatch(card));
       });
       pfMore.hidden = pfKind !== 'all';
-      pfMore.textContent = pfExpanded ? '대표 프로젝트만 보기 ↑' : '전체 18개 프로젝트 보기 ↓';
+      pfMore.textContent = pfExpanded ? '간단히 보기 ↑' : '전체 18개 프로젝트 보기 ↓';
       pfMore.setAttribute('aria-expanded', String(pfExpanded));
     }
 
