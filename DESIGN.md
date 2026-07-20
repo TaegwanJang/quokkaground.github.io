@@ -39,7 +39,7 @@ typography:
     wordBreak: keep-all (Korean word-boundary wrapping, sitewide)
   mono:
     fontFamily: ui-monospace, SF Mono, Cascadia Mono, Roboto Mono, Menlo
-    usage: eyebrows, stat labels, tech tags, terminal rows — small sizes only
+    usage: Latin/digit-only labels — hero eyebrow, stat labels (YEARS EXP.), stack tags, terminal filename, step numbers, copyright. NEVER on Korean text (no Hangul glyphs → system-font fallback mixes typefaces); Korean labels/chips/buttons/terminal values use the KR sans.
   rules:
     - English micro-labels (YEARS EXP., SDK SHIPPED) are mono uppercase; Korean copy never uppercase.
     - Max weight is 700 (Plex KR has no 800).
