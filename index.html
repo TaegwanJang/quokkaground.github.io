@@ -1366,7 +1366,7 @@
 
     .met-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 0;
       border: 1px solid var(--line);
       border-radius: var(--r);
@@ -1397,6 +1397,11 @@
       line-height: 1;
       color: var(--ink);
       letter-spacing: -.03em
+    }
+
+    .mn.mn-range {
+      font-size: 2.05rem;
+      line-height: 1.45
     }
 
     .mn span {
@@ -1776,8 +1781,14 @@
         grid-template-columns: repeat(2, 1fr)
       }
 
-      .met:nth-child(2) {
+      .met:nth-child(2),
+      .met:nth-child(4) {
         border-right: none
+      }
+
+      .met:nth-child(5) {
+        grid-column: 1 / -1;
+        border-top: 1px solid var(--line)
       }
 
       .met:nth-child(1),
@@ -2464,6 +2475,11 @@
         <div class="mn">2~3<span>개월</span></div>
         <div class="ml">TYPICAL LAUNCH</div>
         <div class="md">대부분 2~3개월 내 출시</div>
+      </div>
+      <div class="met reveal">
+        <div class="mn mn-range">150만<span>~</span>1.2억</div>
+        <div class="ml">PROJECT RANGE</div>
+        <div class="md">소규모 유지보수부터 대형 구축까지</div>
       </div>
       <div class="met reveal">
         <div class="mn">3<span>천만원</span></div>

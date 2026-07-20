@@ -78,7 +78,7 @@ components:
   portfolio-filter: "Two labeled chip rows (유형 / 분야); active chip = solid green with white text; counts in mono."
   project-modal: "Centered dialog (860px, full-screen mobile) over rgba(17,18,20,.55) blur: title bar + circular close, on-demand 1080px slides, page-link + contact CTA footer. Deep link #p=<slug>."
   process-step: "5-up grid of subtle panels — mono accent number, bold title, small desc; hover = accent wash."
-  metric-tile: "4-up bordered row; huge 700-weight number with accent unit span, mono label, factual desc. Numbers must be verifiable — never borrowed prestige."
+  metric-tile: "5-up bordered row (2-col tablet, last tile full-width; 1-col mobile); huge 700-weight number with accent unit span, mono label, factual desc. Long ranges (150만~1.2억) use .mn-range at reduced size. Numbers must be verifiable or owner-stated facts — never borrowed prestige."
   terminal-card: "Profile card as terminal window — dots bar on panel-2, mono `// key` labels, right-aligned values; the page's deliberate dark-identity moment."
   testimonial-card: "Star row (accent), quote, emoji avatar + anonymised role. No client names, no platform ratings."
   form: "Subtle-surface inputs, green focus ring, honeypot (.hp-field), required privacy consent (1-year retention wording), solid green submit."
