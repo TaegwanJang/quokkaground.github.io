@@ -1293,6 +1293,7 @@
 
     .proc-row {
       display: grid;
+      align-items: stretch;
       grid-template-columns: repeat(5, 1fr);
       gap: 14px;
       max-width: 1180px;
@@ -1322,10 +1323,10 @@
 
     .pr-t {
       font-family: var(--fh);
-      font-size: 1.02rem;
+      font-size: 1.18rem;
       font-weight: 700;
-      letter-spacing: -.01em;
-      margin-bottom: 8px
+      letter-spacing: -.015em;
+      margin-bottom: 10px
     }
 
     .pr-d {
@@ -1340,7 +1341,7 @@
       font-weight: 600
     }
 
-    /* 파이프라인 커넥터 — 5열 고정 레이아웃에서만 */
+    /* 파이프라인 커넥터 — 5열 고정 레이아웃에서만, 수직 중앙 원형 노드 */
     @media(min-width:1101px) {
       .proc {
         position: relative
@@ -1349,12 +1350,23 @@
       .proc:not(:last-child)::after {
         content: '›';
         position: absolute;
-        right: -12px;
-        top: 24px;
+        right: -19px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2px;
+        background: var(--bg);
+        border: 1px solid var(--acc-line);
+        border-radius: 50%;
         color: var(--acc-text);
-        opacity: .55;
-        font-size: 1rem;
+        font-size: .95rem;
         font-weight: 700;
+        line-height: 1;
+        z-index: 1;
         pointer-events: none
       }
     }
@@ -2463,27 +2475,27 @@
       <div class="proc">
         <div class="pr-n">01</div>
         <div class="pr-t">계획</div>
-        <p class="pr-d">계획은 바로 실행할 수 있고, 상황에 따라 바꿀 수 있고, 시장에서 검증할 수 있는 단위로 세웁니다. 그래서 프로젝트 기간 내내 사업과 같은 호흡으로 움직이고, <strong>진행 상황과 다음 단계를 궁금해하실 틈 없이 먼저 공유합니다.</strong></p>
+        <p class="pr-d">계획은 바로 실행할 수 있고, 상황에 따라 바꿀 수 있고, 시장에서 검증할 수 있는 단위로 세웁니다. 그래서 프로젝트 기간 내내 사업과 같은 호흡으로 움직이고, 진행 상황과 다음 단계를 궁금해하실 틈 없이 <strong>먼저 공유합니다</strong>.</p>
       </div>
       <div class="proc">
         <div class="pr-n">02</div>
         <div class="pr-t">승인</div>
-        <p class="pr-d">만들기 전에 무엇을 만들지 함께 확정하고, 합의된 것만 구현에 들어갑니다. <strong>다 만든 뒤에 "이게 아닌데"가 나오는 상황을 계획 단계에서 차단합니다.</strong></p>
+        <p class="pr-d">만들기 전에 무엇을 만들지 함께 확정하고, 그 범위 안에서만 구현합니다. 다 만든 뒤에 "이게 아닌데"가 나오는 상황을 <strong>계획 단계에서 차단</strong>합니다.</p>
       </div>
       <div class="proc">
         <div class="pr-n">03</div>
         <div class="pr-t">구현</div>
-        <p class="pr-d">AI 에이전트가 구현 속도를 내고, 방향은 상담부터 함께한 대표 개발자가 직접 잡습니다. <strong>중간 전달자가 없으니 요구사항이 새지 않습니다.</strong></p>
+        <p class="pr-d">구현은 AI 에이전트로 빠르게, 방향은 상담부터 함께한 대표 개발자가 직접 잡습니다. 중간 전달자가 없으니 <strong>요구사항이 새지 않습니다</strong>.</p>
       </div>
       <div class="proc">
         <div class="pr-n">04</div>
         <div class="pr-t">검증</div>
-        <p class="pr-d">코드 작성과 검증을 서로 다른 에이전트가 담당하는 교차 검증 구조를 갖추고 있으며, 모든 코드는 커밋 전 정적 분석을 통과해야만 배포됩니다. <strong>이 기준은 사람과 AI 구분 없이 동일하게 적용됩니다.</strong></p>
+        <p class="pr-d">코드 작성과 검증을 서로 다른 에이전트가 담당하는 교차 검증 구조를 갖추고 있으며, 모든 코드는 커밋 전 정적 분석을 통과해야만 배포됩니다. 이 기준은 사람과 AI 구분 없이 <strong>동일하게 적용</strong>됩니다.</p>
       </div>
       <div class="proc">
         <div class="pr-n">05</div>
         <div class="pr-t">리뷰</div>
-        <p class="pr-d">왜 이렇게 만들었는지를 변경 이력과 함께 코드에 기록으로 남깁니다. <strong>서비스가 커지거나 다른 개발자가 이어받아도 히스토리가 끊기지 않습니다.</strong></p>
+        <p class="pr-d">변경 이력과 함께, 왜 이렇게 만들었는지도 코드에 기록으로 남깁니다. 서비스가 커지거나 다른 개발자가 이어받아도 <strong>히스토리가 끊기지 않습니다</strong>.</p>
       </div>
     </div>
     <p class="proc-stat reveal">Sonar <em>State of Code</em> 개발자 조사(2026)에 따르면 개발자의 96%는 AI 생성 코드를
