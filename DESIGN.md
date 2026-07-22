@@ -28,7 +28,7 @@ colors:
   signal-tool: "#7a37c9"
 
 typography:
-  family: IBM Plex Sans KR (400 / 500 / 700) — the only loaded family
+  family: Pretendard Variable (dynamic subset via jsdelivr, weights 400/500/700 in use) — the only loaded family. Chosen for Korean body readability (wide hangul counters, balanced weight); replaced IBM Plex Sans KR which read thin/loose at body sizes.
   display:
     weight: 700
     letterSpacing: -0.02em … -0.04em
@@ -42,7 +42,7 @@ typography:
     usage: Latin/digit-only labels — hero eyebrow, stat labels (YEARS EXP.), stack tags, terminal filename, step numbers, copyright. NEVER on Korean text (no Hangul glyphs → system-font fallback mixes typefaces); Korean labels/chips/buttons/terminal values use the KR sans.
   rules:
     - English micro-labels (YEARS EXP., SDK SHIPPED) are mono uppercase; Korean copy never uppercase.
-    - Max weight is 700 (Plex KR has no 800).
+    - Weights in use: 400/500/700 (variable font offers 45–920; stay at 700 for display).
 
 rounded:
   sm: 8px
