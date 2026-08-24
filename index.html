@@ -2259,7 +2259,7 @@
       <button type="button" class="pf-btn" data-dom-filter="media" aria-pressed="false">미디어·콘텐츠<span class="cnt">4</span></button>
       <button type="button" class="pf-btn" data-dom-filter="edu" aria-pressed="false">교육<span class="cnt">2</span></button>
     </div>
-    <div class="pf-grid reveal" id="pfGrid">
+    <div class="pf-grid collapsed reveal" id="pfGrid">
       <article class="pc" data-feat data-cat="app" data-slug="emember" data-dom="commerce" data-slides="2" role="button" tabindex="0" aria-label="이멤버 이랜드 통합 멤버십 앱">
         <div class="pt"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></div>
         <div class="pb-inner">
@@ -2460,7 +2460,7 @@
       </article>
     </div>
     <div class="pf-more-wrap">
-      <button type="button" class="pf-more" id="pfMore" aria-expanded="true">간단히 보기 ↑</button>
+      <button type="button" class="pf-more" id="pfMore" aria-expanded="false">전체 18개 프로젝트 보기 ↓</button>
     </div>
   </section>
 
@@ -2740,9 +2740,12 @@
     function cM() { mm.classList.remove('open'); hb.setAttribute('aria-expanded', 'false') }
 
     /* Scroll reveal */
+    /* threshold는 0 고정 — 요소 면적 대비 비율(.1 등)을 쓰면 뷰포트보다 10배 이상 긴 요소
+       (모바일 1열 포트폴리오 그리드 등)는 조건을 영영 충족하지 못해 등장하지 않는다.
+       진입 시점 조절은 rootMargin이 담당한다. */
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) }
-    }), { threshold: .1, rootMargin: '0px 0px -32px 0px' });
+    }), { threshold: 0, rootMargin: '0px 0px -32px 0px' });
     document.querySelectorAll('.reveal').forEach((el) => {
       const p = el.parentElement, sibs = [...p.children].filter(c => c.classList.contains('reveal')), idx = sibs.indexOf(el);
       if (sibs.length > 1 && idx > 0) el.style.transitionDelay = `${idx * 0.09}s`;
@@ -2755,7 +2758,7 @@
     const pfMore = document.getElementById('pfMore');
     let pfKind = 'all';   /* all | cat | dom */
     let pfValue = null;
-    let pfExpanded = true;
+    let pfExpanded = false;
 
     function pfMatch(card) {
       if (pfKind === 'cat') return card.dataset.cat === pfValue;
