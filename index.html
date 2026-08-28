@@ -422,18 +422,11 @@
       }
     }
 
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-      justify-self: center
-    }
-
     .hero-img-outer {
       position: relative;
-      width: clamp(240px, 22vw, 320px);
+      width: clamp(250px, 28vw, 440px);
       margin: 0;
+      justify-self: center;
       opacity: 0;
       animation: popIn .8s .1s cubic-bezier(.34, 1.56, .64, 1) forwards
     }
@@ -493,15 +486,16 @@
     /* 접힘 위에서 바로 보이는 출시작 커버 */
     .hero-proof {
       width: 100%;
-      max-width: 414px;
+      max-width: 690px;
+      margin-top: 40px;
       opacity: 0;
-      animation: fu .7s .95s forwards
+      animation: fu .7s 1.05s forwards
     }
 
     .hero-covers {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px
+      gap: 12px
     }
 
     .hcv {
@@ -533,8 +527,7 @@
       font-size: .72rem;
       letter-spacing: .1em;
       color: var(--ink-3);
-      text-align: center;
-      margin-top: 14px
+      margin-top: 12px
     }
 
     .hero-note {
@@ -2227,22 +2220,14 @@
       }
 
       /* 마스코트는 제목 아래로 — 첫 화면 맨 위는 제안이 차지한다 */
-      .hero-side {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 16px;
-        justify-self: start;
-        width: 100%
-      }
-
       .hero-img-outer {
-        width: clamp(150px, 40vw, 220px);
-        flex-shrink: 0
+        width: clamp(210px, 46vw, 320px);
+        justify-self: start
       }
 
       .hero-proof {
-        max-width: 190px
+        max-width: 340px;
+        margin-top: 34px
       }
 
       .hero-covers {
@@ -2250,17 +2235,21 @@
         gap: 8px
       }
 
-      .hero-covers .hcv:nth-child(n+5) {
-        display: none
-      }
-
-      .hero-covers-l {
-        text-align: left;
-        margin-top: 10px
-      }
-
       .hero-sub {
         margin: 0 0 32px
+      }
+    }
+
+    /* 좁은 화면에서는 주요 액션 하나가 화면 폭을 차지한다 */
+    @media(max-width:600px) {
+      .hero-btns {
+        flex-direction: column;
+        align-items: stretch
+      }
+
+      .bp,
+      .bg {
+        text-align: center
       }
     }
 
@@ -2352,28 +2341,22 @@
       <a href="#portfolio" class="bg" aria-label="포트폴리오 보기">출시작 18개 보기</a>
     </div>
     <p class="hero-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>영업일 기준 24시간 이내 답변 · 아이디어 단계 상담도 환영합니다</p>
-    </div>
-    <div class="hero-side">
-      <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
-        <div class="hero-img-ring" aria-hidden="true"></div>
-        <div class="hero-img-ring2" aria-hidden="true"></div>
-        <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
-          width="1102" height="734" fetchpriority="high" decoding="async"
-          style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
-      </div>
-      <div class="hero-proof">
-        <div class="hero-covers" aria-label="출시·배포한 서비스 커버">
+    <div class="hero-proof">
+      <div class="hero-covers" aria-label="출시·배포한 서비스 커버">
         <a href="#portfolio" class="hcv" aria-label="이멤버 프로젝트 보기"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
         <a href="#portfolio" class="hcv" aria-label="Everyreels 프로젝트 보기"><img src="pf/everyreels.webp" alt="Everyreels 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
         <a href="#portfolio" class="hcv" aria-label="여운 프로젝트 보기"><img src="pf/yeoun.webp" alt="여운 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
         <a href="#portfolio" class="hcv" aria-label="Sauce Live·Clip 프로젝트 보기"><img src="pf/saucesdk.webp" alt="Sauce Live·Clip 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
-        <a href="#portfolio" class="hcv" aria-label="MomsCode 프로젝트 보기"><img src="pf/momscode.webp" alt="MomsCode 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
-        <a href="#portfolio" class="hcv" aria-label="Stipop 프로젝트 보기"><img src="pf/stipop.webp" alt="Stipop 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
-        <a href="#portfolio" class="hcv" aria-label="지음 프로젝트 보기"><img src="pf/jieum.webp" alt="지음 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
-        <a href="#portfolio" class="hcv" aria-label="SauceClip 프로젝트 보기"><img src="pf/sauceclip.webp" alt="SauceClip 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
-        </div>
-        <p class="hero-covers-l">SHIPPED — 18 PROJECTS</p>
       </div>
+      <p class="hero-covers-l">SHIPPED — 18 PROJECTS</p>
+    </div>
+    </div>
+    <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
+      <div class="hero-img-ring" aria-hidden="true"></div>
+      <div class="hero-img-ring2" aria-hidden="true"></div>
+      <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
+        width="1102" height="734" fetchpriority="high" decoding="async"
+        style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
     </div>
     </div>
   </header>
@@ -2824,7 +2807,7 @@
         <h2 id="contact-h" class="reveal">프로젝트를<br />시작해볼까요?</h2>
         <p class="cp reveal">아이디어 단계도 괜찮습니다. 예산·일정이 정해지지 않아도 괜찮습니다. 편하게 먼저 이야기 나눠요.</p>
         <a href="#contact" class="crow reveal js-mail" data-u="contact" data-d="quokkaground.com"><span
-            class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></span><span class="jm-t">문의 폼을 남겨주시면 이메일로 답장드립니다</span></a>
+            class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></span><span class="jm-t">이메일로 문의</span></a>
         <span class="crow reveal"><span class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>경기도 평택시 · 전국 원격 진행 가능</span>
         <span class="crow reveal"><span class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></span>영업일 기준 24시간 이내 답변</span>
       </div>
