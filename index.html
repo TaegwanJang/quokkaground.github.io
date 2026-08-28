@@ -843,6 +843,9 @@
 
     .ab {
       font-family: var(--fb);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       font-size: .78rem;
       padding: 9px 16px;
       border-radius: var(--r-sm);
@@ -855,6 +858,12 @@
     .ab:hover {
       border-color: var(--acc-line);
       color: var(--acc-text)
+    }
+
+    .ab svg,
+    .ci-icon svg,
+    .tav svg {
+      flex-shrink: 0
     }
 
     /* about card → code-forward terminal panel (Supabase tone) */
@@ -1536,8 +1545,55 @@
 
     .tg {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px
+    }
+
+    /* 대표 후기 하나를 넓게 — 4개 균등 배치에는 위계가 없었다 */
+    .tc-card.tc-lead {
+      grid-column: 1 / -1;
+      padding: 36px 40px
+    }
+
+    .tc-lead-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 48px;
+      align-items: center
+    }
+
+    .tpull {
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -.015em;
+      line-height: 1.5;
+      margin-bottom: 12px
+    }
+
+    .tc-lead .tpull {
+      font-size: 1.42rem;
+      line-height: 1.45;
+      margin-bottom: 16px;
+      max-width: 22em
+    }
+
+    .tc-lead .ta {
+      margin: 0;
+      padding: 0;
+      border: 0
+    }
+
+    @media(max-width:1100px) {
+      .tg {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .tc-lead-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        align-items: start
+      }
     }
 
     .tc-card {
@@ -1567,13 +1623,6 @@
       transform: translateY(-3px)
     }
 
-    .ts {
-      color: #e0a000;
-      font-size: .86rem;
-      margin-bottom: 14px;
-      letter-spacing: 2px
-    }
-
     .tt {
       font-size: .95rem;
       color: var(--ink-2);
@@ -1596,7 +1645,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem
+      color: var(--ink-2)
     }
 
     .tn {
@@ -1652,7 +1701,12 @@
 
     .ci-icon {
       width: 18px;
-      flex-shrink: 0
+      height: 18px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-2)
     }
 
     .cf {
@@ -2027,6 +2081,34 @@
       height: 17px;
       margin-top: 3px;
       accent-color: var(--acc)
+    }
+
+    .consent-full {
+      margin: -14px 0 20px;
+      font-size: .8rem;
+      color: var(--ink-3)
+    }
+
+    .consent-full summary {
+      cursor: pointer;
+      color: var(--ink-3);
+      list-style: none;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      width: fit-content
+    }
+
+    .consent-full summary::-webkit-details-marker {
+      display: none
+    }
+
+    .consent-full summary:hover {
+      color: var(--acc-text)
+    }
+
+    .consent-full p {
+      margin-top: 8px;
+      line-height: 1.7
     }
 
     .consent label {
@@ -2623,8 +2705,8 @@
           모든 프로젝트는 규모와 무관하게 <strong>계획→승인→구현→검증→리뷰 5단계 체계</strong>로 진행합니다.</p>
         <p class="reveal">Wishket 등 국내 주요 플랫폼에서 스타트업·개인사업자·중소기업 클라이언트와 함께 서비스를 만들어왔습니다.</p>
         <div class="about-badges reveal">
-          <span class="ab">📍 경기도 평택시</span><span class="ab">🤝 창업부터 함께한 팀</span>
-          <span class="ab">💼 개인사업자</span><span class="ab">🏆 전국 스타트업리그 대상 (2016)</span>
+          <span class="ab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>경기도 평택시</span><span class="ab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 7.2a3 3 0 0 1 0 5.6"/><path d="M17.5 19a5.4 5.4 0 0 0-2-4.2"/></svg>창업부터 함께한 팀</span>
+          <span class="ab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V4.8h7V7"/><path d="M3 12.5h18"/></svg>개인사업자</span><span class="ab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4.5v1.5A3 3 0 0 0 7 10.4"/><path d="M17 6h2.5v1.5A3 3 0 0 1 17 10.4"/><path d="M9.5 20h5"/><path d="M12 14v6"/></svg>전국 스타트업리그 대상 (2016)</span>
         </div>
       </div>
       <div class="about-card reveal" aria-label="주요 이력 카드">
@@ -2684,12 +2766,26 @@
       <p class="ss reveal">Wishket 등에서 실제 프로젝트를 진행한 클라이언트분들의 피드백입니다. 개인정보 보호를 위해 익명으로 표기했습니다.</p>
     </div>
     <div class="tg">
+      <div class="tc-card tc-lead reveal">
+        <div class="tc-lead-grid">
+          <div>
+            <p class="tpull">약속한 날짜까지 책임감 있게 마무리해주셨습니다</p>
+            <p class="tt">아키텍처와 디자인 패턴 협의 시 구상한 내용을 이해하기 쉽게 설명해주셨고, 어려운 작업도 빠르게 진행할 수 있었습니다. 팀 리딩을 맡아 작은 부분도 놓치지 않고 완성도를 높여주셨습니다. 이 분의 강점은 성실함 — 항상 약속한 날짜까지 책임감 있게 마무리해주셨습니다.</p>
+          </div>
+          <div class="ta">
+            <div class="tav" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h9l5 5v11H5z"/><path d="M14 4v5h5"/><path d="M8.5 13h7"/><path d="M8.5 16.5h4.5"/></svg></div>
+            <div>
+              <div class="tn">솔루션 개발사</div>
+              <div class="tr">앱 · SDK 아키텍처 설계</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="tc-card reveal">
-        <div class="ts" aria-label="별점 5점">★★★★★</div>
-        <p class="tt">운영 중인 프로젝트의 API 유지보수를 맡겨드렸는데, 정해진 일정을 정확히 지켜주셨습니다. 질의응답이 빠르고, 중간중간 진행 상황도 자세히 공유해주셔서 안심하고 맡길 수
-          있었습니다.</p>
+        <p class="tpull">정해진 일정을 정확히 지켜주셨습니다</p>
+        <p class="tt">운영 중인 프로젝트의 API 유지보수를 맡겨드렸는데, 정해진 일정을 정확히 지켜주셨습니다. 질의응답이 빠르고, 중간중간 진행 상황도 자세히 공유해주셔서 안심하고 맡길 수 있었습니다.</p>
         <div class="ta">
-          <div class="tav">🏢</div>
+          <div class="tav" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V8l8-4 8 4v12"/><path d="M9 20v-6h6v6"/></svg></div>
           <div>
             <div class="tn">API 유지보수 클라이언트</div>
             <div class="tr">운영 중 서비스 유지보수</div>
@@ -2697,11 +2793,10 @@
         </div>
       </div>
       <div class="tc-card reveal">
-        <div class="ts" aria-label="별점 5점">★★★★★</div>
-        <p class="tt">역할과 책임에 대한 이해도가 높고, 요구사항을 정확히 파악해 개발에 충실히 반영해주셨습니다. 기존 코드 수정이라는 까다로운 작업을 꾸준한 집중력과 책임감으로 안정적으로
-          마무리해주셨고, Flutter 기반 동영상 재생 기능에 대한 높은 전문성이 인상적이었습니다.</p>
+        <p class="tpull">동영상 재생 기능에 대한 높은 전문성</p>
+        <p class="tt">역할과 책임에 대한 이해도가 높고, 요구사항을 정확히 파악해 개발에 충실히 반영해주셨습니다. 기존 코드 수정이라는 까다로운 작업을 꾸준한 집중력과 책임감으로 안정적으로 마무리해주셨고, Flutter 기반 동영상 재생 기능에 대한 높은 전문성이 인상적이었습니다.</p>
         <div class="ta">
-          <div class="tav">💼</div>
+          <div class="tav" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="12" height="12" rx="2"/><path d="M15 10.5l6-3v9l-6-3z"/></svg></div>
           <div>
             <div class="tn">Flutter 앱 서비스 운영사</div>
             <div class="tr">Flutter 앱 고도화</div>
@@ -2709,26 +2804,13 @@
         </div>
       </div>
       <div class="tc-card reveal">
-        <div class="ts" aria-label="별점 5점">★★★★★</div>
-        <p class="tt">조용하고 차분한 성격이면서도 끝까지 책임감 있게 임해주셨습니다. 매일 데일리 미팅에 빠짐없이 참여하며 상황을 명확히 공유해주셔서 협업이 원활했습니다. 작은 디테일의 버그까지
-          끝까지 수정·개선하려는 태도가 인상적이었습니다.</p>
+        <p class="tpull">작은 디테일의 버그까지 끝까지 수정·개선</p>
+        <p class="tt">조용하고 차분한 성격이면서도 끝까지 책임감 있게 임해주셨습니다. 매일 데일리 미팅에 빠짐없이 참여하며 상황을 명확히 공유해주셔서 협업이 원활했습니다. 작은 디테일의 버그까지 끝까지 수정·개선하려는 태도가 인상적이었습니다.</p>
         <div class="ta">
-          <div class="tav">🚀</div>
+          <div class="tav" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 17l-4-5 4-5"/><path d="M16 7l4 5-4 5"/><path d="M13.5 5l-3 14"/></svg></div>
           <div>
             <div class="tn">숏폼 스트리밍 프로젝트</div>
             <div class="tr">Flutter · 동영상 재생</div>
-          </div>
-        </div>
-      </div>
-      <div class="tc-card reveal">
-        <div class="ts" aria-label="별점 5점">★★★★★</div>
-        <p class="tt">아키텍처와 디자인 패턴 협의 시 구상한 내용을 이해하기 쉽게 설명해주셨고, 어려운 작업도 빠르게 진행할 수 있었습니다. 팀 리딩을 맡아 작은 부분도 놓치지 않고 완성도를
-          높여주셨습니다. 이 분의 강점은 성실함 — 항상 약속한 날짜까지 책임감 있게 마무리해주셨습니다.</p>
-        <div class="ta">
-          <div class="tav">⚡</div>
-          <div>
-            <div class="tn">솔루션 개발사</div>
-            <div class="tr">앱 · SDK 아키텍처 설계</div>
           </div>
         </div>
       </div>
@@ -2742,9 +2824,9 @@
         <h2 id="contact-h" class="reveal">프로젝트를<br />시작해볼까요?</h2>
         <p class="cp reveal">아이디어 단계도 괜찮습니다. 예산·일정이 정해지지 않아도 괜찮습니다. 편하게 먼저 이야기 나눠요.</p>
         <a href="#contact" class="crow reveal js-mail" data-u="contact" data-d="quokkaground.com"><span
-            class="ci-icon" aria-hidden="true">✉️</span><span class="jm-t">이메일 (문의 폼 이용 가능)</span></a>
-        <span class="crow reveal"><span class="ci-icon" aria-hidden="true">📍</span>경기도 평택시 · 원격 가능</span>
-        <span class="crow reveal"><span class="ci-icon" aria-hidden="true">⚡</span>영업일 기준 24시간 이내 답변</span>
+            class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></span><span class="jm-t">문의 폼을 남겨주시면 이메일로 답장드립니다</span></a>
+        <span class="crow reveal"><span class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>경기도 평택시 · 전국 원격 진행 가능</span>
+        <span class="crow reveal"><span class="ci-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></span>영업일 기준 24시간 이내 답변</span>
       </div>
       <form class="cf reveal" id="contactForm" aria-label="프로젝트 문의 양식">
         <div class="fr2">
@@ -2768,9 +2850,13 @@
         </div>
         <div class="consent">
           <input type="checkbox" id="agree" name="agree" required />
-          <label for="agree"><strong>개인정보 수집·이용 동의 (필수)</strong> — 문의 응대 및 상담 목적으로 이름·이메일·문의 내용을
-            수집하며, 수집일로부터 1년간 보관 후 파기합니다. 동의를 거부할 수 있으나 이 경우 폼 접수가 제한됩니다.</label>
+          <label for="agree"><strong>개인정보 수집·이용에 동의합니다 (필수)</strong> — 이름·이메일·문의 내용, 1년 보관 후 파기</label>
         </div>
+        <details class="consent-full">
+          <summary>수집·이용 안내 전문 보기</summary>
+          <p>문의 응대 및 상담 목적으로 이름·이메일·문의 내용을 수집하며, 수집일로부터 1년간 보관 후 파기합니다.
+            동의를 거부할 수 있으나 이 경우 폼 접수가 제한됩니다.</p>
+        </details>
         <button type="submit" class="fsub" id="submitBtn">메시지 보내기 →</button>
         <p class="form-msg" id="formMsg"></p>
       </form>
