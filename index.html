@@ -111,7 +111,7 @@
       /* ink ramp */
       --ink: #14161a;
       --ink-2: #565b63;
-      --ink-3: #878d96;
+      --ink-3: #6f757e;
 
       /* hairlines */
       --line: rgba(17, 18, 20, .08);
@@ -313,19 +313,20 @@
     .nc {
       font-family: var(--fb);
       font-size: .82rem;
-      padding: 9px 20px;
+      font-weight: 700;
+      padding: 10px 20px;
       border-radius: var(--r-sm);
-      border: 1px solid var(--acc-line);
-      color: var(--acc-text);
+      border: 1px solid var(--acc);
+      color: #fff;
       text-decoration: none;
-      background: var(--acc-wash);
-      transition: background .2s, color .2s, box-shadow .2s
+      background: var(--acc);
+      box-shadow: 0 6px 18px -8px var(--acc-glow);
+      transition: background .2s, box-shadow .2s
     }
 
     .nc:hover {
-      background: var(--acc);
-      color: #fff;
-      box-shadow: 0 6px 18px -6px var(--acc-glow)
+      background: var(--acc-2);
+      box-shadow: 0 10px 26px -8px var(--acc-glow)
     }
 
     .hb {
@@ -421,11 +422,18 @@
       }
     }
 
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      justify-self: center
+    }
+
     .hero-img-outer {
       position: relative;
-      width: clamp(250px, 28vw, 440px);
+      width: clamp(240px, 22vw, 320px);
       margin: 0;
-      justify-self: center;
       opacity: 0;
       animation: popIn .8s .1s cubic-bezier(.34, 1.56, .64, 1) forwards
     }
@@ -480,6 +488,68 @@
       aspect-ratio: 4/3;
       border: 1px solid var(--line);
       box-shadow: var(--sh-lg)
+    }
+
+    /* 접힘 위에서 바로 보이는 출시작 커버 */
+    .hero-proof {
+      width: 100%;
+      max-width: 414px;
+      opacity: 0;
+      animation: fu .7s .95s forwards
+    }
+
+    .hero-covers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px
+    }
+
+    .hcv {
+      display: block;
+      aspect-ratio: 1/1;
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg-panel);
+      box-shadow: var(--sh-sm);
+      transition: transform .25s cubic-bezier(.16, 1, .3, 1), box-shadow .25s, border-color .25s
+    }
+
+    .hcv:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sh);
+      border-color: var(--acc-line)
+    }
+
+    .hcv img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .hero-covers-l {
+      font-family: var(--fm);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      color: var(--ink-3);
+      text-align: center;
+      margin-top: 14px
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: .88rem;
+      color: var(--ink-3);
+      opacity: 0;
+      animation: fu .7s 1s forwards
+    }
+
+    .hero-note svg {
+      flex-shrink: 0
     }
 
     .hero-eye {
@@ -597,52 +667,6 @@
         opacity: 1;
         transform: translateY(0)
       }
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 0;
-      margin-top: 64px;
-      padding-top: 36px;
-      border-top: 1px solid var(--line);
-      width: 100%;
-      max-width: 620px;
-      opacity: 0;
-      animation: fu .7s 1s forwards
-    }
-
-    .hs {
-      flex: 1;
-      padding: 0 28px;
-      border-right: 1px solid var(--line)
-    }
-
-    .hs:first-child {
-      padding-left: 0
-    }
-
-    .hs:last-child {
-      border-right: none
-    }
-
-    .hs-n {
-      font-family: var(--fh);
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -.02em
-    }
-
-    .hs-n span {
-      color: var(--ink-3)
-    }
-
-    .hs-l {
-      font-family: var(--fm);
-      font-size: .72rem;
-      color: var(--ink-3);
-      letter-spacing: .1em;
-      margin-top: 5px
     }
 
     /* SECTIONS */
@@ -1898,23 +1922,6 @@
         font-size: 2.8rem
       }
 
-      .hero-stats {
-        flex-direction: column;
-        gap: 0;
-        padding-top: 28px;
-        margin-top: 48px
-      }
-
-      .hs {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding: 14px 0
-      }
-
-      .hs:last-child {
-        border-bottom: none
-      }
-
       .pg {
         grid-template-columns: 1fr
       }
@@ -2094,35 +2101,44 @@
     @media(max-width:1000px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center
+        gap: 36px
+      }
+
+      /* 마스코트는 제목 아래로 — 첫 화면 맨 위는 제안이 차지한다 */
+      .hero-side {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        justify-self: start;
+        width: 100%
       }
 
       .hero-img-outer {
-        order: -1;
-        width: clamp(210px, 46vw, 320px)
+        width: clamp(150px, 40vw, 220px);
+        flex-shrink: 0
+      }
+
+      .hero-proof {
+        max-width: 190px
+      }
+
+      .hero-covers {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px
+      }
+
+      .hero-covers .hcv:nth-child(n+5) {
+        display: none
+      }
+
+      .hero-covers-l {
+        text-align: left;
+        margin-top: 10px
       }
 
       .hero-sub {
-        margin: 0 auto 36px
-      }
-
-      .hero-btns {
-        justify-content: center
-      }
-
-      .hero-stats {
-        margin-left: auto;
-        margin-right: auto
-      }
-
-      .hs {
-        text-align: center;
-        padding: 0 20px
-      }
-
-      .hs:first-child {
-        padding-left: 20px
+        margin: 0 0 32px
       }
     }
 
@@ -2144,7 +2160,8 @@
       h1,
       .hero-sub,
       .hero-btns,
-      .hero-stats {
+      .hero-note,
+      .hero-proof {
         opacity: 1 !important;
         transform: none !important
       }
@@ -2205,34 +2222,36 @@
     <div class="hero-grid">
     <div class="hero-text">
     <p class="hero-eye"><i aria-hidden="true"></i>FULLSTACK DEV STUDIO</p>
-    <h1>앱·웹·백엔드를<br /><em>기획부터 출시까지 책임집니다</em></h1>
-    <p class="hero-sub"><strong>QuokkaGround</strong> 개발팀 대표 개발자 <strong>장태관</strong>입니다. <br />Flutter · React Native · Node.js —
-      iOS·Android 앱, 관리자 웹, 백엔드까지 대표 개발자가 직접 설계·구현하고, 기획·디자인·개발을 함께해 온 팀이 든든하게 받칩니다.</p>
+    <h1>상담한 사람이<br /><em>끝까지 직접 만듭니다</em></h1>
+    <p class="hero-sub">Flutter · React Native 앱, 관리자 웹, Node.js 백엔드까지 — 2016년부터 <strong>20개 이상의 서비스</strong>를
+      기획·개발·출시한 대표 개발자 <strong>장태관</strong>이 상담부터 배포까지 직접 맡습니다. 중간 전달자가 없습니다.</p>
     <div class="hero-btns">
-      <a href="#portfolio" class="bp" aria-label="포트폴리오 보기">포트폴리오 보기</a>
-      <a href="#contact" class="bg" aria-label="프로젝트 문의">프로젝트 문의 →</a>
+      <a href="#contact" class="bp" aria-label="프로젝트 문의">프로젝트 문의하기 →</a>
+      <a href="#portfolio" class="bg" aria-label="포트폴리오 보기">출시작 18개 보기</a>
     </div>
-    <div class="hero-stats" aria-label="주요 실적 수치">
-      <div class="hs">
-        <div class="hs-n"><b class="cntu" data-count="9">9</b><span>+</span></div>
-        <div class="hs-l">YEARS EXP.</div>
-      </div>
-      <div class="hs">
-        <div class="hs-n"><b class="cntu" data-count="20">20</b><span>+</span></div>
-        <div class="hs-l">PROJECTS</div>
-      </div>
-      <div class="hs">
-        <div class="hs-n">앱<span>·</span>웹<span>·</span>서버</div>
-        <div class="hs-l">FULL-STACK</div>
-      </div>
+    <p class="hero-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>영업일 기준 24시간 이내 답변 · 아이디어 단계 상담도 환영합니다</p>
     </div>
-    </div>
-    <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
-      <div class="hero-img-ring" aria-hidden="true"></div>
-      <div class="hero-img-ring2" aria-hidden="true"></div>
-      <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
-        width="1102" height="734" fetchpriority="high" decoding="async"
-        style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
+    <div class="hero-side">
+      <div class="hero-img-outer" aria-label="QuokkaGround 마스코트 이미지 영역">
+        <div class="hero-img-ring" aria-hidden="true"></div>
+        <div class="hero-img-ring2" aria-hidden="true"></div>
+        <img src="quokka_neon.webp" alt="네온 초록빛으로 빛나는 쿼카 캐릭터가 컴퓨터 앞에서 코딩하는 모습 — QuokkaGround 마스코트"
+          width="1102" height="734" fetchpriority="high" decoding="async"
+          style="border-radius:20px;aspect-ratio:4/3;object-fit:cover;object-position:center 15%" />
+      </div>
+      <div class="hero-proof">
+        <div class="hero-covers" aria-label="출시·배포한 서비스 커버">
+        <a href="#portfolio" class="hcv" aria-label="이멤버 프로젝트 보기"><img src="pf/emember.webp" alt="이멤버 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="Everyreels 프로젝트 보기"><img src="pf/everyreels.webp" alt="Everyreels 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="여운 프로젝트 보기"><img src="pf/yeoun.webp" alt="여운 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="Sauce Live·Clip 프로젝트 보기"><img src="pf/saucesdk.webp" alt="Sauce Live·Clip 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="MomsCode 프로젝트 보기"><img src="pf/momscode.webp" alt="MomsCode 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="Stipop 프로젝트 보기"><img src="pf/stipop.webp" alt="Stipop 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="지음 프로젝트 보기"><img src="pf/jieum.webp" alt="지음 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        <a href="#portfolio" class="hcv" aria-label="SauceClip 프로젝트 보기"><img src="pf/sauceclip.webp" alt="SauceClip 포트폴리오 커버" width="480" height="480" loading="lazy" decoding="async" /></a>
+        </div>
+        <p class="hero-covers-l">SHIPPED — 18 PROJECTS</p>
+      </div>
     </div>
     </div>
   </header>
@@ -2947,20 +2966,19 @@
       if (REDUCED.matches) { el.textContent = el.dataset.count; return; }
       el.style.minWidth = el.offsetWidth + 'px'; /* 최종값 폭 먼저 고정 */
       el.textContent = '0';                      /* 페이드 중에는 0이 보이게 */
-      const host = el.closest('.reveal, .hero-stats');
+      const host = el.closest('.reveal');
       const start = () => {
         if (el.dataset.counted) return;          /* 이벤트+폴백 중복 실행 가드 */
         el.dataset.counted = '1';
         runCount(el);
       };
       if (!host || getComputedStyle(host).opacity === '1') { start(); return; }
-      const evName = host.classList.contains('hero-stats') ? 'animationend' : 'transitionend';
       const onEnd = (e) => {
-        if (evName === 'transitionend' && e.propertyName !== 'opacity') return;
-        host.removeEventListener(evName, onEnd);
+        if (e.propertyName !== 'opacity') return;
+        host.removeEventListener('transitionend', onEnd);
         start();
       };
-      host.addEventListener(evName, onEnd);
+      host.addEventListener('transitionend', onEnd);
       setTimeout(start, 2500);                   /* 이벤트 유실 대비 폴백 — 0 고정 방지 */
     }
 
